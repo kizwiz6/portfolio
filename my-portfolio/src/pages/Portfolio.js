@@ -37,36 +37,40 @@ const Portfolio = () => {
       title: "Sip N Sign (British Sign Language App)",
       description: "Developed a mobile application for learning sign language using C# and .NET MAUI. Designed a user-friendly interface featuring multimedia resources, including videos and images, to enhance immersion. Employed the MVVM architecture to maintain clean code, improving the application's maintainability and scalability.",
       category: "Personal Project",
-      tags: [".NET MAUI"],
+      period: "October 2024",
+      tags: [".NET MAUI", "C#", "MVVM", "XAML", "SQLite", "British Sign Language"],
       status: "In Progress"
     },
     {
       title: "Acticheck User Authentication System",
       description: "Developed a .NET Core web application for secure user authentication and management, integrating various authentication methods, logging, and third-party services. Features include secure registration, login, password recovery, and Facebook authentication.",
       category: "Work at Acticheck",
-      period: "June 2024 - October 2024",
+      period: "June 2024 - July 2024",
       tags: [".NET Core", "SQL Server", "Identity", "Facebook Auth", "SendGrid"],
       link: "#"
     },
     {
       title: "RESTful APIs and Band Payload Processing",
-      description: "Developed a .NET Web API for payload transmission between applications, including gRPC applications for efficient data handling and logging into SQL databases.",
+      description: "I developed a robust .NET Web API application designed to demonstrate seamless payload transmission between applications. This API effectively logs incoming decoded payload messages, ensuring that all relevant data is captured for future analysis. The integrated decoder processes these messages efficiently, enabling smooth communication and data handling between various components of the system. In addition, I created two gRPC applications—a server and a client—that facilitate efficient data transmission between distinct applications. These prototypes have proven successful in logging essential data into an SQL table, showcasing the system's capability to handle complex data interactions. Through this experience, I gained valuable insights into the advantages of gRPC over traditional RESTful approaches, including improved performance, reduced latency, and more efficient data serialisation/",
       category: "Work at Acticheck",
+      period: "July 2024 - September 2024",
       tags: [".NET", "gRPC", "SQL", "REST API"],
       link: "#"
     },
     {
       title: "CCM Project",
-      description: "Enhanced customer communications control with AWS services, implementing targeted reminders and multi-channel communication opportunities.",
+      description: "The CCM (Customer Communications Management) project was designed to improve and streamline customer communications by gaining better control over content, channel, and presentation of communication sequences, tailoring them to individual customer preferences. This targeted approach aimed to significantly enhance the overall customer experience through the strategic use of reminders and the implementation of multi-channel opportunities. In addition, the project sought to increase the automation of follow-up and response-chasing processes by incorporating automated business rules and an integrated workflow. This was intended to result in more efficient communication management and reduce the need for manual intervention. Lastly, the CCM project aimed to empower operational team members with a comprehensive view of all customer communications. This holistic perspective was expected to enable them to optimise average handling time, boost efficiency, and improve first contact resolution, ultimately leading to enhanced customer satisfaction and loyalty.",
       category: "Work at iGO4",
-      tags: ["AWS Lambda", "C#", "Python", "SQL", "JSON"],
+      period: "January 2019 - January 2020",
+      tags: ["AWS", "C#", "Python", "SQL", "SQL Server", "JSON", "Node.js", "Agile"],
       link: "#"
     },
     {
-      title: "Earnix Integration",
-      description: "Integrated Earnix pricing tool with CDL Strata system, enabling sophisticated pricing strategies and real-time pricing calculations.",
+      title: "Earnix (Pricing Engine)",
+      description: "Earnix is a dynamic pricing tool that was seamlessly integrated with the CDL Strata system at iGO4. This integration empowered the Pricing & Data Team to design and implement sophisticated algorithms, enhancing competitiveness in pricing strategies. The algorithms, crafted by the Pricing Team, could be easily managed and deployed, significantly reducing the time required for executing dynamic pricing adjustments. This adaptability allowed the team to respond rapidly to the ever-changing sales landscape. The primary objective of this project was to embed Earnix into the RTP (Real-Time Pricing) model without the need for a complete overhaul of the existing RTP model's development. This was achieved through a variety of tasks, including comprehensive REST API testing conducted via SoapUI software and core development work undertaken in both Java and XML. The successful integration of Earnix resulted in a more agile and responsive pricing system, enabling iGO4 to maintain a strong competitive edge in the market.",
       category: "Work at iGO4",
-      tags: ["Java", "XML", "REST API", "SoapUI"],
+      period: "July 2019 - October 2019",
+      tags: ["Java", "XML", "REST API", "SoapUI", "C#", "Git", "Agile"],
       link: "#"
     }
   ];
@@ -192,15 +196,15 @@ const Portfolio = () => {
 <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white">
   <div className="max-w-6xl mx-auto px-4 py-16">
     <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in">
-      Software Developer
+      Kieran Emery
     </h1>
     <p className="text-xl md:text-2xl text-blue-100 mb-8">
-      Building innovative solutions with modern technologies
+      Software developer building innovative solutions with modern technologies
     </p>
     <div className="flex space-x-4">
-      <a href="#" className="bg-white text-blue-800 px-6 py-2 rounded-full hover:bg-blue-50 transition duration-300">
+        <a href="mailto:kizwiz@hotmail.co.uk" className="bg-white text-blue-800 px-6 py-2 rounded-full hover:bg-blue-50 transition duration-300">
         Contact Me
-      </a>
+        </a>
       <a
         href="https://www.dropbox.com/scl/fi/q5qbl6jdan5kex1x1g4w8/KieranEmery_CV_2024.pdf?rlkey=gj1q8x6ul64kmlphtthszgd5b&st=6v4ghmlz&dl=0"
         className="border border-white text-white px-6 py-2 rounded-full hover:bg-white hover:text-blue-800 transition duration-300"
