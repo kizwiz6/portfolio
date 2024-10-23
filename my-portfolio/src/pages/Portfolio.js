@@ -1,25 +1,47 @@
 import React, { useState } from 'react';
-import { Github, Linkedin, Mail, Menu, X, Calendar } from 'lucide-react';
+import { Github, Linkedin, Facebook, Instagram, Mail, Menu, X, Calendar } from 'lucide-react';
 
 const Portfolio = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('projects');
 
   const aboutMeContent = (
-    <div>
-      <h1 className="text-3xl font-bold mb-4">About Me</h1>
-      <p className="text-gray-600 mb-4">
-        I'm Kieran, a dedicated Software Developer based in Cambridgeshire, UK. As a Developer, I have nearly seven years of commercial experience in software development previously working at companies like Acticheck and iGO4 Insurance, where I've had the opportunity to refine my skills and expertise in the field. My educational background includes a Bachelor's degree in Computing from Coventry University and a BTEC Level 3 Extended Diploma in IT from Bedford College, providing a solid foundation to complement my practical experience.
+    <div className="max-w-6xl mx-auto px-4 py-16">
+      <h1 className="text-4xl font-bold mb-6">About Me</h1>
+
+
+    {/* Profile Picture */}
+    <div className="mb-8 flex flex-col items-center">
+      <img 
+        src="https://previews.dropbox.com/p/thumb/ACZrt0rfSzoz1DEAIQ2gKMbFMSrsOpK-qVuizQH_b_uFK8HfAw2bKiTKUoTKuZpgA_ZWMNCLp4K93kCsP7Xsh1f3ssV4MVqPB5DOt_e_ZrEuk39hA-nNK7xaOnnxSmPsloJDg3MDnRAWrNoNcVjqxMIKTMqQn_hFKVaSh92cdXNSHEpdP9Orv0BF6SkCkHUmsVmyg73EpW41yojk5Uv9klEc6JMvoLwQee7yOossMPCbE2WBy7O2EJC3l18Qtg2yC3XQJBjhe0cVrHTEEHpFoFT3Ewz4eLrVXTzgCg2vLwBPZ--4Y-Orezi9qnL5oMb6SYiCg8bCQAl1lO5DWlLqADcE/p.png?is_prewarmed=true" // Use the direct image URL
+        alt="Kieran Emery"
+        className="rounded-full w-32 h-32 object-cover mb-4" // Add styling as needed
+      />
+      <p className="text-lg text-gray-600">
+        I'm Kieran, a dedicated Software Developer based in Cambridgeshire, UK. With nearly seven years of commercial experience at companies like Acticheck and iGO4 Insurance, I have honed my skills in software development. My educational background includes a Bachelor's degree in Computing from Coventry University and a BTEC Level 3 Extended Diploma in IT from Bedford College, which provides a solid foundation to complement my practical experience.
       </p>
-      <p className="text-gray-600 mb-4">
-        I am deeply passionate about leveraging technology to tackle complex real-world problems and drive innovation. I believe software development holds immense power to create positive change in the world. For instance, my Coventry University dissertation involved developing a tailor-made mobile application aimed at encouraging individual behavioural changes to combat climate change. By integrating user feedback into the design process, I ensured the app's effectiveness and relevance. This project epitomises my commitment to using technology to make a meaningful difference in the world.
-      </p>
-      <p className="text-gray-600 mb-4">
-        Welcome to my digital portfolio, a showcase of some of my most cherished projects from my career journey. Although confidentiality restricts me from revealing iGO4 project specifics or displaying their code, I'm excited to share the essence of my work and the skills I've developed. This website offers an initial look at my capabilities, but for a more in-depth understanding, please feel free to arrange a personal meeting where I can walk you through detailed demonstrations and discussions.
-      </p>
-      <p className="text-gray-600 mb-4">
-        Thank you for visiting, and I look forward to connecting and sharing my passion for development with you.
-      </p>
+    </div>
+  
+      <div className="mb-8">
+        <h2 className="text-2xl font-semibold">My Passion</h2>
+        <p className="text-lg text-gray-600 mb-4">
+          I am deeply passionate about leveraging technology to tackle complex real-world problems and drive innovation. I believe software development has the power to create positive change. For example, my dissertation involved developing a tailor-made mobile application aimed at encouraging individual behavioral changes to combat climate change. By integrating user feedback into the design process, I ensured the app's effectiveness and relevance. This project epitomizes my commitment to using technology to make a meaningful difference.
+        </p>
+      </div>
+  
+      <div className="mb-8">
+        <h2 className="text-2xl font-semibold">My Journey</h2>
+        <p className="text-lg text-gray-600 mb-4">
+          Welcome to my digital portfolio, showcasing some of my most cherished projects. Although confidentiality restricts me from revealing specifics of my iGO4 projects, I'm excited to share the essence of my work and the skills I've developed. This website offers an initial look at my capabilities; for a more in-depth understanding, I invite you to arrange a personal meeting where I can walk you through detailed demonstrations and discussions.
+        </p>
+      </div>
+  
+      <div className="mb-8">
+        <h2 className="text-2xl font-semibold">Let’s Connect!</h2>
+        <p className="text-lg text-gray-600 mb-4">
+          Thank you for visiting my portfolio! I look forward to connecting and sharing my passion for development. Feel free to reach out via <a href="mailto:kizwiz@hotmail.co.uk" className="text-blue-600 underline">email</a> or through my contact form.
+        </p>
+      </div>
     </div>
   );
 
@@ -40,6 +62,14 @@ const Portfolio = () => {
       period: "October 2024",
       tags: [".NET MAUI", "C#", "MVVM", "XAML", "SQLite", "British Sign Language"],
       status: "In Progress"
+    },
+    {
+        title: "My Portfolio Website",
+        description: "Built a personal portfolio website using React. The site showcases my projects, skills, and experience as a software developer. It features a responsive design, smooth animations, and a user-friendly navigation system. I hope you'll agree!",
+        category: "Personal Project",
+        period: "October 2024",
+        tags: ["React", "JavaScript", "CSS", "HTML", "Responsive Design"],
+        status: "In Progress"
     },
     {
       title: "Acticheck User Authentication System",
@@ -253,16 +283,23 @@ const Portfolio = () => {
             </div>
 
             {/* Social Links */}
+            {/* Social Links */}
             <div className="hidden md:flex space-x-4">
-              <a href="https://github.com/kizwiz6" className="text-gray-600 hover:text-gray-900" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/kizwiz6" className="text-gray-600 hover:text-gray-900" target="_blank" rel="noopener noreferrer">
                 <Github size={20} />
-              </a>
-              <a href="https://www.linkedin.com/in/kizwiz/" className="text-gray-600 hover:text-gray-900" target="_blank" rel="noopener noreferrer">
+            </a>
+            <a href="https://www.linkedin.com/in/kizwiz/" className="text-gray-600 hover:text-gray-900" target="_blank" rel="noopener noreferrer">
                 <Linkedin size={20} />
-              </a>
-              <a href="mailto:kizwiz@hotmail.co.uk" className="text-gray-600 hover:text-gray-900">
+            </a>
+            <a href="mailto:kizwiz@hotmail.co.uk" className="text-gray-600 hover:text-gray-900">
                 <Mail size={20} />
-              </a>
+            </a>
+            <a href="https://www.facebook.com/kizwiz6" className="text-gray-600 hover:text-gray-900" target="_blank" rel="noopener noreferrer">
+                <Facebook size={20} />
+            </a>
+            <a href="https://www.instagram.com/kizwiz6" className="text-gray-600 hover:text-gray-900" target="_blank" rel="noopener noreferrer">
+                <Instagram size={20} />
+            </a>
             </div>
 
             {/* Mobile Menu Button */}
