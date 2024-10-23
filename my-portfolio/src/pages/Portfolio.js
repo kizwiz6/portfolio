@@ -193,26 +193,28 @@ const Portfolio = () => {
   return (
     <div className="min-h-screen bg-gray-50">
 {/* Hero Section */}
+{/* Hero Section */}
 <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white">
-  <div className="max-w-6xl mx-auto px-4 py-16">
+  <div className="max-w-6xl mx-auto px-4 py-16 text-center">
     <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in">
       Kieran Emery
     </h1>
     <p className="text-xl md:text-2xl text-blue-100 mb-8">
       Software developer building innovative solutions with modern technologies
     </p>
-    <div className="flex space-x-4">
-        <a href="mailto:kizwiz@hotmail.co.uk" className="bg-white text-blue-800 px-6 py-2 rounded-full hover:bg-blue-50 transition duration-300">
+    {/* Centering the buttons */}
+    <div className="flex justify-center space-x-4">
+      <a href="mailto:kizwiz@hotmail.co.uk" className="bg-white text-blue-800 px-6 py-2 rounded-full hover:bg-blue-50 transition duration-300">
         Contact Me
-        </a>
+      </a>
       <a
         href="https://www.dropbox.com/scl/fi/q5qbl6jdan5kex1x1g4w8/KieranEmery_CV_2024.pdf?rlkey=gj1q8x6ul64kmlphtthszgd5b&st=6v4ghmlz&dl=0"
         className="border border-white text-white px-6 py-2 rounded-full hover:bg-white hover:text-blue-800 transition duration-300"
         target="_blank"
         rel="noopener noreferrer"
-        >
+      >
         View CV
-        </a>
+      </a>
     </div>
   </div>
 </div>
