@@ -201,9 +201,14 @@ const Portfolio = () => {
       <a href="#" className="bg-white text-blue-800 px-6 py-2 rounded-full hover:bg-blue-50 transition duration-300">
         Contact Me
       </a>
-      <a href="#" className="border border-white text-white px-6 py-2 rounded-full hover:bg-white hover:text-blue-800 transition duration-300">
+      <a
+        href="https://www.dropbox.com/scl/fi/q5qbl6jdan5kex1x1g4w8/KieranEmery_CV_2024.pdf?rlkey=gj1q8x6ul64kmlphtthszgd5b&st=6v4ghmlz&dl=0"
+        className="border border-white text-white px-6 py-2 rounded-full hover:bg-white hover:text-blue-800 transition duration-300"
+        target="_blank"
+        rel="noopener noreferrer"
+        >
         View CV
-      </a>
+        </a>
     </div>
   </div>
 </div>
