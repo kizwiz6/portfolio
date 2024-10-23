@@ -6,29 +6,29 @@ const Portfolio = () => {
   const [activeTab, setActiveTab] = useState('projects');
 
   const aboutMeContent = (
-    <div className="max-w-6xl mx-auto px-4 py-16">
+    <div className="max-w-6xl mx-auto px-4 ">
       <h1 className="text-4xl font-bold mb-6">About Me</h1>
-
 
     {/* Profile Picture */}
     <div className="mb-8 flex flex-col items-center">
-      <img 
-        src="https://previews.dropbox.com/p/thumb/ACZrt0rfSzoz1DEAIQ2gKMbFMSrsOpK-qVuizQH_b_uFK8HfAw2bKiTKUoTKuZpgA_ZWMNCLp4K93kCsP7Xsh1f3ssV4MVqPB5DOt_e_ZrEuk39hA-nNK7xaOnnxSmPsloJDg3MDnRAWrNoNcVjqxMIKTMqQn_hFKVaSh92cdXNSHEpdP9Orv0BF6SkCkHUmsVmyg73EpW41yojk5Uv9klEc6JMvoLwQee7yOossMPCbE2WBy7O2EJC3l18Qtg2yC3XQJBjhe0cVrHTEEHpFoFT3Ewz4eLrVXTzgCg2vLwBPZ--4Y-Orezi9qnL5oMb6SYiCg8bCQAl1lO5DWlLqADcE/p.png?is_prewarmed=true" // Use the direct image URL
-        alt="Kieran Emery"
-        className="rounded-full w-32 h-32 object-cover mb-4" // Add styling as needed
-      />
+    <img 
+      src="https://previews.dropbox.com/p/thumb/ACZrt0rfSzoz1DEAIQ2gKMbFMSrsOpK-qVuizQH_b_uFK8HfAw2bKiTKUoTKuZpgA_ZWMNCLp4K93kCsP7Xsh1f3ssV4MVqPB5DOt_e_ZrEuk39hA-nNK7xaOnnxSmPsloJDg3MDnRAWrNoNcVjqxMIKTMqQn_hFKVaSh92cdXNSHEpdP9Orv0BF6SkCkHUmsVmyg73EpW41yojk5Uv9klEc6JMvoLwQee7yOossMPCbE2WBy7O2EJC3l18Qtg2yC3XQJBjhe0cVrHTEEHpFoFT3Ewz4eLrVXTzgCg2vLwBPZ--4Y-Orezi9qnL5oMb6SYiCg8bCQAl1lO5DWlLqADcE/p.png?is_prewarmed=true" 
+      alt="Kieran Emery" 
+      className="w-100 h-100 object-cover mb-4" 
+    />
+
       <p className="text-lg text-gray-600">
         I'm Kieran, a dedicated Software Developer based in Cambridgeshire, UK. With nearly seven years of commercial experience at companies like Acticheck and iGO4 Insurance, I have honed my skills in software development. My educational background includes a Bachelor's degree in Computing from Coventry University and a BTEC Level 3 Extended Diploma in IT from Bedford College, which provides a solid foundation to complement my practical experience.
       </p>
     </div>
-  
+
       <div className="mb-8">
         <h2 className="text-2xl font-semibold">My Passion</h2>
         <p className="text-lg text-gray-600 mb-4">
-          I am deeply passionate about leveraging technology to tackle complex real-world problems and drive innovation. I believe software development has the power to create positive change. For example, my dissertation involved developing a tailor-made mobile application aimed at encouraging individual behavioral changes to combat climate change. By integrating user feedback into the design process, I ensured the app's effectiveness and relevance. This project epitomizes my commitment to using technology to make a meaningful difference.
+          I am deeply passionate about leveraging technology to tackle complex real-world problems and drive innovation. I believe software development has the power to create positive change. My journey includes developing a tailor-made mobile application for my dissertation that encourages individual behavioural changes to combat climate change. Additionally, I took the initiative to learn .NET MAUI in my spare time, which led to the creation of a British Sign Language app aimed at improving communication accessibility for the deaf and hard-of-hearing community. By integrating user feedback into the design process, I ensure that my projects remain effective and relevant. These initiatives epitomise my commitment to using technology to make a meaningful difference in people's lives.
         </p>
       </div>
-  
+
       <div className="mb-8">
         <h2 className="text-2xl font-semibold">My Journey</h2>
         <p className="text-lg text-gray-600 mb-4">
@@ -37,7 +37,7 @@ const Portfolio = () => {
       </div>
   
       <div className="mb-8">
-        <h2 className="text-2xl font-semibold">Let’s Connect!</h2>
+        <h2 className="text-2xl font-semibold">Let's Connect!</h2>
         <p className="text-lg text-gray-600 mb-4">
           Thank you for visiting my portfolio! I look forward to connecting and sharing my passion for development. Feel free to reach out via <a href="mailto:kizwiz@hotmail.co.uk" className="text-blue-600 underline">email</a> or through my contact form.
         </p>
@@ -73,7 +73,9 @@ const Portfolio = () => {
       category: "Personal Project",
       period: "October 2024",
       tags: [".NET MAUI", "C#", "MVVM", "XAML", "SQLite", "British Sign Language"],
-      status: "In Progress"
+      status: "In Progress",
+      thumbnail: "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png", // URL of the thumbnail image
+      video: "https://example.com/project-video.mp4" 
     },
     {
         title: "My Portfolio Website",
@@ -194,16 +196,17 @@ const Portfolio = () => {
     {
       title: "Android Mobile Application Designed to Encourage Positive Climate Change Behaviour",
       description: `I developed a high-fidelity ecological mobile application prototype with a tailored design, driven by insights from user interests gathered through surveys, primary research, and a thorough review of pertinent literature. The application's primary aim was to promote energy sustainability and encourage positive behavioural traits in individuals to combat climate change. The application served as a comprehensive platform for all climate change-related topics, offering an array of features, including an updated live RSS newsfeed, visual displays of the direct environmental impact, a checklist for monitoring recent activities, daily tips, interactive games, an achievement system, a social community page, and more. The development of this application took place in Android Studio, predominantly utilising Java and XML. Java was instrumental in creating an SQLite database to securely manage user login credentials and provide a unique and personalized user experience. The project was efficiently micro-managed, employing the Agile methodology, and stands as a testament to my diligence. While the project's strengths were evident, certain limitations were acknowledged. These included the exclusion of in-depth behavior monitoring through observational ethnographic methods and the collection of data through diary logs. As a result, the project primarily addressed the research question, "Can a mobile application encourage positive behavioural traits for combatting climate change?" from a theoretical perspective due to the application's custom-tailored nature. The project received a commendable grade of 65%, and there are aspirations to potentially transition the application to the Google Play Store in the future. If interested, I can provide a copy of the thesis or a live demonstration of the application upon request.`,
-      category: "University Project",
+      category: "Coventry University Project (Dissertation)",
       period: "December 2016 - April 2017",
       grade: "2:1",
+      thumbnail: "https://static.wixstatic.com/media/636887_e0a71869b0274c05b6f690886157a2a4~mv2.png/v1/fill/w_1051,h_591,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/636887_e0a71869b0274c05b6f690886157a2a4~mv2.png",
       tags: ["Java", "Android Studio", "Agile Methodology", "Mobile Application Development", "Git", "Gantt Chart"],
     },
     {
       title: "Agile Development: Agile Assassins",
       university: "Coventry University",
       period: "May 2017",
-      category: "Group Project",
+      category: "Coventry University Project (Group)",
       description: `As I approached the conclusion of my university journey, I participated in a comprehensive group project within the Agile Development module. This immersive experience brought together a cohort of final-year students, challenging us to conceive and create a product that adhered to professional standards. Our mission was to develop a product that seamlessly integrated a diverse array of functionalities, guided by the Agile methodology to foster flexibility and excellence.`,
       responsibilities: [
           {
@@ -225,15 +228,17 @@ const Portfolio = () => {
       ],
       grade: "2:1",
       tags: ["Agile", "XML", "Java", "SQLite", "Git"],
-      link: "https://www.youtube.com/watch?v=kDiFy_dCVXc"
+      link: "https://www.youtube.com/watch?v=kDiFy_dCVXc",
+      youtubeVideo: "https://www.youtube.com/watch?v=kDiFy_dCVXc"
     },
     {
       title: "Interactive Pervasive Computing: Climate Change Hi-Fi Mobile Application Prototype",
       university: "Coventry University",
       period: "December 2016",
-      category: "Group Project",
+      category: "Coventry University Project (Group)",
       description: `This module focused on the study and development of pervasive systems and sensing technology, enabling students to apply their skills to interactive pervasive devices and applications. It examined usability, ethical aspects, ad-hoc networking, reliability, security, and mobility within pervasive technologies. The module was assessed through an exam (50%) and coursework, which included a portfolio (40% of coursework mark) and a group project (60% of coursework mark). For my individual portfolio, I worked with Arduino hardware and completed tasks written in C#. For the group project, my partner and I developed Heart-R8M8, a system designed to monitor user health metrics such as BPM and blood pressure. We aimed to create an effective solution by setting up RGB LEDs to indicate safe levels, using a potentiometer for blood pressure simulation, and implementing a heart pulse sensor to check BPM readings.`,
-      responsibilities: [],
+      description: `This module focused on the study and development of pervasive systems and sensing technology, enabling students to apply their skills to interactive pervasive devices and applications. It examined usability, ethical aspects, ad-hoc networking, reliability, security, and mobility within pervasive technologies. The module was assessed through an exam (50%) and coursework, which included a portfolio (40% of coursework mark) and a group project (60% of coursework mark). For my individual portfolio, I worked with Arduino hardware and completed tasks written in C#. For the group project, my partner and I developed Heart-R8M8, a system designed to monitor user health metrics such as BPM and blood pressure. We aimed to create an effective solution by setting up RGB LEDs to indicate safe levels, using a potentiometer for blood pressure simulation, and implementing a heart pulse sensor to check BPM readings.`,
+      thumbnail: "https://static.wixstatic.com/media/636887_2ebb1128a10c463aa1956a068a12ae7d~mv2.png/v1/fill/w_750,h_455,al_c,lg_1,q_85,enc_auto/636887_2ebb1128a10c463aa1956a068a12ae7d~mv2.png",
       tags: ["Arduino", "C#", "Python", "Processing", "Sensors", "UX"],
       grade: "1st",
     },
@@ -242,23 +247,25 @@ const Portfolio = () => {
       period: "December 2016",
       description: "In my final year at university, I undertook an advanced module focused on JavaScript to develop full-stack cloud-based web applications. The primary assignment involved creating a robust API that integrated with third-party services. Instead of a traditional report, we showcased our work through an 8-minute screencast that highlighted our project's features and our expertise. To excel beyond basic requirements, we designed a user-friendly API that allowed item searches without registration, while also encouraging user sign-up with email validation. Registered users could curate a favorites list, enhancing their experience. Our API was architected to dynamically connect to external data sources. Utilising Node.js for server-side development and Jasmine for testing, I demonstrated the API's functionality via Postman, covering requests, responses, and data storage mechanisms. We also prioritised code quality through thorough testing and linting, ensuring a robust codebase.",
       grade: "2:1",
-      category: "University Project",
+      category: "Coventry University Project",
       tags: ["HTML", "CSS", "JavaScript", "Node.js"],
       link: "https://www.youtube.com/watch?v=CvgZEx_qdYM",
+      youtubeVideo: "https://www.youtube.com/watch?v=CvgZEx_qdYM",
     },
     {
       title: "Developing the Modern Web: Fitness King",
       description: `The web has evolved over the last two decades from a collection of pages containing simple static content to delivering a huge range of web applications with advanced interfaces and capabilities. These require developers with a complex range of skills and the ability to work to clearly defined web standards. This module helped lay the foundations of these skills and gave me the knowledge required to develop interactive, dynamic websites that perform useful functions. For the assignment, we were tasked with creating our own, unique dynamic website using Cloud 9 as the IDE. For my own website, I wanted to create a fitness guide to make use of the different JavaScript functionalities in order to incorporate multimedia interactivity, so that the website will not only be informative but also offer a unique experience for the user. Furthermore, I wanted to design the website for a pervasive interface. This meant creating a simple but controlled design that would have the suitable ergonomics for multiple displays. Other desired features included easy drop-down menu display, navigational buttons, interactive visual infographics, a database showcasing inspirational fitness ‘legends’, and finally feature an active comment form for the visitors to express their opinions on the website. The module then culminated with a reflective report.`,
-      category: "University Project",
+      category: "Coventry University Project",
       period: "May 2016",
       grade: "2:1",
       tags: ["HTML", "CSS", "JavaScript", "SQL", "Python", "Flask"],
       link: "https://www.youtube.com/watch?v=9dXH2bPHuy0&ab_channel=KieranE",
+      youtubeVideo: "https://www.youtube.com/watch?v=9dXH2bPHuy0"
     },
     {
       title: "Real World Project: T3 (Team 3 - Group Project)",
       period: "May 2016",
-      category: "Group Project",
+      category: "Coventry University Project (Group)",
       description: `
         During my second year at university, I engaged in a module that simulated real-world project collaboration with IBM. Our objective was to develop a conference room booking website that seamlessly integrated a wayfinder application and a virtual reality system to showcase room layouts. This project required us to deliver live presentations, compile a comprehensive group report, and contribute individually to our shared goals.
 
@@ -270,12 +277,13 @@ const Portfolio = () => {
       `,
       grade: "2:1",
       tags: ["Agile", "Team Collaboration", "Web Development"],
-      link: "https://www.youtube.com/watch?v=oOViQOndPhs"
+      link: "https://www.youtube.com/watch?v=oOViQOndPhs",
+      youtubeVideo: "https://www.youtube.com/watch?v=oOViQOndPhs"
     },
     {
       title: "IBM - Conference Booking Facilities",
       description: `In my second year at University, I participated in a group project for IBM to develop viable products for structuring conference booking facilities. Among the necessary requirements included the development of a wayfinding application so that customers can locate and navigate to their conference room; an interactive virtual planner that can design conference layouts, and a website that users could use to effectively book their conference. In total, there were nine students allocated to the group. I took on the responsibility of being the sole developer for one of the main deliverables (Wayfinder application) and also had the momentous task of managing the group as the project leader to monitor progress and ensure that the deliverables were handed in on time. Throughout the project, we had to demonstrate the work through the use of presentations. Ultimately, this project allowed me to flourish my skills in programming and demonstrated my capability in a leadership role.`,
-      category: "University Project",
+      category: "Coventry University Project (Group)",
       period: "March 2015 - May 2015",
       grade: "2:1",
       tags: ["Agile Methodology", "Git"],
@@ -284,20 +292,19 @@ const Portfolio = () => {
       title: "Certified Adobe Photoshop (ACA): Visual Communication",
       university: "Coventry University",
       period: "November 2015",
-      category: "Certification",
+      category: "Coventry University Project",
       description: `For my second-year Addvantage module, I chose to focus on Adobe Photoshop. Upon completing the exam, I was awarded an Adobe Certified Associate in Visual Communication Using Adobe Photoshop certificate for achieving a high grade (over a first) in the exam. To view verified proof of the award, please click here.`,
-      responsibilities: [],
       tags: ["Adobe Photoshop"],
       grade: "1st",
-      link: "https://www.youracclaim.com/badges/8c4b1b3b-2e3a-4b2d-9b8e-3b6b9b8e0c7b"
+      link: "https://www.youracclaim.com/badges/8c4b1b3b-2e3a-4b2d-9b8e-3b6b9b8e0c7b",
+      thumbnail: "https://static.wixstatic.com/media/636887_56dfb5491c3e4e93b5f3dddf753c15a9~mv2.png/v1/fill/w_500,h_388,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/636887_56dfb5491c3e4e93b5f3dddf753c15a9~mv2.png"
     },
     {
       title: "Developing Computer Games: Tic-Tac-Toe",
       university: "Bedford College",
       period: "April 2014",
-      category: "Individual Project",
+      category: "Bedford College Project",
       description: `In the 'Developing Computer Games' module, we explored the world of computer gaming, examining its psychological effects on individuals and society while creating our unique game powered by VB.NET. While the module offered classic games to recreate, I chose to venture off the beaten path by developing my own game, a tribute to the timeless classic Tic-Tac-Toe (Noughts and Crosses). This project involved comprehensive documentation, including a user manual and a meticulous test plan, highlighting how a game's structure and design facilitate maintenance and future extension.`,
-      responsibilities: [],
       tags: ["VB.NET", "Game Development"],
       grade: "Distinction",
     },
@@ -305,9 +312,8 @@ const Portfolio = () => {
       title: "Spreadsheet Design: Gym Membership",
       university: "Bedford College",
       period: "April 2014",
-      category: "Individual Project",
+      category: "Bedford College Project",
       description: `The Spreadsheet Design module provided valuable insights into Excel's capabilities, equipping me with the skills to create high-quality spreadsheets for industry use. The challenge was to design a comprehensive membership spreadsheet tailored for a gym club, which included three distinct membership categories to manage varying subscription plans. Additionally, the club organized optional trips funded by members and held weekly gatherings in a community hall, which incurred expenses like rent, insurance, and electricity. The project included a video demonstration showcasing the spreadsheet's functionality and extensive documentation comparing automation methods, analysing data, and explaining how organisations can interpret data effectively.`,
-      responsibilities: [],
       tags: ["Excel", "Spreadsheet Design"],
       grade: "Distinction",
     }
@@ -407,7 +413,7 @@ const Portfolio = () => {
       ]
     },
     {
-      institution: "The Bedford College Group",
+      institution: "Bedford College",
       period: "2012 - 2014",
       degree: "BTEC Level 3 Extended Diploma in Information Systems",
       grade: "DMM",
@@ -441,6 +447,32 @@ const Portfolio = () => {
         }
       ],
       projects: []
+    },
+    {
+      institution: "Longsands Academy",
+      period: "2010 - 2012",
+      degree: "A-Levels",
+      coursework: [
+        {
+          year: "A2",
+          subjects: [
+            "Media Studies",
+            "Film Studies",
+            "OCR Nationals in ICT"
+          ]
+        },
+        {
+          year: "AS",
+          subjects: [
+            "OCR Nationals in ICT",
+            "Media Studies",
+            "Film Studies",
+            "Geography",
+            "Financial Studies"
+          ]
+        }
+      ],
+      projects: []
     }
   ];
 
@@ -454,7 +486,7 @@ const Portfolio = () => {
       Kieran Emery
     </h1>
     <p className="text-xl md:text-2xl text-blue-100 mb-8">
-      Software developer building innovative solutions with modern technologies
+      British software developer building innovative solutions with modern technologies
     </p>
     {/* Centering the buttons */}
     <div className="flex justify-center space-x-4">
@@ -583,6 +615,42 @@ const Portfolio = () => {
                       {project.period}
                     </div>
                   )}
+
+                  {/* Thumbnail Image */}
+                  {project.thumbnail && (
+                    <img 
+                      src={project.thumbnail} 
+                      alt={`${project.title} thumbnail`} 
+                      className="mb-4 rounded" // Add any styling you want here
+                    />
+                  )}
+
+                  {/* Optional: Self-hosted Video Embed */}
+                  {project.video && (
+                    <video 
+                      controls 
+                      className="w-full mb-4" // Make it full width and add margin
+                    >
+                      <source src={project.video} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  )}
+
+                  {/* Optional: YouTube Video Embed */}
+                  {project.youtubeVideo && (
+                    <iframe 
+                      width="100%" 
+                      height="315" 
+                      src={project.youtubeVideo.replace("watch?v=", "embed/")} // Convert the link to embed format
+                      title={`${project.title} video`} 
+                      frameBorder="0" 
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                      allowFullScreen 
+                      className="mb-4"
+                    ></iframe>
+                  )}
+
+                  {/* Conditionally render description if it exists */}
                   <span className="inline-block bg-blue-100 text-blue-800 text-sm px-2 py-1 rounded mb-3">
                     {project.category}
                   </span>
