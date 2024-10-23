@@ -16,7 +16,7 @@ const Portfolio = () => {
     {
       title: "Acticheck User Authentication System",
       description: "Developed a .NET Core web application for secure user authentication and management, integrating various authentication methods, logging, and third-party services. Features include secure registration, login, password recovery, and Facebook authentication.",
-      category: "Work",
+      category: "Work at Acticheck",
       period: "June 2024 - October 2024",
       tags: [".NET Core", "SQL Server", "Identity", "Facebook Auth", "SendGrid"],
       link: "#"
@@ -24,7 +24,7 @@ const Portfolio = () => {
     {
       title: "RESTful APIs and Band Payload Processing",
       description: "Developed a .NET Web API for payload transmission between applications, including gRPC applications for efficient data handling and logging into SQL databases.",
-      category: "Work",
+      category: "Work at Acticheck",
       tags: [".NET", "gRPC", "SQL", "REST API"],
       link: "#"
     },
@@ -125,13 +125,13 @@ const Portfolio = () => {
 
             {/* Social Links */}
             <div className="hidden md:flex space-x-4">
-              <a href="#" className="text-gray-600 hover:text-gray-900">
+              <a href="https://github.com/kizwiz6" className="text-gray-600 hover:text-gray-900" target="_blank" rel="noopener noreferrer">
                 <Github size={20} />
               </a>
-              <a href="#" className="text-gray-600 hover:text-gray-900">
+              <a href="https://www.linkedin.com/in/kizwiz/" className="text-gray-600 hover:text-gray-900" target="_blank" rel="noopener noreferrer">
                 <Linkedin size={20} />
               </a>
-              <a href="#" className="text-gray-600 hover:text-gray-900">
+              <a href="mailto:kizwiz@hotmail.co.uk" className="text-gray-600 hover:text-gray-900">
                 <Mail size={20} />
               </a>
             </div>
