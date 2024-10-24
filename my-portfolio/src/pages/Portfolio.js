@@ -1,9 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Github, Linkedin, Facebook, Instagram, Mail, Menu, X, Calendar } from 'lucide-react';
 
-const Portfolio = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState('projects');
+const toggleTag = (tag) => {
+  setSelectedTags(prevSelectedTags => 
+    prevSelectedTags.includes(tag)
+      ? prevSelectedTags.filter(t => t !== tag)  // Remove tag
+      : [...prevSelectedTags, tag]                // Add tag
+  );
+};
+
+// Effect to update filteredProjects when selectedTags change
+useEffect(() => {
+  if (selectedTags.length === 0) {
+    // If no tags are selected, show all projects
+    setFilteredProjects(projects);
+  } else {
+    // Filter projects based on selected tags
+    setFilteredProjects(
+      projects.filter((project) =>
+        project.tags.some((tag) => selectedTags.includes(tag))
+      )
+    );
+  }
+}, [selectedTags, projects]);
+
 
   const aboutMeContent = (
     <div className="max-w-6xl mx-auto px-4 ">
@@ -319,59 +339,64 @@ const Portfolio = () => {
     }
   ];
 
-  const Projects = () => {
-    // State to track the selected tag
-    const [selectedTag, setSelectedTag] = useState(null);
+const Projects = () => {
+  // State to track the selected tag
+  const [selectedTags, setSelectedTags] = useState([]);
+  const [filteredProjects, setFilteredProjects] = useState([]);
+  const [activeTab, setActiveTab] = useState('projects');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-// Filter projects based on selected tag
-const filteredProjects = selectedTag
-  ? projects.filter(project => project.tags.includes(selectedTag))
-  : projects;
+  // Filter projects based on selected tag
+  const filteredProjects = selectedTags.length > 0 
+    ? projects.filter(project => 
+        project.tags.some(tag => selectedTags.includes(tag))
+      )
+    : projects;
 
-return (
-<div>
-  <h1 className="text-3xl font-bold mb-8">Projects</h1>
-
-  {/* Show selected filter */}
-  {selectedTag && (
-    <div className="mb-4">
-      <span className="text-gray-600">
-        Showing projects for: <strong>{selectedTag}</strong>
-      </span>
-      <button onClick={() => setSelectedTag(null)} className="ml-4 text-blue-500 hover:underline">
-        Clear Filter
-      </button>
-    </div>
-  )}
-
-{/* Project List */}
-<div className="space-y-6">
-  {filteredProjects.map((project, index) => (
-    <div key={index} className="bg-white rounded-lg shadow-md p-6">
-      <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-      <p className="text-gray-600 mb-4">{project.description}</p>
-
-      {/* Display Tags */}
-      <div className="flex flex-wrap gap-2 mb-4">
-        {project.tags.map((tag, tagIndex) => (
-          <span
-            key={tagIndex}
-            onClick={() => {
-              console.log(`Tag clicked: ${tag}`); // Check if the click is registered
-              setSelectedTag(tag);  // Filter when tag is clicked
-            }}
-            className="bg-gray-100 text-gray-800 text-sm px-2 py-1 rounded cursor-pointer hover:bg-gray-200"
+  return (
+    <div>
+      <h1 className="text-3xl font-bold mb-8">Projects</h1>
+      
+      {/* Display tags for filtering */}
+      <div className="flex flex-wrap gap-2 mb-6">
+        {Array.from(new Set(projects.flatMap(project => project.tags))).map((tag, index) => (
+          <span 
+            key={index}
+            onClick={() => toggleTag(tag)} // Handle tag click to filter projects
+            className={`cursor-pointer bg-gray-100 text-gray-800 text-sm px-2 py-1 rounded ${selectedTags.includes(tag) ? 'bg-blue-300 text-white' : 'hover:bg-gray-200'}`}
           >
             {tag}
           </span>
         ))}
       </div>
+
+      {/* Show selected filters */}
+      {selectedTags.length > 0 && (
+        <div className="mb-4">
+          <span className="text-gray-600">
+            Showing projects for: <strong>{selectedTags.join(', ')}</strong>
+          </span>
+          <button onClick={() => setSelectedTags([])} className="ml-4 text-blue-500 hover:underline">
+            Clear Filters
+          </button>
+        </div>
+      )}
+
+      {/* Displaying filtered projects */}
+      <div className="grid md:grid-cols-2 gap-6">
+  {filteredProjects.map((project, index) => (
+    <div key={index} className="bg-white rounded-lg shadow-md p-6">
+      <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+      <p className="text-gray-600 mb-4">{project.description}</p>
+            {/* ... other project details ... */}
+          </div>
+        ))}
+      </div>
     </div>
-  ))}
-</div>
-</div>
-);
+  );
 };
+
+export { Portfolio };
 
   const experiences = [
     {
@@ -530,8 +555,9 @@ return (
     }
   ];
 
-  return (
-    <div className="min-h-screen bg-gray-50">
+  const Portfolio = () => {
+    return (
+      <div className="min-h-screen bg-gray-50">
 {/* Hero Section */}
 {/* Hero Section */}
 <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white">
@@ -649,106 +675,132 @@ return (
         {activeTab === 'about' && aboutMeContent}
 
         {activeTab === 'projects' && (
-          <div>
-            <h1 className="text-3xl font-bold mb-8">Projects</h1>
-            {projectsIntroContent}
-            <div className="grid md:grid-cols-2 gap-6">
-              {projects.map((project, index) => (
-                <div key={index} className="bg-white rounded-lg shadow-md p-6">
-                  <div className="flex justify-between items-start">
-                    <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                    {project.status && (
-                      <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">
-                        {project.status}
-                      </span>
-                    )}
-                  </div>
-                  {project.period && (
-                    <div className="flex items-center text-gray-600 text-sm mb-2">
-                      <Calendar size={16} className="mr-2" />
-                      {project.period}
-                    </div>
-                  )}
+  <div>
+    <h1 className="text-3xl font-bold mb-8">Projects</h1>
+    {projectsIntroContent}
 
-                  {/* Thumbnail Image */}
-                  {project.thumbnail && (
-                    <img 
-                      src={project.thumbnail} 
-                      alt={`${project.title} thumbnail`} 
-                      className="mb-4 rounded" // Add any styling you want here
-                    />
-                  )}
+    {/* Tag Filtering Section */}
+    <div className="flex flex-wrap gap-2 mb-6">
+  {Array.from(new Set(projects.flatMap(project => project.tags))).map((tag, index) => (
+    <span 
+      key={index}
+      onClick={() => toggleTag(tag)}
+      className={`cursor-pointer bg-gray-100 text-gray-800 text-sm px-2 py-1 rounded ${selectedTags.includes(tag) ? 'bg-blue-300 text-white' : 'hover:bg-gray-200'}`}
+    >
+      {tag}
+    </span>
+  ))}
+</div>
 
-                  {/* Optional: Self-hosted Video Embed */}
-                  {project.video && (
-                    <video 
-                      controls 
-                      className="w-full mb-4" // Make it full width and add margin
-                    >
-                      <source src={project.video} type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
-                  )}
+<div className="grid md:grid-cols-2 gap-6">
+  {filteredProjects.map((project, index) => (
+    <div key={index} className="bg-white rounded-lg shadow-md p-6">
+      <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+      <p className="text-gray-600 mb-4">{project.description}</p>
+      {/* ... other project details ... */}
+    </div>
+  ))}
+</div>
 
-                  {/* Optional: YouTube Video Embed */}
-                  {project.youtubeVideo && (
-                    <iframe 
-                      width="100%" 
-                      height="315" 
-                      src={project.youtubeVideo.replace("watch?v=", "embed/")} // Convert the link to embed format
-                      title={`${project.title} video`} 
-                      frameBorder="0" 
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                      allowFullScreen 
-                      className="mb-4"
-                    ></iframe>
-                  )}
-
-                  {/* Conditionally render description if it exists */}
-                  <span className="inline-block bg-blue-100 text-blue-800 text-sm px-2 py-1 rounded mb-3">
-                    {project.category}
-                  </span>
-                  <p className="text-gray-600 mb-4">{project.description}</p>
-
-                  {/* Conditionally render responsibilities if they exist */}
-                  {project.responsibilities && (
-                    <>
-                      <h4 className="font-medium mt-4">Key Responsibilities:</h4>
-                      <ul className="list-disc list-inside space-y-2">
-                        {project.responsibilities?.map((task, taskIndex) => (
-                          <li key={taskIndex}>
-                            <strong>{task.title}:</strong> {task.description}
-                          </li>
-                        ))}
-                      </ul>
-                    </>
-                  )}
-
-                  {/* Conditionally render the grade if it exists */}
-                  {project.grade && (
-                    <span className="inline-block bg-green-100 text-green-800 text-sm px-2 py-1 rounded mb-3">
-                      Grade: {project.grade}
-                    </span>
-                  )}
-
-                  {/* Safely check if 'tags' exist before mapping and render them after responsibilities */}
-                  {project.tags && project.tags.length > 0 && (
-                    <>
-                      <h4 className="font-medium mt-4">Technologies & Tools:</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {project.tags.map((tag, tagIndex) => (
-                          <span key={tagIndex} className="bg-gray-100 text-gray-800 text-sm px-2 py-1 rounded">
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </>
-                  )}
-                </div>
-              ))}
-            </div>
+    {/* Displaying Projects */}
+    <div className="grid md:grid-cols-2 gap-6">
+      {filteredProjects.map((project, index) => (
+        <div key={index} className="bg-white rounded-lg shadow-md p-6">
+          <div className="flex justify-between items-start">
+            <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+            {project.status && (
+              <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">
+                {project.status}
+              </span>
+            )}
           </div>
-        )}
+          {project.period && (
+            <div className="flex items-center text-gray-600 text-sm mb-2">
+              <Calendar size={16} className="mr-2" />
+              {project.period}
+            </div>
+          )}
+
+          {/* Thumbnail Image */}
+          {project.thumbnail && (
+            <img 
+              src={project.thumbnail} 
+              alt={`${project.title} thumbnail`} 
+              className="mb-4 rounded" // Add any styling you want here
+            />
+          )}
+
+          {/* Optional: Self-hosted Video Embed */}
+          {project.video && (
+            <video 
+              controls 
+              className="w-full mb-4" // Make it full width and add margin
+            >
+              <source src={project.video} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          )}
+
+          {/* Optional: YouTube Video Embed */}
+          {project.youtubeVideo && (
+            <iframe 
+              width="100%" 
+              height="315" 
+              src={project.youtubeVideo.replace("watch?v=", "embed/")} // Convert the link to embed format
+              title={`${project.title} video`} 
+              frameBorder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowFullScreen 
+              className="mb-4"
+            ></iframe>
+          )}
+
+          {/* Conditionally render description if it exists */}
+          <span className="inline-block bg-blue-100 text-blue-800 text-sm px-2 py-1 rounded mb-3">
+            {project.category}
+          </span>
+          <p className="text-gray-600 mb-4">{project.description}</p>
+
+          {/* Conditionally render responsibilities if they exist */}
+          {project.responsibilities && (
+            <>
+              <h4 className="font-medium mt-4">Key Responsibilities:</h4>
+              <ul className="list-disc list-inside space-y-2">
+                {project.responsibilities?.map((task, taskIndex) => (
+                  <li key={taskIndex}>
+                    <strong>{task.title}:</strong> {task.description}
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
+
+          {/* Conditionally render the grade if it exists */}
+          {project.grade && (
+            <span className="inline-block bg-green-100 text-green-800 text-sm px-2 py-1 rounded mb-3">
+              Grade: {project.grade}
+            </span>
+          )}
+
+          {/* Safely check if 'tags' exist before mapping and render them after responsibilities */}
+          {project.tags && project.tags.length > 0 && (
+            <>
+              <h4 className="font-medium mt-4">Technologies & Tools:</h4>
+              <div className="flex flex-wrap gap-2">
+                {project.tags.map((tag, tagIndex) => (
+                  <span key={tagIndex} className="bg-gray-100 text-gray-800 text-sm px-2 py-1 rounded">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+)}
+
 
       {activeTab === 'experience' && (
         <div>
