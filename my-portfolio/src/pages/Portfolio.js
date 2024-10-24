@@ -82,7 +82,7 @@ const Portfolio = () => {
         description: "Built a personal portfolio website using React. The site showcases my projects, skills, and experience as a software developer. It features a responsive design, smooth animations, and a user-friendly navigation system. I hope you'll agree!",
         category: "Personal Project",
         period: "October 2024",
-        tags: ["React", "JavaScript", "CSS", "HTML", "Responsive Design"],
+        tags: ["React", "JavaScript", "Node.js", "CSS", "HTML", "Responsive Design"],
         status: "In Progress"
     },
     {
@@ -318,6 +318,60 @@ const Portfolio = () => {
       grade: "Distinction",
     }
   ];
+
+  const Projects = () => {
+    // State to track the selected tag
+    const [selectedTag, setSelectedTag] = useState(null);
+
+// Filter projects based on selected tag
+const filteredProjects = selectedTag
+  ? projects.filter(project => project.tags.includes(selectedTag))
+  : projects;
+
+return (
+<div>
+  <h1 className="text-3xl font-bold mb-8">Projects</h1>
+
+  {/* Show selected filter */}
+  {selectedTag && (
+    <div className="mb-4">
+      <span className="text-gray-600">
+        Showing projects for: <strong>{selectedTag}</strong>
+      </span>
+      <button onClick={() => setSelectedTag(null)} className="ml-4 text-blue-500 hover:underline">
+        Clear Filter
+      </button>
+    </div>
+  )}
+
+{/* Project List */}
+<div className="space-y-6">
+  {filteredProjects.map((project, index) => (
+    <div key={index} className="bg-white rounded-lg shadow-md p-6">
+      <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+      <p className="text-gray-600 mb-4">{project.description}</p>
+
+      {/* Display Tags */}
+      <div className="flex flex-wrap gap-2 mb-4">
+        {project.tags.map((tag, tagIndex) => (
+          <span
+            key={tagIndex}
+            onClick={() => {
+              console.log(`Tag clicked: ${tag}`); // Check if the click is registered
+              setSelectedTag(tag);  // Filter when tag is clicked
+            }}
+            className="bg-gray-100 text-gray-800 text-sm px-2 py-1 rounded cursor-pointer hover:bg-gray-200"
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+    </div>
+  ))}
+</div>
+</div>
+);
+};
 
   const experiences = [
     {
