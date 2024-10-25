@@ -151,6 +151,7 @@ const Portfolio = () => {
       category: "Work at Acticheck",
       period: "June 2024 - July 2024",
       tags: [".NET Core", "SQL Server", "Identity", "Facebook Auth", "SendGrid"],
+      thumbnail: "https://static.wixstatic.com/media/636887_467cd8ba15774cbaadea522ebac1dceb~mv2.png/v1/fill/w_1108,h_596,al_c,q_90,enc_auto/LOGIN-WELCOME-BACK-USER.png",
       link: "#"
     },
     {
@@ -159,6 +160,7 @@ const Portfolio = () => {
       category: "Work at Acticheck",
       period: "July 2024 - September 2024",
       tags: [".NET", "gRPC", "SQL", "REST API"],
+      thumbnail: "https://static.wixstatic.com/media/636887_c5c5c3336c724fe796e1b99e6cf59b3d~mv2.png/v1/fill/w_696,h_320,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/TestExplorer-UnitTests.png",
       link: "#"
     },
     {
@@ -181,7 +183,7 @@ const Portfolio = () => {
         },
         {
           title: "Communication & Collaboration",
-          description: `Utilized tools like Microsoft Teams, Slack, and Skype to coordinate with team members, schedule meetings, and share updates.`
+          description: `Utilised tools like Microsoft Teams, Slack, and Skype to coordinate with team members, schedule meetings, and share updates.`
         },
         {
           title: "Software Configuration & Development",
@@ -251,6 +253,7 @@ const Portfolio = () => {
       description: `The Kingfisher project at iGO4 was aimed at optimising the FDU document management system to enhance the efficiency of business report distribution across various departments and SMS production for clients. This project required extensive work with SQL, SSIS, and SSRS, which allowed me to gain a comprehensive understanding of data management and reporting processes. Through this hands-on experience, I significantly improved my skills in data migration, reporting, and integration, contributing to the successful completion of the project.`,
       category: "Work at iGO4",
       period: "August 2018 - June 2019",
+      thumbnail: "https://static.wixstatic.com/media/636887_e3120a8ea23e402aab934a46f8bee9b1~mv2.png/v1/fill/w_864,h_83,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/636887_e3120a8ea23e402aab934a46f8bee9b1~mv2.png",
       tags: ["Data Warehousing", "ETL", "SQL", "Big Data", "Microsoft SQL Server", "Pentaho", "SSIS", "SSRS", "Tableau", "Excel"],
     },
     {
@@ -259,7 +262,7 @@ const Portfolio = () => {
       category: "Coventry University Project (Dissertation)",
       period: "December 2016 - April 2017",
       grade: "2:1",
-      thumbnail: "https://static.wixstatic.com/media/636887_e0a71869b0274c05b6f690886157a2a4~mv2.png/v1/fill/w_1051,h_591,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/636887_e0a71869b0274c05b6f690886157a2a4~mv2.png",
+      youtubeVideo: "https://www.youtube.com/watch?v=uP2W6iHUZ7s&ab_channel=KieranE",
       tags: ["Java", "Android Studio", "Agile Methodology", "Mobile Application Development", "Git", "Gantt Chart"],
     },
     {
@@ -267,7 +270,19 @@ const Portfolio = () => {
       university: "Coventry University",
       period: "May 2017",
       category: "Coventry University Project (Group)",
-      description: `As I approached the conclusion of my university journey, I participated in a comprehensive group project within the Agile Development module. This immersive experience brought together a cohort of final-year students, challenging us to conceive and create a product that adhered to professional standards. Our mission was to develop a product that seamlessly integrated a diverse array of functionalities, guided by the Agile methodology to foster flexibility and excellence.`,
+      description: (
+        <span>
+          As I approached the conclusion of my university journey, I participated in a comprehensive group project within the Agile Development module. This immersive experience brought together a cohort of final-year students, challenging us to conceive and create a product that adhered to professional standards. Our mission was to develop a product that seamlessly integrated a diverse array of functionalities, guided by the Agile methodology to foster flexibility and excellence. To view the individual reflective report, please click&nbsp;
+          <a
+            href="https://docs.google.com/document/d/1RbDxK2VqDDDmC03jZ1c4tUqS0EkYGqRWXTj-CpuVGjc/edit?pli=1&tab=t.0"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 underline"
+          >
+            here
+          </a>.
+        </span>
+      ),
       responsibilities: [
           {
               title: "Front-End Developer",
@@ -325,27 +340,29 @@ const Portfolio = () => {
       title: "Real World Project: T3 (Team 3 - Group Project)",
       period: "May 2016",
       category: "Coventry University Project (Group)",
-      description: `
-        During my second year at university, I engaged in a module that simulated real-world project collaboration with IBM. Our objective was to develop a conference room booking website that seamlessly integrated a wayfinder application and a virtual reality system to showcase room layouts. This project required us to deliver live presentations, compile a comprehensive group report, and contribute individually to our shared goals.
-
-        As the project leader for Team 3 (T3), I took the lead on developing the wayfinder application while also assisting in the creation of the website. Additionally, I authored our group report, ensuring that our collective efforts were coherent and well-articulated.
-
-        I embraced the challenge of designing the wayfinder application using PopApp (now known as 'Marvel'), resulting in a high-fidelity paper prototype. Given that my application development skills were still evolving, this mock-up approach was particularly suitable for our needs. I worked closely with our design team to ensure that the visual elements complemented the application's functionality, thereby fostering effective communication and collaboration throughout the project.
-
-        The completed wayfinder application included accessible hyperlinks and a QR code, significantly enhancing the visitor experience by providing intuitive navigation of the conference room layout.
-      `,
+      description: (
+        <span>
+          During my second year at university, I engaged in a module that simulated real-world project collaboration with IBM. Our objective was to develop a conference room booking website that seamlessly integrated a wayfinder application and a virtual reality system to showcase room layouts. This project required us to deliver live presentations, compile a comprehensive group report, and contribute individually to our shared goals.
+    
+          As the project leader for Team 3 (T3), I took the lead on developing the wayfinder application while also assisting in the creation of the website. Additionally, I authored our group report, ensuring that our collective efforts were coherent and well-articulated.
+    
+          I embraced the challenge of designing the wayfinder application using PopApp (now known as 'Marvel'), resulting in a high-fidelity paper prototype. Given that my application development skills were still evolving, this mock-up approach was particularly suitable for our needs. I worked closely with our design team to ensure that the visual elements complemented the application's functionality, thereby fostering effective communication and collaboration throughout the project.
+    
+          The completed wayfinder application included accessible hyperlinks and a QR code, significantly enhancing the visitor experience by providing intuitive navigation of the conference room layout. You can read the report&nbsp;
+          <a
+            href="https://drive.google.com/file/d/0B1jRB1Zy3SZkakNvWk1aM2RNdVU/view?resourcekey=0-L8C4HaiJY4QWVhgkim6Ztw"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 underline"
+          >
+            here
+          </a>.
+        </span>
+      ),
       grade: "2:1",
       tags: ["Agile", "Team Collaboration", "Web Development"],
       link: "https://www.youtube.com/watch?v=oOViQOndPhs",
       youtubeVideo: "https://www.youtube.com/watch?v=oOViQOndPhs"
-    },
-    {
-      title: "IBM - Conference Booking Facilities",
-      description: `In my second year at University, I participated in a group project for IBM to develop viable products for structuring conference booking facilities. Among the necessary requirements included the development of a wayfinding application so that customers can locate and navigate to their conference room; an interactive virtual planner that can design conference layouts, and a website that users could use to effectively book their conference. In total, there were nine students allocated to the group. I took on the responsibility of being the sole developer for one of the main deliverables (Wayfinder application) and also had the momentous task of managing the group as the project leader to monitor progress and ensure that the deliverables were handed in on time. Throughout the project, we had to demonstrate the work through the use of presentations. Ultimately, this project allowed me to flourish my skills in programming and demonstrated my capability in a leadership role.`,
-      category: "Coventry University Project (Group)",
-      period: "March 2015 - May 2015",
-      grade: "2:1",
-      tags: ["Agile Methodology", "Git"],
     },
     {
       title: "Certified Adobe Photoshop (ACA): Visual Communication",
@@ -620,7 +637,7 @@ const Portfolio = () => {
         {isMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              {['projects', 'experience', 'education'].map((tab) => (
+              {['about', 'projects', 'experience', 'education'].map((tab) => (
                 <button 
                   key={tab}
                   onClick={() => {
