@@ -45,49 +45,6 @@ const Portfolio = () => {
     </div>
   );
 
-  const uniGalleryImages = [
-    "https://media.licdn.com/dms/image/v2/D4E2DAQEa32e-0PH3Nw/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1666372817964?e=1730462400&v=beta&t=WPXynECopM520cQWCGO5bnEg7nwyutigQQSI-P0hp5k",
-"https://media.licdn.com/dms/image/v2/C4D2DAQGA4zTdFypuhg/profile-treasury-image-shrink_1280_1280/profile-treasury-image-shrink_1280_1280/0/1597905705071?e=1730462400&v=beta&t=4FhV6X3qBt0f9KY6oF_t_uSpC6Rw_-slmYiuSad-M4s",
-    "https://media.licdn.com/dms/image/v2/D4E2DAQFX0RSUjw0Kww/profile-treasury-image-shrink_8192_8192/profile-treasury-image-shrink_8192_8192/0/1666372742159?e=1730462400&v=beta&t=xCnln51a8I9AbDzVQd3y9e-DdFKyIwxRH--G7ppmX5M",
-    "https://media.licdn.com/dms/image/v2/D4E2DAQGfLnK2krzJag/profile-treasury-image-shrink_1280_1280/profile-treasury-image-shrink_1280_1280/0/1666372784420?e=1730462400&v=beta&t=p5AYiIE-ERNZe14kUYDuvOMrO1Gvu5NpN5KRll6TsXk",
-    "https://media.licdn.com/dms/image/v2/C4E2DAQFJGnWJSZ-Hbw/profile-treasury-image-shrink_1920_1920/profile-treasury-image-shrink_1920_1920/0/1610469916776?e=1730462400&v=beta&t=-FcjCK2bYTCyJ4-GL2l4aEZBio1aqtjEu5M2xLi8v2g",
-    "https://media.licdn.com/dms/image/v2/C4E2DAQFxEfOzCVuYSw/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1610469784869?e=1730462400&v=beta&t=XuiFkxW3Co1fHmByu9dRY9J0_4PA7li8BXQCvUgmLz0",
-    "https://media.licdn.com/dms/image/v2/C4E2DAQF1emOqEQHRzA/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1610469754297?e=1730462400&v=beta&t=ju6y8lWQ6x-BMf8BhUNel63XHw3eIDZXZrpQN0eMd4A",
-    "https://media.licdn.com/dms/image/v2/C4E2DAQGBmZIuX3RmJQ/profile-treasury-image-shrink_1920_1920/profile-treasury-image-shrink_1920_1920/0/1602223042627?e=1730462400&v=beta&t=GfMlVikhCx1L-gSkB4PwaSQMtGQRzI_31ua2Yr-neOc",
-  ];
-
-  const EducationGallery = ({ images }) => {
-    const [lightbox, setLightbox] = useState(null);
-
-    return (
-      <div>
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-4">
-        {images.map((image, index) => (
-          <div key={index} className="cursor-pointer">
-            <img
-              src={image}
-              alt={`Education photo ${index + 1}`}
-              className="rounded-lg shadow-md w-full h-32 sm:h-40 md:h-48 object-cover" // Set fixed height
-              onClick={() => setLightbox(image)}
-            />
-          </div>
-        ))}
-      </div>
-  
-        {/* Lightbox Modal */}
-        {lightbox && (
-          <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-75 z-50">
-            <button onClick={() => setLightbox(null)} className="absolute top-4 right-4 text-white text-2xl font-bold">
-              &times;
-            </button>
-            <img src={lightbox} alt="Enlarged view" className="rounded-lg shadow-lg max-w-full max-h-full" />
-          </div>
-        )}
-      </div>
-    );
-  };
-
   // Define the projectsIntroContent
   const projectsIntroContent = (
     <div>
@@ -125,7 +82,7 @@ const Portfolio = () => {
         description: "Built a personal portfolio website using React. The site showcases my projects, skills, and experience as a software developer. It features a responsive design, smooth animations, and a user-friendly navigation system. I hope you'll agree!",
         category: "Personal Project",
         period: "October 2024",
-        tags: ["React", "JavaScript", "Node.js", "CSS", "HTML", "Responsive Design"],
+        tags: ["React", "JavaScript", "CSS", "HTML", "Responsive Design"],
         status: "In Progress"
     },
     {
@@ -280,7 +237,6 @@ const Portfolio = () => {
       period: "December 2016",
       category: "Coventry University Project (Group)",
       description: `This module focused on the study and development of pervasive systems and sensing technology, enabling students to apply their skills to interactive pervasive devices and applications. It examined usability, ethical aspects, ad-hoc networking, reliability, security, and mobility within pervasive technologies. The module was assessed through an exam (50%) and coursework, which included a portfolio (40% of coursework mark) and a group project (60% of coursework mark). For my individual portfolio, I worked with Arduino hardware and completed tasks written in C#. For the group project, my partner and I developed Heart-R8M8, a system designed to monitor user health metrics such as BPM and blood pressure. We aimed to create an effective solution by setting up RGB LEDs to indicate safe levels, using a potentiometer for blood pressure simulation, and implementing a heart pulse sensor to check BPM readings.`,
-      description: `This module focused on the study and development of pervasive systems and sensing technology, enabling students to apply their skills to interactive pervasive devices and applications. It examined usability, ethical aspects, ad-hoc networking, reliability, security, and mobility within pervasive technologies. The module was assessed through an exam (50%) and coursework, which included a portfolio (40% of coursework mark) and a group project (60% of coursework mark). For my individual portfolio, I worked with Arduino hardware and completed tasks written in C#. For the group project, my partner and I developed Heart-R8M8, a system designed to monitor user health metrics such as BPM and blood pressure. We aimed to create an effective solution by setting up RGB LEDs to indicate safe levels, using a potentiometer for blood pressure simulation, and implementing a heart pulse sensor to check BPM readings.`,
       thumbnail: "https://static.wixstatic.com/media/636887_2ebb1128a10c463aa1956a068a12ae7d~mv2.png/v1/fill/w_750,h_455,al_c,lg_1,q_85,enc_auto/636887_2ebb1128a10c463aa1956a068a12ae7d~mv2.png",
       tags: ["Arduino", "C#", "Python", "Processing", "Sensors", "UX"],
       grade: "1st",
@@ -362,67 +318,12 @@ const Portfolio = () => {
     }
   ];
 
-  const Projects = () => {
-    // State to track the selected tag
-    const [selectedTag, setSelectedTag] = useState(null);
-
-// Filter projects based on selected tag
-const filteredProjects = selectedTag
-  ? projects.filter(project => project.tags.includes(selectedTag))
-  : projects;
-
-return (
-<div>
-  <h1 className="text-3xl font-bold mb-8">Projects</h1>
-
-  {/* Show selected filter */}
-  {selectedTag && (
-    <div className="mb-4">
-      <span className="text-gray-600">
-        Showing projects for: <strong>{selectedTag}</strong>
-      </span>
-      <button onClick={() => setSelectedTag(null)} className="ml-4 text-blue-500 hover:underline">
-        Clear Filter
-      </button>
-    </div>
-  )}
-
-{/* Project List */}
-<div className="space-y-6">
-  {filteredProjects.map((project, index) => (
-    <div key={index} className="bg-white rounded-lg shadow-md p-6">
-      <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-      <p className="text-gray-600 mb-4">{project.description}</p>
-
-      {/* Display Tags */}
-      <div className="flex flex-wrap gap-2 mb-4">
-        {project.tags.map((tag, tagIndex) => (
-          <span
-            key={tagIndex}
-            onClick={() => {
-              console.log(`Tag clicked: ${tag}`); // Check if the click is registered
-              setSelectedTag(tag);  // Filter when tag is clicked
-            }}
-            className="bg-gray-100 text-gray-800 text-sm px-2 py-1 rounded cursor-pointer hover:bg-gray-200"
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
-    </div>
-  ))}
-</div>
-</div>
-);
-};
-
   const experiences = [
     {
         company: "Acticheck",
         link: "https://acticheck.com/",
         period: "June 2024 - October 2024",
         role: "Software Developer",
-        location: "Fowlmere, Cambridge",
         description: [
           "Developed a secure .NET Core web app for user authentication, integrating .NET Core Identity, encrypted SQL Server credentials, and third-party services like Facebook login and SendGrid email. Implemented configurable logging and secure data transfer via DTOs for streamlined user management and robust security.",
           "Developed a .NET Web API for seamless payload transmission, logging decoded messages for analysis and ensuring smooth data handling. Tested the API using Postman. Created gRPC client-server prototypes for efficient data transmission, logging data into an SQL table using Entity Framework Core.",
@@ -435,7 +336,6 @@ return (
       link: "https://www.igo4.com/",
       period: "Jan 2018 - Dec 2023",
       role: "Software Developer",
-      location: "Werrington, Peterborough",
       description:  ["Collaborated with diverse Agile teams on critical projects to develop a sophisticated pricing optimisation tool that incorporates machine learning models in pricing strategies (Earnix).",
       "Worked extensively on Real-Time Pricing (RTP) API, which enhances the Strata quoting process. Improved proficiency in Drools (a business rules management system) and Java within Eclipse IDE.",
       "Gained proficiency in API testing applications, specifically SoapUI and Postman for REST APIs.",
@@ -459,8 +359,14 @@ return (
       period: "2014 - 2017",
       degree: "Bachelor of Science (BSc), Computing",
       grade: "2:1",
-      activities: 
-        "Boxing, Indoor Football, Gym, Tennis, Lacrosse, JJ's Nightclub Rep",
+      activities: [
+        "Boxing",
+        "Indoor Football",
+        "Gym",
+        "Tennis",
+        "Lacrosse",
+        "Club Rep"
+      ],
       coursework: [
         {
           year: "3rd Year",
@@ -789,55 +695,46 @@ return (
           </div>
         )}
 
-{activeTab === 'experience' && (
-  <div>
-    <h1 className="text-3xl font-bold mb-8">Work Experience</h1>
-    <p className="text-gray-600 mb-4">
-      Below is a summary of the work I've completed at various companies, showcasing my contributions to significant projects, technologies utilised, and the skills I've developed throughout my career.
-    </p>
-    <div className="space-y-6">
-      {experiences.map((exp, index) => (
-        <div key={index} className="bg-white rounded-lg shadow-md p-6">
-          {/* Company and Location */}
-          <h3 className="text-xl font-semibold mb-1">
-            <a href={exp.link} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-              {exp.company}
-            </a>
-          </h3>
-          <p className="text-md text-gray-500">{exp.location}</p>
-
-          {/* Date centered with Flexbox */}
-          <div className="flex justify-center my-4">
-            <span className="text-gray-600 font-medium">{exp.period}</span>
-          </div>
-
-          {/* Description Left-Aligned */}
-          <ul className="list-disc list-inside text-gray-600 mb-4 space-y-2">
-            {exp.description.map((desc, descIndex) => (
-              <li key={descIndex} className="text-left">{desc}</li>
-            ))}
-          </ul>
-
-          {/* Technologies */}
-          <div className="flex flex-wrap gap-2">
-            {exp.technologies.map((tech, techIndex) => (
-              <span key={techIndex} className="bg-gray-100 text-gray-800 text-sm px-2 py-1 rounded">
-                {tech}
-              </span>
+      {activeTab === 'experience' && (
+        <div>
+          <h1 className="text-3xl font-bold mb-8">Work Experience</h1>
+          <p className="text-gray-600 mb-4">
+            Below is a summary of the work I've completed at various companies, showcasing my contributions to significant projects, technologies utilised, and the skills I've developed throughout my career.
+          </p>
+          <div className="space-y-6">
+            {experiences.map((exp, index) => (
+              <div key={index} className="bg-white rounded-lg shadow-md p-6">
+                <h3 className="text-xl font-semibold mb-2">
+                  <a href={exp.link} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                    {exp.company}
+                  </a>
+                </h3>
+                <div className="flex items-center text-gray-600 mb-2">
+                  <Calendar size={16} className="mr-2" />
+                  <span>{exp.period}</span>
+                </div>
+                <ul className="list-disc list-inside text-gray-600 mb-4">
+                  {exp.description.map((desc, descIndex) => (
+                    <li key={descIndex}>{desc}</li>
+                  ))}
+                </ul>
+                <div className="flex flex-wrap gap-2">
+                  {exp.technologies.map((tech, techIndex) => (
+                    <span key={techIndex} className="bg-gray-100 text-gray-800 text-sm px-2 py-1 rounded">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </div>
-      ))}
-    </div>
-  </div>
-)}
-
+      )}
 
 {activeTab === 'education' && (
         <div>
             <h1 className="text-3xl font-bold mb-8">Education</h1>
             <div className="space-y-6">
-            <EducationGallery images={uniGalleryImages} />
             {education.map((edu, index) => (
                 <div key={index} className="bg-white rounded-lg shadow-md p-6">
                 <h3 className="text-xl font-semibold mb-2">{edu.institution}</h3>
@@ -848,29 +745,22 @@ return (
                 <p className="font-medium mb-4">{edu.degree}</p>
                 {edu.grade && <p className="font-medium mb-4">Grade: {edu.grade}</p>}
                 
-                {/* Render Image if it exists */}
-                {edu.image && (
-                  <div className="flex justify-center my-4">
-                    <img 
-                      src={edu.image} 
-                      alt={`${edu.institution} Graduation`} 
-                      className="w-full max-w-xs rounded-lg shadow-md" 
-                    />
-                  </div>
-                )}
-
                 {/* Activities Section */}
-                {edu.activities && (
-                <>
-                <h4 className="font-medium mb-2">Activities:</h4>
-                <p className="text-gray-600">{edu.activities}</p>
-              </>
+                {edu.activities && edu.activities.length > 0 && (
+                    <>
+                    <h4 className="font-medium mb-2">Activities:</h4>
+                    <ul className="list-disc list-inside space-y-2">
+                        {edu.activities.map((activity, activityIndex) => (
+                        <li key={activityIndex} className="text-gray-600">{activity}</li>
+                        ))}
+                    </ul>
+                    </>
                 )}
 
                 {/* Coursework Section */}
                 {edu.coursework && edu.coursework.length > 0 && (
                     <>
-                    <h4 className="font-medium mb-2">Courses:</h4>
+                    <h4 className="font-medium mb-2">Coursework:</h4>
                     {edu.coursework.map((course, courseIndex) => (
                         <div key={courseIndex} className="mb-4">
                         <h5 className="font-medium">{course.year}</h5>
