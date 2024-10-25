@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { Github, Linkedin, Facebook, Instagram, Mail, Menu, X, Calendar } from 'lucide-react';
+import ModalImage from 'react-modal-image';
 
 const Portfolio = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('projects');
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentImage, setCurrentImage] = useState(0);
 
   const aboutMeContent = (
     <div className="max-w-6xl mx-auto px-4 ">
@@ -11,10 +15,10 @@ const Portfolio = () => {
 
     {/* Profile Picture */}
     <div className="mb-8 flex flex-col items-center">
-    <img 
-      src="https://previews.dropbox.com/p/thumb/ACZrt0rfSzoz1DEAIQ2gKMbFMSrsOpK-qVuizQH_b_uFK8HfAw2bKiTKUoTKuZpgA_ZWMNCLp4K93kCsP7Xsh1f3ssV4MVqPB5DOt_e_ZrEuk39hA-nNK7xaOnnxSmPsloJDg3MDnRAWrNoNcVjqxMIKTMqQn_hFKVaSh92cdXNSHEpdP9Orv0BF6SkCkHUmsVmyg73EpW41yojk5Uv9klEc6JMvoLwQee7yOossMPCbE2WBy7O2EJC3l18Qtg2yC3XQJBjhe0cVrHTEEHpFoFT3Ewz4eLrVXTzgCg2vLwBPZ--4Y-Orezi9qnL5oMb6SYiCg8bCQAl1lO5DWlLqADcE/p.png?is_prewarmed=true" 
-      alt="Kieran Emery" 
-      className="w-100 h-100 object-cover mb-4" 
+    <img
+      src="https://previews.dropbox.com/p/thumb/ACZrt0rfSzoz1DEAIQ2gKMbFMSrsOpK-qVuizQH_b_uFK8HfAw2bKiTKUoTKuZpgA_ZWMNCLp4K93kCsP7Xsh1f3ssV4MVqPB5DOt_e_ZrEuk39hA-nNK7xaOnnxSmPsloJDg3MDnRAWrNoNcVjqxMIKTMqQn_hFKVaSh92cdXNSHEpdP9Orv0BF6SkCkHUmsVmyg73EpW41yojk5Uv9klEc6JMvoLwQee7yOossMPCbE2WBy7O2EJC3l18Qtg2yC3XQJBjhe0cVrHTEEHpFoFT3Ewz4eLrVXTzgCg2vLwBPZ--4Y-Orezi9qnL5oMb6SYiCg8bCQAl1lO5DWlLqADcE/p.png?is_prewarmed=true"
+      alt="Kieran Emery"
+      className="w-100 h-100 object-cover mb-4"
     />
 
       <p className="text-lg text-gray-600">
@@ -44,6 +48,49 @@ const Portfolio = () => {
       </div>
     </div>
   );
+
+  const uniGalleryImages = [
+    "https://media.licdn.com/dms/image/v2/D4E2DAQEa32e-0PH3Nw/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1666372817964?e=1730462400&v=beta&t=WPXynECopM520cQWCGO5bnEg7nwyutigQQSI-P0hp5k",
+    "https://media.licdn.com/dms/image/v2/D4E2DAQFX0RSUjw0Kww/profile-treasury-image-shrink_8192_8192/profile-treasury-image-shrink_8192_8192/0/1666372742159?e=1730462400&v=beta&t=xCnln51a8I9AbDzVQd3y9e-DdFKyIwxRH--G7ppmX5M",
+    "https://media.licdn.com/dms/image/v2/D4E2DAQGfLnK2krzJag/profile-treasury-image-shrink_1280_1280/profile-treasury-image-shrink_1280_1280/0/1666372784420?e=1730462400&v=beta&t=p5AYiIE-ERNZe14kUYDuvOMrO1Gvu5NpN5KRll6TsXk",
+    "https://media.licdn.com/dms/image/v2/C4E2DAQFJGnWJSZ-Hbw/profile-treasury-image-shrink_1920_1920/profile-treasury-image-shrink_1920_1920/0/1610469916776?e=1730462400&v=beta&t=-FcjCK2bYTCyJ4-GL2l4aEZBio1aqtjEu5M2xLi8v2g",
+    "https://media.licdn.com/dms/image/v2/C4E2DAQFxEfOzCVuYSw/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1610469784869?e=1730462400&v=beta&t=XuiFkxW3Co1fHmByu9dRY9J0_4PA7li8BXQCvUgmLz0",
+    "https://media.licdn.com/dms/image/v2/C4E2DAQF1emOqEQHRzA/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1610469754297?e=1730462400&v=beta&t=ju6y8lWQ6x-BMf8BhUNel63XHw3eIDZXZrpQN0eMd4A",
+    "https://media.licdn.com/dms/image/v2/C4D2DAQGA4zTdFypuhg/profile-treasury-image-shrink_1280_1280/profile-treasury-image-shrink_1280_1280/0/1597905705071?e=1730462400&v=beta&t=4FhV6X3qBt0f9KY6oF_t_uSpC6Rw_-slmYiuSad-M4s",
+    "https://media.licdn.com/dms/image/v2/C4E2DAQGBmZIuX3RmJQ/profile-treasury-image-shrink_1920_1920/profile-treasury-image-shrink_1920_1920/0/1602223042627?e=1730462400&v=beta&t=GfMlVikhCx1L-gSkB4PwaSQMtGQRzI_31ua2Yr-neOc",
+  ];
+
+  const EducationGallery = ({ images }) => {
+    const [lightbox, setLightbox] = useState(null);
+
+    return (
+      <div>
+        {/* Gallery Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {images.map((image, index) => (
+            <div key={index} className="cursor-pointer">
+              <img
+                src={image}
+                alt={`Education photo ${index + 1}`}
+                className="rounded-lg shadow-md w-full h-full object-cover"
+                onClick={() => setLightbox(image)}
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Lightbox Modal */}
+        {lightbox && (
+          <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-75 z-50">
+            <button onClick={() => setLightbox(null)} className="absolute top-4 right-4 text-white text-2xl font-bold">
+              &times;
+            </button>
+            <img src={lightbox} alt="Enlarged view" className="rounded-lg shadow-lg max-w-full max-h-full" />
+          </div>
+        )}
+      </div>
+    );
+  };
 
   // Define the projectsIntroContent
   const projectsIntroContent = (
@@ -81,7 +128,7 @@ const Portfolio = () => {
         description: "Built a personal portfolio website using React. The site showcases my projects, skills, and experience as a software developer. It features a responsive design, smooth animations, and a user-friendly navigation system. I hope you'll agree!",
         category: "Personal Project",
         period: "October 2024",
-        tags: ["React", "JavaScript", "CSS", "HTML", "Responsive Design"],
+        tags: ["React", "JavaScript", "Node.js", "CSS", "HTML", "Responsive Design"],
         status: "In Progress"
     },
     {
@@ -323,6 +370,7 @@ const Portfolio = () => {
         link: "https://acticheck.com/",
         period: "June 2024 - October 2024",
         role: "Software Developer",
+        location: "Fowlmere, Cambridge",
         description: [
           "Developed a secure .NET Core web app for user authentication, integrating .NET Core Identity, encrypted SQL Server credentials, and third-party services like Facebook login and SendGrid email. Implemented configurable logging and secure data transfer via DTOs for streamlined user management and robust security.",
           "Developed a .NET Web API for seamless payload transmission, logging decoded messages for analysis and ensuring smooth data handling. Tested the API using Postman. Created gRPC client-server prototypes for efficient data transmission, logging data into an SQL table using Entity Framework Core.",
@@ -335,6 +383,7 @@ const Portfolio = () => {
       link: "https://www.igo4.com/",
       period: "Jan 2018 - Dec 2023",
       role: "Software Developer",
+      location: "Werrington, Peterborough",
       description:  ["Collaborated with diverse Agile teams on critical projects to develop a sophisticated pricing optimisation tool that incorporates machine learning models in pricing strategies (Earnix).",
       "Worked extensively on Real-Time Pricing (RTP) API, which enhances the Strata quoting process. Improved proficiency in Drools (a business rules management system) and Java within Eclipse IDE.",
       "Gained proficiency in API testing applications, specifically SoapUI and Postman for REST APIs.",
@@ -358,14 +407,7 @@ const Portfolio = () => {
       period: "2014 - 2017",
       degree: "Bachelor of Science (BSc), Computing",
       grade: "2:1",
-      activities: [
-        "Boxing",
-        "Indoor Football",
-        "Gym",
-        "Tennis",
-        "Lacrosse",
-        "Club Rep"
-      ],
+      activities: "Boxing, Indoor Football, Gym, Tennis, Lacrosse, JJ's Nightclub Rep",
       coursework: [
         {
           year: "3rd Year",
@@ -707,15 +749,20 @@ const Portfolio = () => {
                     {exp.company}
                   </a>
                 </h3>
+                {/* Displaying Location */}
+                <p className="text-md text-gray-500 mb-1">{exp.location}</p>
+
                 <div className="flex items-center text-gray-600 mb-2">
                   <Calendar size={16} className="mr-2" />
                   <span>{exp.period}</span>
                 </div>
+
                 <ul className="list-disc list-inside text-gray-600 mb-4">
                   {exp.description.map((desc, descIndex) => (
                     <li key={descIndex}>{desc}</li>
                   ))}
                 </ul>
+
                 <div className="flex flex-wrap gap-2">
                   {exp.technologies.map((tech, techIndex) => (
                     <span key={techIndex} className="bg-gray-100 text-gray-800 text-sm px-2 py-1 rounded">
@@ -730,64 +777,95 @@ const Portfolio = () => {
       )}
 
 {activeTab === 'education' && (
-        <div>
-            <h1 className="text-3xl font-bold mb-8">Education</h1>
-            <div className="space-y-6">
+    <div>
+        <h1 className="text-3xl font-bold mb-8">Education</h1>
+        <div className="space-y-6">
             {education.map((edu, index) => (
                 <div key={index} className="bg-white rounded-lg shadow-md p-6">
-                <h3 className="text-xl font-semibold mb-2">{edu.institution}</h3>
-                <div className="flex items-center text-gray-600 mb-2">
-                    <Calendar size={16} className="mr-2" />
-                    <span>{edu.period}</span>
-                </div>
-                <p className="font-medium mb-4">{edu.degree}</p>
-                {edu.grade && <p className="font-medium mb-4">Grade: {edu.grade}</p>}
+                    <h3 className="text-xl font-semibold mb-2">{edu.institution}</h3>
+                    <div className="flex items-center text-gray-600 mb-2">
+                        <Calendar size={16} className="mr-2" />
+                        <span>{edu.period}</span>
+                    </div>
+                    <p className="font-medium mb-4">{edu.degree}</p>
+                    {edu.grade && <p className="font-medium mb-4">Grade: {edu.grade}</p>}
 
-                {/* Activities Section */}
-                {edu.activities && edu.activities.length > 0 && (
-                    <>
-                    <h4 className="font-medium mb-2">Activities:</h4>
-                    <ul className="list-disc list-inside space-y-2">
-                        {edu.activities.map((activity, activityIndex) => (
-                        <li key={activityIndex} className="text-gray-600">{activity}</li>
-                        ))}
-                    </ul>
-                    </>
-                )}
+                    {/* Activities Section */}
+                    {edu.activities && Array.isArray(edu.activities) && edu.activities.length > 0 && (
+                        <>
+                            <h4 className="font-medium mb-2">Activities:</h4>
+                            <ul className="list-disc list-inside space-y-2">
+                                {edu.activities.map((activity, activityIndex) => (
+                                    <li key={activityIndex} className="text-gray-600">{activity}</li>
+                                ))}
+                            </ul>
+                        </>
+                    )}
 
-                {/* Coursework Section */}
-                {edu.coursework && edu.coursework.length > 0 && (
-                    <>
-                    <h4 className="font-medium mb-2">Coursework:</h4>
-                    {edu.coursework.map((course, courseIndex) => (
-                        <div key={courseIndex} className="mb-4">
-                        <h5 className="font-medium">{course.year}</h5>
-                        <ul className="list-disc list-inside space-y-2">
-                            {course.subjects?.map((subject, subjectIndex) => (
-                            <li key={subjectIndex} className="text-gray-600">{subject}</li>
+                    {/* Coursework Section */}
+                    {edu.coursework && edu.coursework.length > 0 && (
+                        <>
+                            <h4 className="font-medium mb-2">Coursework:</h4>
+                            {edu.coursework.map((course, courseIndex) => (
+                                <div key={courseIndex} className="mb-4">
+                                    <h5 className="font-medium">{course.year}</h5>
+                                    <ul className="list-disc list-inside space-y-2">
+                                        {course.subjects?.map((subject, subjectIndex) => (
+                                            <li key={subjectIndex} className="text-gray-600">{subject}</li>
+                                        ))}
+                                    </ul>
+                                </div>
                             ))}
-                        </ul>
-                        </div>
-                    ))}
-                    </>
-                )}
+                        </>
+                    )}
 
-                {/* Projects Section */}
-                {edu.projects && edu.projects.length > 0 && (
-                    <>
-                    <h4 className="font-medium mb-2">Key Projects:</h4>
-                    <ul className="list-disc list-inside space-y-2">
-                        {edu.projects.map((project, projectIndex) => (
-                        <li key={projectIndex} className="text-gray-600">{project}</li>
-                        ))}
-                    </ul>
-                    </>
-                )}
-                </div>
-            ))}
-            </div>
-        </div>
+                    {/* Projects Section */}
+                    {edu.projects && edu.projects.length > 0 && (
+                        <>
+                            <h4 className="font-medium mb-2">Key Projects:</h4>
+                            <ul className="list-disc list-inside space-y-2">
+                                {edu.projects.map((project, projectIndex) => (
+                                    <li key={projectIndex} className="text-gray-600">{project}</li>
+                                ))}
+                            </ul>
+                        </>
+                    )}
+
+                    {/* Image Gallery Section */}
+                    {uniGalleryImages && uniGalleryImages.length > 0 && (
+                      <>
+                      <h4 className="font-medium mb-2">Gallery:</h4>
+                      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                          {uniGalleryImages.map((image, imageIndex) => (
+                              <div key={imageIndex} className="relative group">
+                                  <<ModalImage
+                                    key={imageIndex}
+                                    small={image}
+                                    large={image}
+                                    alt={`Gallery image ${imageIndex + 1}`}
+                                    className="rounded shadow-md object-cover w-full h-48 transition-transform duration-200 transform group-hover:scale-105 cursor-pointer"
+                                  />
+                              </div>
+                          ))}
+                      </div>
+                      {isOpen && (
+                        <Lightbox
+                            mainSrc={uniGalleryImages[currentImage]}
+                            nextSrc={uniGalleryImages[(currentImage + 1) % uniGalleryImages.length]}
+                            prevSrc={uniGalleryImages[(currentImage + uniGalleryImages.length - 1) % uniGalleryImages.length]}
+                            onCloseRequest={() => setIsOpen(false)}
+                            onMovePrevRequest={() => setCurrentImage((currentImage + uniGalleryImages.length - 1) % uniGalleryImages.length)}
+                            onMoveNextRequest={() => setCurrentImage((currentImage + 1) % uniGalleryImages.length)}
+                        />
+                      )}
+                        </>
+                          )}
+                      </div>
+                  ))}
+              </div>
+          </div>
         )}
+
       </main>
 
     </div>
