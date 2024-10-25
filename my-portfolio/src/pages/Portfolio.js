@@ -250,10 +250,18 @@ const Portfolio = () => {
     },
     {
       title: "Kingfisher (Data Migration)",
-      description: `The Kingfisher project at iGO4 was aimed at optimising the FDU document management system to enhance the efficiency of business report distribution across various departments and SMS production for clients. This project required extensive work with SQL, SSIS, and SSRS, which allowed me to gain a comprehensive understanding of data management and reporting processes. Through this hands-on experience, I significantly improved my skills in data migration, reporting, and integration, contributing to the successful completion of the project.`,
+      description: `The Kingfisher project at iGO4 aimed to optimise the FDU document management system for more efficient business report distribution and SMS production. This involved extensive work with SQL, SSIS, and SSRS, enhancing my skills in data migration, reporting, and integration.
+
+      We utilised VSTS (now Azure DevOps) for source control, initially managing SQL report builds before transitioning to Stored Procedures for a phase 2 migration. All RDL file builds were tracked on this platform, improving version control and team collaboration.
+
+      I tackled challenges related to automated report subscriptions that couldn't filter by date ranges. Collaborating with fellow developers, we implemented a solution using a new '@DATERANGE' parameter, allowing users to select their desired date range from a dropdown menu.
+
+      Additionally, I enhanced Bordereau Insurer reports by adding subtotals, which improved the reporting suite and simplified validation for finance teams. I also addressed issues with merged and hidden cells in exported Excel reports, ensuring data could be copied and pasted seamlessly.
+
+      These improvements optimised the reporting process, reduced manual tasks, and saved our team valuable time, reinforcing my expertise in data migration and reporting while enhancing user experience for clients and stakeholders.`,
       category: "Work at iGO4",
       period: "August 2018 - June 2019",
-      thumbnail: "https://static.wixstatic.com/media/636887_e3120a8ea23e402aab934a46f8bee9b1~mv2.png/v1/fill/w_864,h_83,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/636887_e3120a8ea23e402aab934a46f8bee9b1~mv2.png",
+      thumbnail: "https://previews.dropbox.com/p/thumb/ACZ0bZDk3HMeZDjaSZfIn73wTqnsMB8Icec9Qgeffz5QeHK9Ap8GQv1SfhwXxlqoa9TS-LpvHQQDTLe2HR396FpOyW5hDlOwDOOkEHIiw0C8apskAiKH1V5XhQS8B6HKhTSetjoHnOVjWrn5-CnO8EQFld_Jhvsywq0mgxNaf3lzJoS9ckux4hzTOF1djAtW4oxlgK5VQik9-KMSMnGaOcMaB3YqVxLPK41w4P3lYudIeGFu7obDP_ZZMt3DLzwwCP58FFmJvjxtN0EmwTPIgSgVqRGaFJTrT1bE2h9k2RzUANySIW-RYB-YwYJ-AbTfLcghp3dqwHPIiDdE1OrMtScC/p.png",
       tags: ["Data Warehousing", "ETL", "SQL", "Big Data", "Microsoft SQL Server", "Pentaho", "SSIS", "SSRS", "Tableau", "Excel"],
     },
     {
@@ -831,13 +839,26 @@ const Portfolio = () => {
                   </span>
                 </div>
 
+            {/* Description for each education entry */}
+            <p className="text-gray-600 mb-4">
+              {edu.institution === 'Coventry University' && 
+                "At Coventry University, I honed my skills in software development and project management through hands-on projects and collaborative teamwork. I specialised in agile methodologies and developed a strong foundation in both front-end and back-end technologies."}
+
+              {edu.institution === 'Bedford College' && 
+                "During my time at Bedford College, I focused on developing my understanding of web technologies and design principles. The curriculum emphasised practical skills and provided opportunities to work on real-world projects, preparing me for my future studies."}
+
+              {edu.institution === 'Longsands Academy' &&
+                "At Longsands Academy, I completed my GCSEs with a focus on subjects that laid the groundwork for my interest in computing and technology. The supportive learning environment helped cultivate my passion for problem-solving and critical thinking."}
+            </p>
+
+
 
                   <p className="font-medium mb-4">{edu.degree}</p>
 
                   {/* Activities Section */}
                   {edu.activities && (
                     <>
-                      <h4 className="font-medium mb-2">Activities:</h4>
+                      <h4 className="font-medium mb-2">Extracurricular activities:</h4>
                       <p className="text-gray-600">
                         {edu.activities.split(',').map((activity, index) => (
                           <span key={index}>
