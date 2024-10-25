@@ -495,8 +495,7 @@ const Portfolio = () => {
             "Website Production"
           ]
         }
-      ],
-      projects: []
+      ]
     },
     {
       institution: "Longsands Academy",
@@ -521,8 +520,7 @@ const Portfolio = () => {
             "Financial Studies"
           ]
         }
-      ],
-      projects: []
+      ]
     }
   ];
 
@@ -544,7 +542,7 @@ const Portfolio = () => {
         Contact Me
       </a>
       <a
-        href="https://www.dropbox.com/scl/fi/l55xwq0ray6k8y5w6tff2/KieranEmery_CV_2024.pdf?rlkey=iy8obdtc3ike1aix30cr2eer5&st=peu8wtdz&dl=0"
+        href="https://www.dropbox.com/scl/fi/lhobteip40zlhp6r25fpe/KieranEmery_CV_2024.pdf?rlkey=t18j3jpmfsco2py96wn32nyp8&st=3nhxivnx&dl=0"
         className="border border-white text-white px-6 py-2 rounded-full hover:bg-white hover:text-blue-800 transition duration-300"
         target="_blank"
         rel="noopener noreferrer"
@@ -798,13 +796,26 @@ const Portfolio = () => {
             <div className="space-y-6">
               {education.map((edu, index) => (
                 <div key={index} className="bg-white rounded-lg shadow-md p-6">
-                  <h3 className="text-xl font-semibold mb-2">{edu.institution}</h3>
-                  <div className="flex items-center text-gray-600 mb-2">
+
+
+                {/* Date, Institution, and Grade on Same Line */}
+                <div className="flex items-center mb-2">
+                  <span className="text-gray-600 flex-shrink-0">
                     <Calendar size={16} className="mr-2" />
-                    <span>{edu.period}</span>
-                  </div>
+                    {edu.period}
+                  </span>
+
+                  {/* Wrap the institution in a div with flex-grow */}
+                  <h3 className="text-xl font-semibold flex-grow text-center">{edu.institution}</h3>
+
+                  {/* Adding "Grade: " before the grade */}
+                  <span className="font-medium text-gray-600 flex-shrink-0 ml-4">
+                    Grade: {edu.grade}
+                  </span>
+                </div>
+
+
                   <p className="font-medium mb-4">{edu.degree}</p>
-                  {edu.grade && <p className="font-medium mb-4">Grade: {edu.grade}</p>}
 
                   {/* Activities Section */}
                   {edu.activities && (
@@ -821,20 +832,32 @@ const Portfolio = () => {
                     </>
                   )}
 
-                  {/* Coursework Section */}
+                  {/* Coursework Table */}
                   {edu.coursework && edu.coursework.length > 0 && (
                     <>
-                      <h4 className="font-medium mb-2">Courses:</h4>
-                      {edu.coursework.map((course, courseIndex) => (
-                        <div key={courseIndex} className="mb-4">
-                          <h5 className="font-medium">{course.year}</h5>
-                          <ul className="list-disc list-inside space-y-2">
-                            {course.subjects?.map((subject, subjectIndex) => (
-                              <li key={subjectIndex} className="text-gray-600">{subject}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      ))}
+                      <h4 className="font-medium mb-4">Courses:</h4>
+                      <table className="w-full table-auto border-collapse text-left">
+                        <thead>
+                          <tr>
+                            <th className="border-b-2 py-2 text-gray-700">Year</th>
+                            <th className="border-b-2 py-2 text-gray-700">Subjects</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {edu.coursework.map((course, courseIndex) => (
+                            <tr key={courseIndex} className="border-b">
+                              <td className="py-2 font-medium text-gray-700">{course.year}</td>
+                              <td className="py-2">
+                                <ul className="list-disc list-inside">
+                                  {course.subjects.map((subject, subjectIndex) => (
+                                    <li key={subjectIndex} className="text-gray-600">{subject}</li>
+                                  ))}
+                                </ul>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
                     </>
                   )}
 
