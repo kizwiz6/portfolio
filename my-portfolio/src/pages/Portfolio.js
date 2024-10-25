@@ -55,31 +55,48 @@ const Portfolio = () => {
     "https://media.licdn.com/dms/image/v2/C4E2DAQF1emOqEQHRzA/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1610469754297?e=1730462400&v=beta&t=ju6y8lWQ6x-BMf8BhUNel63XHw3eIDZXZrpQN0eMd4A",
     "https://media.licdn.com/dms/image/v2/C4D2DAQGA4zTdFypuhg/profile-treasury-image-shrink_1280_1280/profile-treasury-image-shrink_1280_1280/0/1597905705071?e=1730462400&v=beta&t=4FhV6X3qBt0f9KY6oF_t_uSpC6Rw_-slmYiuSad-M4s",
     "https://media.licdn.com/dms/image/v2/C4E2DAQGBmZIuX3RmJQ/profile-treasury-image-shrink_1920_1920/profile-treasury-image-shrink_1920_1920/0/1602223042627?e=1730462400&v=beta&t=GfMlVikhCx1L-gSkB4PwaSQMtGQRzI_31ua2Yr-neOc",
+    "https://media.licdn.com/dms/image/v2/C4E2DAQGpUtEBzCFzRQ/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1597457175631?e=1730491200&v=beta&t=_Yj_WX5GLiA6e99vVqNIkYZVOfkaTLVFE-gK_3t8088"
   ];
 
-  const EducationGallery = ({ images }) => {
+  const igo4GalleryImages = [
+    "https://media.licdn.com/dms/image/v2/C4D2DAQGdxbGsMdrIaA/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1601349657830?e=1730491200&v=beta&t=94GCY5zYijd5XRypgz_LsKuDL8RgvMIyy4EGbKCnxBQ",
+    "https://media.licdn.com/dms/image/v2/C4D2DAQHqDtJs3ohx7Q/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1602152821588?e=1730491200&v=beta&t=IB8pnkVXwHSnK7pNv1iZAN9RC4DK9BwuPbfe41vhc0w",
+    "https://media.licdn.com/dms/image/v2/C4D2DAQHs5KV3GrgdRQ/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1601685874648?e=1730491200&v=beta&t=ASWM-6bwFM1GWOf--AXc7KRN-tvmOXxoFheUvskFt2U",
+    "https://media.licdn.com/dms/image/v2/C4D2DAQFQcV2pnLCSMQ/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1601361048512?e=1730491200&v=beta&t=CAi-TeCi5QO2vcXwGtLHT8ziYKKnTXyMQhVXqLJ-mjk",
+    "https://media.licdn.com/dms/image/v2/C4D2DAQGeAWCch8fpyQ/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1602180833032?e=1730491200&v=beta&t=1F8BvZh51co5VNhqIi5sPIF5JL9Vc9eItYRbxRWjRjk",
+    "https://media.licdn.com/dms/image/v2/C4D2DAQFu6VscLboS1w/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1596819195655?e=1730491200&v=beta&t=drBbL28YFttMZnP9Ix0TIc_RdGkSKXSRoVLBAI0GUbo",
+    "https://media.licdn.com/dms/image/v2/D4E2DAQHcY_uF8sGM9w/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1729883650498?e=1730491200&v=beta&t=mp9GpuyOzPWDVKrSF85lw0tw3KF3b47T-JeDba412To",
+    "https://media.licdn.com/dms/image/v2/D4E2DAQFJzcs-UbvU-A/profile-treasury-image-shrink_1920_1920/profile-treasury-image-shrink_1920_1920/0/1729883664668?e=1730491200&v=beta&t=BSnUzLEL8PnIin2f3vMUtj3EXs3zRAVGUOdhnUyU5fE"
+  ];
+
+  const ImageGallery = ({ images, title }) => {
     const [lightbox, setLightbox] = useState(null);
 
     return (
       <div>
+        {/* Gallery Title */}
+        <h4 className="font-medium mb-2">{title} Gallery:</h4>
         {/* Gallery Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {images.map((image, index) => (
             <div key={index} className="cursor-pointer">
               <img
                 src={image}
-                alt={`Education photo ${index + 1}`}
+                alt={`${title} photo ${index + 1}`}
                 className="rounded-lg shadow-md w-full h-full object-cover"
                 onClick={() => setLightbox(image)}
               />
             </div>
           ))}
         </div>
-
+  
         {/* Lightbox Modal */}
         {lightbox && (
           <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-75 z-50">
-            <button onClick={() => setLightbox(null)} className="absolute top-4 right-4 text-white text-2xl font-bold">
+            <button
+              onClick={() => setLightbox(null)}
+              className="absolute top-4 right-4 text-white text-2xl font-bold"
+            >
               &times;
             </button>
             <img src={lightbox} alt="Enlarged view" className="rounded-lg shadow-lg max-w-full max-h-full" />
@@ -394,7 +411,8 @@ const Portfolio = () => {
       "Led requirements gathering, analysis, and direct stakeholder communication, facilitating the construction of robust objects and reports for the Kingfisher data migration project.",
       "Deepened proficiency in SQL Server, enabling advanced data querying across multiple datasets and the creation of complex stored procedures."
       ],
-      technologies: ["Java", "C#", "Python", "AWS", "SQL", "REST API"]
+      technologies: ["Java", "C#", "Python", "AWS", "SQL", "REST API"],
+      images: igo4GalleryImages,
     }
   ];
 
@@ -442,11 +460,6 @@ const Portfolio = () => {
             "Professional Skills"
           ]
         }
-      ],
-      projects: [
-        "Climate Change Mobile Application (Dissertation)",
-        "Agile Development Team Project",
-        "Interactive Pervasive Computing Project"
       ]
     },
     {
@@ -767,90 +780,74 @@ const Portfolio = () => {
                     </span>
                   ))}
                 </div>
+                {/* Image Gallery Section */}
+                {exp.images && exp.images.length > 0 && (
+                  <>
+                    <ImageGallery images={exp.images} />
+                  </>
+                )}
               </div>
             ))}
           </div>
         </div>
       )}
 
-{activeTab === 'education' && (
-    <div>
-        <h1 className="text-3xl font-bold mb-8">Education</h1>
-        <div className="space-y-6">
-            {education.map((edu, index) => (
+        {activeTab === 'education' && (
+          <div>
+            <h1 className="text-3xl font-bold mb-8">Education</h1>
+            <div className="space-y-6">
+              {education.map((edu, index) => (
                 <div key={index} className="bg-white rounded-lg shadow-md p-6">
-                    <h3 className="text-xl font-semibold mb-2">{edu.institution}</h3>
-                    <div className="flex items-center text-gray-600 mb-2">
-                        <Calendar size={16} className="mr-2" />
-                        <span>{edu.period}</span>
-                    </div>
-                    <p className="font-medium mb-4">{edu.degree}</p>
-                    {edu.grade && <p className="font-medium mb-4">Grade: {edu.grade}</p>}
+                  <h3 className="text-xl font-semibold mb-2">{edu.institution}</h3>
+                  <div className="flex items-center text-gray-600 mb-2">
+                    <Calendar size={16} className="mr-2" />
+                    <span>{edu.period}</span>
+                  </div>
+                  <p className="font-medium mb-4">{edu.degree}</p>
+                  {edu.grade && <p className="font-medium mb-4">Grade: {edu.grade}</p>}
 
-                    {/* Activities Section */}
-                    {edu.activities && Array.isArray(edu.activities) && edu.activities.length > 0 && (
-                        <>
-                            <h4 className="font-medium mb-2">Activities:</h4>
-                            <ul className="list-disc list-inside space-y-2">
-                                {edu.activities.map((activity, activityIndex) => (
-                                    <li key={activityIndex} className="text-gray-600">{activity}</li>
-                                ))}
-                            </ul>
-                        </>
-                    )}
+                  {/* Activities Section */}
+                  {edu.activities && (
+                    <>
+                      <h4 className="font-medium mb-2">Activities:</h4>
+                      <p className="text-gray-600">
+                        {edu.activities.split(',').map((activity, index) => (
+                          <span key={index}>
+                            {activity.trim()}
+                            {index < edu.activities.split(',').length - 1 && ', '}
+                          </span>
+                        ))}
+                      </p>
+                    </>
+                  )}
 
-                    {/* Coursework Section */}
-                    {edu.coursework && edu.coursework.length > 0 && (
-                        <>
-                            <h4 className="font-medium mb-2">Coursework:</h4>
-                            {edu.coursework.map((course, courseIndex) => (
-                                <div key={courseIndex} className="mb-4">
-                                    <h5 className="font-medium">{course.year}</h5>
-                                    <ul className="list-disc list-inside space-y-2">
-                                        {course.subjects?.map((subject, subjectIndex) => (
-                                            <li key={subjectIndex} className="text-gray-600">{subject}</li>
-                                        ))}
-                                    </ul>
-                                </div>
+                  {/* Coursework Section */}
+                  {edu.coursework && edu.coursework.length > 0 && (
+                    <>
+                      <h4 className="font-medium mb-2">Courses:</h4>
+                      {edu.coursework.map((course, courseIndex) => (
+                        <div key={courseIndex} className="mb-4">
+                          <h5 className="font-medium">{course.year}</h5>
+                          <ul className="list-disc list-inside space-y-2">
+                            {course.subjects?.map((subject, subjectIndex) => (
+                              <li key={subjectIndex} className="text-gray-600">{subject}</li>
                             ))}
-                        </>
-                    )}
-
-                    {/* Projects Section */}
-                    {edu.projects && edu.projects.length > 0 && (
-                        <>
-                            <h4 className="font-medium mb-2">Key Projects:</h4>
-                            <ul className="list-disc list-inside space-y-2">
-                                {edu.projects.map((project, projectIndex) => (
-                                    <li key={projectIndex} className="text-gray-600">{project}</li>
-                                ))}
-                            </ul>
-                        </>
-                    )}
-
-                    {/* Image Gallery Section */}
-                    {uniGalleryImages && uniGalleryImages.length > 0 && (
-                            <>
-                              <h4 className="font-medium mb-2">Gallery:</h4>
-                              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                                {uniGalleryImages.map((image, imageIndex) => (
-                                  <div key={imageIndex} className="relative group">
-                                    <ModalImage
-                                      small={image} // Thumbnail image
-                                      large={image} // Full-size image for the modal
-                                      alt={`Gallery image ${imageIndex + 1}`}
-                                      className="rounded shadow-md object-cover w-full h-48 transition-transform duration-200 transform group-hover:scale-105 cursor-pointer"
-                                    />
-                                  </div>
-                                ))}
-                              </div>
-                            </>
-                          )}
+                          </ul>
                         </div>
-                  ))}
-              </div>
+                      ))}
+                    </>
+                  )}
+
+                  {/* Image Gallery Section for Coventry University only */}
+                  {edu.institution === "Coventry University" && uniGalleryImages && uniGalleryImages.length > 0 && (
+                    <ImageGallery images={uniGalleryImages} title="Coventry University" />
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
         )}
+
 
       </main>
 
