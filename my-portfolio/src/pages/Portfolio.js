@@ -35,7 +35,7 @@ const Portfolio = () => {
           Welcome to my digital portfolio, showcasing some of my most cherished projects. Although confidentiality restricts me from revealing specifics of my iGO4 projects, I'm excited to share the essence of my work and the skills I've developed. This website offers an initial look at my capabilities; for a more in-depth understanding, I invite you to arrange a personal meeting where I can walk you through detailed demonstrations and discussions.
         </p>
       </div>
-  
+
       <div className="mb-8">
         <h2 className="text-2xl font-semibold">Let's Connect!</h2>
         <p className="text-lg text-gray-600 mb-4">
@@ -74,8 +74,7 @@ const Portfolio = () => {
       period: "October 2024",
       tags: [".NET MAUI", "C#", "MVVM", "XAML", "SQLite", "British Sign Language"],
       status: "In Progress",
-      thumbnail: "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png", // URL of the thumbnail image
-      video: "https://example.com/project-video.mp4" 
+      videoSource: "SipNSignVideo.mp4",
     },
     {
         title: "My Portfolio Website",
@@ -134,9 +133,9 @@ const Portfolio = () => {
       title: "Real-Time Pricing (RTP)",
       description: `
         RTP, the Real-Time Pricing feature, stands as a pivotal enhancement to the Strata quoting process, opening up a realm of possibilities for insurance brokers. This dynamic tool empowers us to finely calibrate and customise quotes in real-time, enhancing our ability to tailor insurance offerings to the unique needs of our clients.
-  
+
         RTP operates as an API, integrated into Strata, our trusted platform for insurance quoting. It processes discounts, loadings, declines, and policy modifications, making real-time adjustments to quotes. It also features fraud detection and NCB validation, ensuring accuracy and efficiency in the quoting process.
-  
+
         Among its notable features, RTP can host Excel tables for reference, allowing fraud case tracking and policy rules to be managed seamlessly. Its flexibility enables quick adjustments that improve selling performance, turning RTP into a valuable commercial tool.`,
       category: "Work at iGO4",
       period: "Sep 2022 - Dec 2023",
@@ -624,15 +623,14 @@ const Portfolio = () => {
                     />
                   )}
 
-                  {/* Optional: Self-hosted Video Embed */}
-                  {project.video && (
-                    <video 
-                      controls 
-                      className="w-full mb-4" // Make it full width and add margin
-                    >
-                      <source src={project.video} type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
+                  {/* Video Section */}
+                  {project.videoSource && ( // Check for videoSource here
+                    <div className="video-container mb-4">
+                      <video controls className="w-full">
+                        <source src={`${process.env.PUBLIC_URL}/${project.videoSource}`} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
                   )}
 
                   {/* Optional: YouTube Video Embed */}
@@ -640,7 +638,7 @@ const Portfolio = () => {
                     <iframe 
                       width="100%" 
                       height="315" 
-                      src={project.youtubeVideo.replace("watch?v=", "embed/")} // Convert the link to embed format
+                      src={project.youtubeVideo.replace("watch?v=", "embed/")} 
                       title={`${project.title} video`} 
                       frameBorder="0" 
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -744,7 +742,7 @@ const Portfolio = () => {
                 </div>
                 <p className="font-medium mb-4">{edu.degree}</p>
                 {edu.grade && <p className="font-medium mb-4">Grade: {edu.grade}</p>}
-                
+
                 {/* Activities Section */}
                 {edu.activities && edu.activities.length > 0 && (
                     <>
