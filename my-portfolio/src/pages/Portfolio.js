@@ -6,9 +6,6 @@ const Portfolio = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('projects');
 
-  const [isOpen, setIsOpen] = useState(false);
-  const [currentImage, setCurrentImage] = useState(0);
-
   const aboutMeContent = (
     <div className="max-w-6xl mx-auto px-4 ">
       <h1 className="text-4xl font-bold mb-6">About Me</h1>
@@ -833,34 +830,23 @@ const Portfolio = () => {
 
                     {/* Image Gallery Section */}
                     {uniGalleryImages && uniGalleryImages.length > 0 && (
-                      <>
-                      <h4 className="font-medium mb-2">Gallery:</h4>
-                      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                          {uniGalleryImages.map((image, imageIndex) => (
-                              <div key={imageIndex} className="relative group">
-                                  <<ModalImage
-                                    key={imageIndex}
-                                    small={image}
-                                    large={image}
-                                    alt={`Gallery image ${imageIndex + 1}`}
-                                    className="rounded shadow-md object-cover w-full h-48 transition-transform duration-200 transform group-hover:scale-105 cursor-pointer"
-                                  />
+                            <>
+                              <h4 className="font-medium mb-2">Gallery:</h4>
+                              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                                {uniGalleryImages.map((image, imageIndex) => (
+                                  <div key={imageIndex} className="relative group">
+                                    <ModalImage
+                                      small={image} // Thumbnail image
+                                      large={image} // Full-size image for the modal
+                                      alt={`Gallery image ${imageIndex + 1}`}
+                                      className="rounded shadow-md object-cover w-full h-48 transition-transform duration-200 transform group-hover:scale-105 cursor-pointer"
+                                    />
+                                  </div>
+                                ))}
                               </div>
-                          ))}
-                      </div>
-                      {isOpen && (
-                        <Lightbox
-                            mainSrc={uniGalleryImages[currentImage]}
-                            nextSrc={uniGalleryImages[(currentImage + 1) % uniGalleryImages.length]}
-                            prevSrc={uniGalleryImages[(currentImage + uniGalleryImages.length - 1) % uniGalleryImages.length]}
-                            onCloseRequest={() => setIsOpen(false)}
-                            onMovePrevRequest={() => setCurrentImage((currentImage + uniGalleryImages.length - 1) % uniGalleryImages.length)}
-                            onMoveNextRequest={() => setCurrentImage((currentImage + 1) % uniGalleryImages.length)}
-                        />
-                      )}
-                        </>
+                            </>
                           )}
-                      </div>
+                        </div>
                   ))}
               </div>
           </div>
