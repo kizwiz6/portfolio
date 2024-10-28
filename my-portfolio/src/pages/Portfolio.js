@@ -9,7 +9,7 @@ const Portfolio = () => {
 
   const aboutMeContent = (
     <div className="max-w-6xl mx-auto px-4 ">
-      <h1 className="text-4xl font-bold mb-6">About Me</h1>
+      <h2 className="text-4xl font-bold mb-6">About Me</h2>
 
       {/* Profile Picture */}
       <div className="mb-8 flex flex-col items-center">
@@ -46,6 +46,11 @@ const Portfolio = () => {
       </div>
     </div>
   );
+
+  const longsandsGalleryImages = [
+    "https://previews.dropbox.com/p/thumb/ACePQNChMcgu2pZGQ7AVetni_ArBEBtYxXoUc7Uqj4BpviyyllnmSkQyEgMdrgkSzMhWCpSQ1B4MEGwHvml2Y0Ijf0Ord3fFMaDR58sZnIXJ0r_NIj1faf7zUZI6YZwrJsc58OwypQLn8jEzjDM2KaJ0rnQ2R65NhIIGs7rTxlfqx6GXShCopTq_PVn43HU74tjFKYktnGTH3Z5c8YXyGKAHToamW_TWywOQ-t__9K8Khh5KetROJRVgcRqnGSjRNs5q7o21V7eyc0H9XDvolR_NwRYm-cGrwXIaoA0XJtW5O6hk-Uev42L9eDsKQ7q0sAh85sR4r_ThqTshXr_ckesJ/p.jpeg",
+    "https://previews.dropbox.com/p/thumb/ACeLYKeaJ5tyL706_AcULj1RwcDYtd2l5nPloNoh94Xoly8nrNnVm9bqVs7Nkxt-6yaZziOOJSgxVp4ZzX-2PbgQOCokqHXRHj9FgzL3938BApJwTnOID0FGhy5GXsjx3sYQS69a2BAwl2CiRuw-J4-QzMpr1fZDdDQ72d9II6lHJDdeSqEu2HbwqrYoSu9Fe82AsrFFvCM1vL5UCfKNtwUD7FktURxRvckitbXo8VQIXcgBWQiQShFfUNk-bfFtHFupSltsMVyVw-ZBP-XiNmkb_EJd0P09Ed88RiaiKe3uMaN1S--zxxhYPfWrp-sRxCIMwV6XvQ7bplDRSW05yMGX/p.jpeg"
+  ];
 
   const uniGalleryImages = [
     "https://media.licdn.com/dms/image/v2/D4E2DAQEa32e-0PH3Nw/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1666372817964?e=1730462400&v=beta&t=WPXynECopM520cQWCGO5bnEg7nwyutigQQSI-P0hp5k",
@@ -154,10 +159,16 @@ const Portfolio = () => {
     },
     {
       title: "My Portfolio Website",
-      description: "Built a personal portfolio website using React. The site showcases my projects, skills, and experience as a software developer. It features a responsive design, smooth animations, and a user-friendly navigation system. I hope you'll agree!",
+      description: (
+        <>
+          This portfolio website serves as a comprehensive showcase of my journey and accomplishments as a software developer. Built using React, the site highlights my diverse projects, technical skills, and professional experiences. With a strong emphasis on user experience, I implemented a responsive design that adapts seamlessly across various devices, ensuring accessibility for all users. The site incorporates smooth animations and transitions, enhancing visual appeal and engagement. Additionally, I focused on creating a user-friendly navigation system, allowing visitors to effortlessly explore my work and discover my passion for coding. Each project is presented with detailed descriptions, technologies used, and the challenges I overcame during development, providing insights into my problem-solving abilities. As I continue to refine and enhance the website, my goal is to not only display my skills but also to connect with potential collaborators and employers who share my enthusiasm for technology and innovation. 
+          You can view the source code and see my ongoing development on my <a href="https://github.com/kizwiz6/portfolio" target="_blank" rel="noopener noreferrer">GitHub Repository</a>.
+        </>
+      ),
       category: "Personal Project",
       period: "October 2024",
-      tags: ["React", "JavaScript", "Node.js", "CSS", "HTML", "Responsive Design"],
+      tags: ["React", "JavaScript", "Node.js", "CSS", "HTML", "Tailwind CSS", "Git", "GitHub", "npm", "Responsive Design"],
+      thumbnail: "https://previews.dropbox.com/p/thumb/ACdPs3mTiSjA_5RcICipxKybz0xfTtEMXYMoCMMqgF55yAdDfCjSyI6e6iuim3TKIi4CbU5m3OiSgAKDfGye4RDD1k6oWh2xw03lK0rLGKWg4lA0_xh4PfPL8g1KUyYGgNLaxuhGZ4TsEhwedFRGW3VjPoe6ZDkTPQXGnJM7tCMmzGutlAVPv8Y0hoF0IT9hf-mMHzFSS65O0nF0PuRMGPXyrPNu2MSOiu9nGker7NlGhPFp56iS8iOj92Vr5ZizhoJ_1nqwGjF5LwcoWOgT6mswVW0W3acCC7c9Jzhbgt-xfW3RG76Ks5m2Q5fme6t-dhf5gszXkJWv2rZDk4aaV6dR/p.png",
       status: "In Progress"
     },
     {
@@ -537,7 +548,8 @@ const Portfolio = () => {
             "Website Production"
           ]
         }
-      ]
+      ],
+      youtubeVideo: "https://www.youtube.com/watch?v=o4vEaArSs1A&ab_channel=BedfordCollege",
     },
     {
       institution: "Longsands Academy",
@@ -568,7 +580,6 @@ const Portfolio = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white">
         <div className="max-w-6xl mx-auto px-4 py-16 text-center">
@@ -686,7 +697,7 @@ const Portfolio = () => {
 
         {activeTab === 'projects' && (
           <div>
-            <h1 className="text-3xl font-bold mb-8">Projects</h1>
+            <h2 className="text-3xl font-bold mb-8">Projects</h2>
             {projectsIntroContent}
             <div className="grid md:grid-cols-2 gap-6">
               {projects.map((project, index) => (
@@ -730,7 +741,7 @@ const Portfolio = () => {
                     <iframe
                       width="100%"
                       height="315"
-                      src={project.youtubeVideo.replace("watch?v=", "embed/")}
+                      src={project.youtubeVideo.replace("watch?v=", "embed/").split("&")[0]}
                       title={`${project.title} video`}
                       frameBorder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -787,7 +798,7 @@ const Portfolio = () => {
 
         {activeTab === 'experience' && (
           <div>
-            <h1 className="text-3xl font-bold mb-8">Work Experience</h1>
+            <h2 className="text-3xl font-bold mb-8">Work Experience</h2>
             <p className="text-gray-600 mb-4">
               Below is a summary of the work I've completed at various companies, showcasing my contributions to significant projects, technologies utilised, and the skills I've developed throughout my career.
             </p>
@@ -836,7 +847,7 @@ const Portfolio = () => {
 
         {activeTab === 'education' && (
           <div>
-            <h1 className="text-3xl font-bold mb-8">Education</h1>
+            <h2 className="text-3xl font-bold mb-8">Education</h2>
             <div className="space-y-6">
               {education.map((edu, index) => (
                 <div key={index} className="bg-white rounded-lg shadow-md p-6">
@@ -863,11 +874,12 @@ const Portfolio = () => {
                     {edu.institution === 'Coventry University' &&
                       "At Coventry University, I honed my skills in software development and project management through hands-on projects and collaborative teamwork. I specialised in agile methodologies and developed a strong foundation in both front-end and back-end technologies."}
 
-                    {edu.institution === 'Bedford College' &&
-                      "During my time at Bedford College, I focused on developing my understanding of web technologies and design principles. The curriculum emphasised practical skills and provided opportunities to work on real-world projects, preparing me for my future studies."}
+                  {edu.institution === 'Bedford College' &&
+                    "During my time at Bedford College, I dedicated myself to an intensive course focused solely on Information Technology. This immersive experience allowed me to delve deeply into web technologies, design principles, and essential ICT skills. The curriculum emphasised practical, hands-on learning, providing numerous opportunities to engage in real-world projects. This focused approach not only honed my technical abilities but also fostered critical problem-solving skills and a strong understanding of the industry's best practices. As a result, I felt well-prepared to pursue further studies at the university level, equipped with the foundational knowledge needed for success in the field of computing."}
+
 
                     {edu.institution === 'Longsands Academy' &&
-                      "At Longsands Academy, I completed my GCSEs with a focus on subjects that laid the groundwork for my interest in computing and technology. The supportive learning environment helped cultivate my passion for problem-solving and critical thinking."}
+                      "At Longsands Academy, I completed my GCSEs and A-Levels, which ultimately sparked my interest in computing and technology. The supportive learning environment, combined with a strong curriculum, laid a solid foundation for my academic journey. This experience inspired me to further my studies by enrolling in a dedicated Computing course at Bedford College."}
                   </p>
 
 
@@ -918,9 +930,28 @@ const Portfolio = () => {
                     </>
                   )}
 
+                {/* YouTube Video Embed for Bedford College */}
+                {edu.institution === "Bedford College" && edu.youtubeVideo && (
+                    <iframe
+                      width="100%"
+                      height="315"
+                      src={edu.youtubeVideo.replace("watch?v=", "embed/").split("&")[0]}
+                      title={`${edu.institution} video`}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="mb-4"
+                    ></iframe>
+                  )}
+
                   {/* Image Gallery Section for Coventry University only */}
                   {edu.institution === "Coventry University" && uniGalleryImages && uniGalleryImages.length > 0 && (
                     <ImageGallery images={uniGalleryImages} title="Coventry University" />
+                  )}
+
+                {/* Image Gallery Section for Longsands Academy only */}
+                  {edu.institution === "Longsands Academy" && longsandsGalleryImages && longsandsGalleryImages.length > 0 && (
+                    <ImageGallery images={longsandsGalleryImages} title="Longsands Academy" />
                   )}
                 </div>
               ))}

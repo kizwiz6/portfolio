@@ -1,10 +1,72 @@
+/* 
+ * Used for global styles in a React application, especially when using Tailwind CSS.
+ */
+
+/* Import Tailwind's base styles (like resets) */
 @tailwind base;
+
+/* Import Tailwind's pre-designed component styles */
 @tailwind components;
+
+/* Import Tailwind's utility styles for styling elements directly in the markup */
 @tailwind utilities;
 
-/* Optional: Add custom styles */
-@layer base {
+/*
+ * Optional: Add custom styles
+ * Applying antialiasing to the body element for smoother text rendering.
+ */
+ @layer base {
   body {
-    @apply antialiased;
+    @apply antialiased bg-gray-100 text-gray-800; /* Background and text color */
+    @apply transition-colors duration-300; /* Smooth transition for color changes */
+  }
+
+  /* Specific styles for headings */
+  h1 {
+    @apply font-bold text-white; /* White color for h1 */
+  }
+  
+  h2, h3 {
+    @apply font-bold text-gray-900; /* Black color for h2 and h3 */
+  }
+
+  /* Link styles */
+  a {
+    @apply text-blue-600 hover:text-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-400; /* Link styles with focus ring */
+  }
+
+  /* Adding a default margin for all elements to ensure consistent spacing */
+  * {
+    @apply m-0 p-0 box-border; /* Reset margin and padding for all elements */
+  }
+
+  /* Adding styles for paragraphs */
+  p {
+    @apply mb-4 text-base leading-relaxed; /* Margin and line height for better readability */
+  }
+}
+
+/*
+ * Component styles
+ * You can define your custom component styles here.
+ */
+@layer components {
+  /* Button styles */
+  .btn {
+    @apply px-4 py-2 bg-blue-500 text-white rounded shadow hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400; /* Button styles with hover and focus */
+  }
+
+  /* Card styles */
+  .card {
+    @apply p-6 bg-white rounded-lg shadow-md transition-shadow duration-300 hover:shadow-lg; /* Card styles with hover effect */
+  }
+}
+
+/*
+ * Add utilities for accessibility
+ */
+@layer utilities {
+  .focus-visible {
+    @apply outline-none ring-2 ring-blue-400; /* Focus-visible styles for better accessibility */
   }
 }

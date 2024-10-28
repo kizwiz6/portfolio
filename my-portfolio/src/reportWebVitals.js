@@ -1,11 +1,12 @@
+// Used to measure performance metrics in a React application.
 const reportWebVitals = onPerfEntry => {
   if (onPerfEntry && onPerfEntry instanceof Function) {
     import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
-      getCLS(onPerfEntry);
-      getFID(onPerfEntry);
+      getCLS(onPerfEntry); // Cumulative Layout Shift
+      getFID(onPerfEntry);// First Input Delay
       getFCP(onPerfEntry);
-      getLCP(onPerfEntry);
-      getTTFB(onPerfEntry);
+      getLCP(onPerfEntry); // Largest Contentful Paint
+      getTTFB(onPerfEntry); // Time to First Byte
     });
   }
 };
