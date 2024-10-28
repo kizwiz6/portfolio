@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Github, Linkedin, Facebook, Instagram, Mail, Menu, X, Calendar } from 'lucide-react';
+import PropTypes from 'prop-types';
 
+// Functional component for the Portfolio page
 const Portfolio = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('projects');
@@ -9,18 +11,18 @@ const Portfolio = () => {
     <div className="max-w-6xl mx-auto px-4 ">
       <h1 className="text-4xl font-bold mb-6">About Me</h1>
 
-    {/* Profile Picture */}
-    <div className="mb-8 flex flex-col items-center">
-    <img
-      src="https://previews.dropbox.com/p/thumb/ACZrt0rfSzoz1DEAIQ2gKMbFMSrsOpK-qVuizQH_b_uFK8HfAw2bKiTKUoTKuZpgA_ZWMNCLp4K93kCsP7Xsh1f3ssV4MVqPB5DOt_e_ZrEuk39hA-nNK7xaOnnxSmPsloJDg3MDnRAWrNoNcVjqxMIKTMqQn_hFKVaSh92cdXNSHEpdP9Orv0BF6SkCkHUmsVmyg73EpW41yojk5Uv9klEc6JMvoLwQee7yOossMPCbE2WBy7O2EJC3l18Qtg2yC3XQJBjhe0cVrHTEEHpFoFT3Ewz4eLrVXTzgCg2vLwBPZ--4Y-Orezi9qnL5oMb6SYiCg8bCQAl1lO5DWlLqADcE/p.png?is_prewarmed=true"
-      alt="Kieran Emery"
-      className="w-100 h-100 object-cover mb-4"
-    />
+      {/* Profile Picture */}
+      <div className="mb-8 flex flex-col items-center">
+        <img
+          src="https://previews.dropbox.com/p/thumb/ACZrt0rfSzoz1DEAIQ2gKMbFMSrsOpK-qVuizQH_b_uFK8HfAw2bKiTKUoTKuZpgA_ZWMNCLp4K93kCsP7Xsh1f3ssV4MVqPB5DOt_e_ZrEuk39hA-nNK7xaOnnxSmPsloJDg3MDnRAWrNoNcVjqxMIKTMqQn_hFKVaSh92cdXNSHEpdP9Orv0BF6SkCkHUmsVmyg73EpW41yojk5Uv9klEc6JMvoLwQee7yOossMPCbE2WBy7O2EJC3l18Qtg2yC3XQJBjhe0cVrHTEEHpFoFT3Ewz4eLrVXTzgCg2vLwBPZ--4Y-Orezi9qnL5oMb6SYiCg8bCQAl1lO5DWlLqADcE/p.png?is_prewarmed=true"
+          alt="Kieran Emery"
+          className="w-100 h-100 object-cover mb-4"
+        />
 
-      <p className="text-lg text-gray-600">
-        I'm Kieran, a dedicated Software Developer based in Cambridgeshire, UK. With nearly seven years of commercial experience at companies like Acticheck and iGO4 Insurance, I have honed my skills in software development. My educational background includes a Bachelor's degree in Computing from Coventry University and a BTEC Level 3 Extended Diploma in IT from Bedford College, which provides a solid foundation to complement my practical experience.
-      </p>
-    </div>
+        <p className="text-lg text-gray-600">
+          I'm Kieran, a dedicated Software Developer based in Cambridgeshire, UK. With nearly seven years of commercial experience at companies like Acticheck and iGO4 Insurance, I have honed my skills in software development. My educational background includes a Bachelor's degree in Computing from Coventry University and a BTEC Level 3 Extended Diploma in IT from Bedford College, which provides a solid foundation to complement my practical experience.
+        </p>
+      </div>
 
       <div className="mb-8">
         <h2 className="text-2xl font-semibold">My Passion</h2>
@@ -71,40 +73,54 @@ const Portfolio = () => {
   const ImageGallery = ({ images, title }) => {
     const [lightbox, setLightbox] = useState(null);
 
+    const closeLightbox = () => setLightbox(null); // Move lightbox closing logic into a function
+
     return (
       <div>
         {/* Gallery Title */}
         <h4 className="font-medium mb-2">{title} Gallery:</h4>
         {/* Gallery Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {images.map((image, index) => (
-            <div key={index} className="cursor-pointer">
+          {images.map((image) => (
+            <div key={image} className="cursor-pointer">
               <img
                 src={image}
-                alt={`${title} photo ${index + 1}`}
+                alt={`${title} image`}
                 className="rounded-lg shadow-md w-full h-full object-cover"
                 onClick={() => setLightbox(image)}
               />
             </div>
           ))}
         </div>
-  
+
         {/* Lightbox Modal */}
         {lightbox && (
-          <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-75 z-50">
+          <div
+            className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-75 z-50"
+            onClick={closeLightbox} // Click on overlay to close lightbox
+          >
             <button
-              onClick={() => setLightbox(null)}
+              onClick={closeLightbox}
               className="absolute top-4 right-4 text-white text-2xl font-bold"
             >
               &times;
             </button>
-            <img src={lightbox} alt="Enlarged view" className="rounded-lg shadow-lg max-w-full max-h-full" />
+            <img
+              src={lightbox}
+              alt="Enlarged view"
+              className="rounded-lg shadow-lg max-w-full max-h-full"
+            />
           </div>
         )}
       </div>
     );
   };
 
+  // PropTypes for validation
+  ImageGallery.propTypes = {
+    images: PropTypes.arrayOf(PropTypes.string).isRequired,
+    title: PropTypes.string.isRequired,
+  };
   // Define the projectsIntroContent
   const projectsIntroContent = (
     <div>
@@ -117,15 +133,15 @@ const Portfolio = () => {
     </div>
   );
 
-    /**
-     * Project details.
-     * @type {Object}
-     * @property {string} title - The title of the project.
-     * @property {string} description - The description of the project.
-     * @property {string} category - The category of the project.
-     * @property {Array<string>} tags - The tags associated with the project.
-     * @property {string} link - The link to the project.
-    */
+  /**
+   * Project details.
+   * @type {Object}
+   * @property {string} title - The title of the project.
+   * @property {string} description - The description of the project.
+   * @property {string} category - The category of the project.
+   * @property {Array<string>} tags - The tags associated with the project.
+   * @property {string} link - The link to the project.
+  */
   const projects = [
     {
       title: "Sip N Sign (British Sign Language App)",
@@ -137,12 +153,12 @@ const Portfolio = () => {
       videoSource: "SipNSignVideo.mp4",
     },
     {
-        title: "My Portfolio Website",
-        description: "Built a personal portfolio website using React. The site showcases my projects, skills, and experience as a software developer. It features a responsive design, smooth animations, and a user-friendly navigation system. I hope you'll agree!",
-        category: "Personal Project",
-        period: "October 2024",
-        tags: ["React", "JavaScript", "Node.js", "CSS", "HTML", "Responsive Design"],
-        status: "In Progress"
+      title: "My Portfolio Website",
+      description: "Built a personal portfolio website using React. The site showcases my projects, skills, and experience as a software developer. It features a responsive design, smooth animations, and a user-friendly navigation system. I hope you'll agree!",
+      category: "Personal Project",
+      period: "October 2024",
+      tags: ["React", "JavaScript", "Node.js", "CSS", "HTML", "Responsive Design"],
+      status: "In Progress"
     },
     {
       title: "Acticheck User Authentication System",
@@ -293,22 +309,22 @@ const Portfolio = () => {
         </span>
       ),
       responsibilities: [
-          {
-              title: "Front-End Developer",
-              description: "Took on the role of a front-end developer, focusing on crafting the user interface and user experience."
-          },
-          {
-              title: "Collaborative Developer",
-              description: "Worked within a divided team structure of front-end and back-end developers, facilitating test-driven development."
-          },
-          {
-              title: "Screencast Presentation",
-              description: "Created a screencast showcasing the functionalities of the application and summarising the Agile journey."
-          },
-          {
-              title: "Reflective Report",
-              description: "Prepared an individual reflective report covering advanced Git tools, Agile methodologies, team dynamics, and continuous integration."
-          }
+        {
+          title: "Front-End Developer",
+          description: "Took on the role of a front-end developer, focusing on crafting the user interface and user experience."
+        },
+        {
+          title: "Collaborative Developer",
+          description: "Worked within a divided team structure of front-end and back-end developers, facilitating test-driven development."
+        },
+        {
+          title: "Screencast Presentation",
+          description: "Created a screencast showcasing the functionalities of the application and summarising the Agile journey."
+        },
+        {
+          title: "Reflective Report",
+          description: "Prepared an individual reflective report covering advanced Git tools, Agile methodologies, team dynamics, and continuous integration."
+        }
       ],
       grade: "2:1",
       tags: ["Agile", "XML", "Java", "SQLite", "Git"],
@@ -352,11 +368,11 @@ const Portfolio = () => {
       description: (
         <span>
           During my second year at university, I engaged in a module that simulated real-world project collaboration with IBM. Our objective was to develop a conference room booking website that seamlessly integrated a wayfinder application and a virtual reality system to showcase room layouts. This project required us to deliver live presentations, compile a comprehensive group report, and contribute individually to our shared goals.
-    
+
           As the project leader for Team 3 (T3), I took the lead on developing the wayfinder application while also assisting in the creation of the website. Additionally, I authored our group report, ensuring that our collective efforts were coherent and well-articulated.
-    
+
           I embraced the challenge of designing the wayfinder application using PopApp (now known as 'Marvel'), resulting in a high-fidelity paper prototype. Given that my application development skills were still evolving, this mock-up approach was particularly suitable for our needs. I worked closely with our design team to ensure that the visual elements complemented the application's functionality, thereby fostering effective communication and collaboration throughout the project.
-    
+
           The completed wayfinder application included accessible hyperlinks and a QR code, significantly enhancing the visitor experience by providing intuitive navigation of the conference room layout. You can read the report&nbsp;
           <a
             href="https://drive.google.com/file/d/0B1jRB1Zy3SZkakNvWk1aM2RNdVU/view?resourcekey=0-L8C4HaiJY4QWVhgkim6Ztw"
@@ -406,17 +422,17 @@ const Portfolio = () => {
 
   const experiences = [
     {
-        company: "Acticheck",
-        link: "https://acticheck.com/",
-        period: "June 2024 - October 2024",
-        role: "Software Engineer (Temporary)",
-        location: "Fowlmere, Cambridge",
-        description: [
-          "Developed a secure .NET Core web app for user authentication, integrating .NET Core Identity, encrypted SQL Server credentials, and third-party services like Facebook login and SendGrid email. Implemented configurable logging and secure data transfer via DTOs for streamlined user management and robust security.",
-          "Developed a .NET Web API for seamless payload transmission, logging decoded messages for analysis and ensuring smooth data handling. Tested the API using Postman. Created gRPC client-server prototypes for efficient data transmission, logging data into an SQL table using Entity Framework Core.",
-          "Developed a .NET MAUI application showcasing cross-platform functionality and Bluetooth capabilities."
-        ],
-        technologies: [".NET Core", "C#", "Python", "SQL Server", "Entity Framework Core", "Identity", "OAuth", ".NET MAUI", "gRPC", "REST API", "Postman", "Visual Studio", "Git", "Github", "SendGrid"],
+      company: "Acticheck",
+      link: "https://acticheck.com/",
+      period: "June 2024 - October 2024",
+      role: "Software Engineer (Temporary)",
+      location: "Fowlmere, Cambridge",
+      description: [
+        "Developed a secure .NET Core web app for user authentication, integrating .NET Core Identity, encrypted SQL Server credentials, and third-party services like Facebook login and SendGrid email. Implemented configurable logging and secure data transfer via DTOs for streamlined user management and robust security.",
+        "Developed a .NET Web API for seamless payload transmission, logging decoded messages for analysis and ensuring smooth data handling. Tested the API using Postman. Created gRPC client-server prototypes for efficient data transmission, logging data into an SQL table using Entity Framework Core.",
+        "Developed a .NET MAUI application showcasing cross-platform functionality and Bluetooth capabilities."
+      ],
+      technologies: [".NET Core", "C#", "Python", "SQL Server", "Entity Framework Core", "Identity", "OAuth", ".NET MAUI", "gRPC", "REST API", "Postman", "Visual Studio", "Git", "Github", "SendGrid"],
     },
     {
       company: "iGO4 Insurance",
@@ -424,18 +440,18 @@ const Portfolio = () => {
       period: "Jan 2018 - Dec 2023",
       role: "Software Developer",
       location: "Werrington, Peterborough",
-      description:  ["Collaborated with diverse Agile teams on critical projects to develop a sophisticated pricing optimisation tool that incorporates machine learning models in pricing strategies (Earnix).",
-      "Worked extensively on Real-Time Pricing (RTP) API, which enhances the Strata quoting process. Improved proficiency in Drools (a business rules management system) and Java within Eclipse IDE.",
-      "Gained proficiency in API testing applications, specifically SoapUI and Postman for REST APIs.",
-      "Contributed to the creation of a new AWS data platform, centralising real-time data points and expanding knowledge in programming languages like C# and JSON.",
-      "Handled Business-As-Usual (BAU) changes autonomously, frequently using Apache Velocity for dynamic email content delivery, involving HTML, CSS, and XML documentation.",
-      "Managed policy document updates using Adobe InDesign and facilitated uploads on a server.",
-      "Utilised various tools and platforms, including the Atlassian suite (Jira, Bitbucket, Confluence), GitLab, GitKraken, Azure DevOps, Visual Studio, and VS Code.",
-      "Proficiently used communication and collaboration tools like Microsoft Teams, Slack, Skype, and command-line interfaces, as well as Node.js and other essential technologies.",
-      "Mentored Junior Developers and conducted thorough code reviews.",
-      "Worked on a significant data migration project called Kingfisher, migrating CDL's Strata application data from Oracle SQL to SQL Server. This project involved creating a reporting database and developing SSRS reports, Tableau dashboards, and Excel spreadsheets.",
-      "Led requirements gathering, analysis, and direct stakeholder communication, facilitating the construction of robust objects and reports for the Kingfisher data migration project.",
-      "Deepened proficiency in SQL Server, enabling advanced data querying across multiple datasets and the creation of complex stored procedures."
+      description: ["Collaborated with diverse Agile teams on critical projects to develop a sophisticated pricing optimisation tool that incorporates machine learning models in pricing strategies (Earnix).",
+        "Worked extensively on Real-Time Pricing (RTP) API, which enhances the Strata quoting process. Improved proficiency in Drools (a business rules management system) and Java within Eclipse IDE.",
+        "Gained proficiency in API testing applications, specifically SoapUI and Postman for REST APIs.",
+        "Contributed to the creation of a new AWS data platform, centralising real-time data points and expanding knowledge in programming languages like C# and JSON.",
+        "Handled Business-As-Usual (BAU) changes autonomously, frequently using Apache Velocity for dynamic email content delivery, involving HTML, CSS, and XML documentation.",
+        "Managed policy document updates using Adobe InDesign and facilitated uploads on a server.",
+        "Utilised various tools and platforms, including the Atlassian suite (Jira, Bitbucket, Confluence), GitLab, GitKraken, Azure DevOps, Visual Studio, and VS Code.",
+        "Proficiently used communication and collaboration tools like Microsoft Teams, Slack, Skype, and command-line interfaces, as well as Node.js and other essential technologies.",
+        "Mentored Junior Developers and conducted thorough code reviews.",
+        "Worked on a significant data migration project called Kingfisher, migrating CDL's Strata application data from Oracle SQL to SQL Server. This project involved creating a reporting database and developing SSRS reports, Tableau dashboards, and Excel spreadsheets.",
+        "Led requirements gathering, analysis, and direct stakeholder communication, facilitating the construction of robust objects and reports for the Kingfisher data migration project.",
+        "Deepened proficiency in SQL Server, enabling advanced data querying across multiple datasets and the creation of complex stored procedures."
       ],
       technologies: ["Apache Velocity", "HTML", "CSS", "CDL's Strata", "Java", "AWS", "SQL", "Pentaho", "Drools", "VSTS", "Postman", "Adobe InDesign", "C#", "Python", "REST API", "Agile Methodology", "Git", "GitLab", "GitKraken", "Azure DevOps", "Visual Studio", "VS Code", "Node.js", "JSON", "Tableau", "Excel", "SSIS", "SSRS", "SQL Server", "Oracle SQL", "SoapUI", "Jira", "Confluence", "Microsoft Teams", "Slack", "Skype"],
       images: igo4GalleryImages,
@@ -552,32 +568,32 @@ const Portfolio = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-{/* Hero Section */}
-{/* Hero Section */}
-<div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white">
-  <div className="max-w-6xl mx-auto px-4 py-16 text-center">
-    <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in">
-      Kieran Emery
-    </h1>
-    <p className="text-xl md:text-2xl text-blue-100 mb-8">
-      British software developer building innovative solutions with modern technologies
-    </p>
-    {/* Centering the buttons */}
-    <div className="flex justify-center space-x-4">
-      <a href="mailto:kizwiz@hotmail.co.uk" className="bg-white text-blue-800 px-6 py-2 rounded-full hover:bg-blue-50 transition duration-300">
-        Contact Me
-      </a>
-      <a
-        href="https://www.dropbox.com/scl/fi/lhobteip40zlhp6r25fpe/KieranEmery_CV_2024.pdf?rlkey=t18j3jpmfsco2py96wn32nyp8&st=3nhxivnx&dl=0"
-        className="border border-white text-white px-6 py-2 rounded-full hover:bg-white hover:text-blue-800 transition duration-300"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        View CV
-      </a>
-    </div>
-  </div>
-</div>
+      {/* Hero Section */}
+      {/* Hero Section */}
+      <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+        <div className="max-w-6xl mx-auto px-4 py-16 text-center">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in">
+            Kieran Emery
+          </h1>
+          <p className="text-xl md:text-2xl text-blue-100 mb-8">
+            British software developer building innovative solutions with modern technologies
+          </p>
+          {/* Centering the buttons */}
+          <div className="flex justify-center space-x-4">
+            <a href="mailto:kizwiz@hotmail.co.uk" className="bg-white text-blue-800 px-6 py-2 rounded-full hover:bg-blue-50 transition duration-300">
+              Contact Me
+            </a>
+            <a
+              href="https://www.dropbox.com/scl/fi/lhobteip40zlhp6r25fpe/KieranEmery_CV_2024.pdf?rlkey=t18j3jpmfsco2py96wn32nyp8&st=3nhxivnx&dl=0"
+              className="border border-white text-white px-6 py-2 rounded-full hover:bg-white hover:text-blue-800 transition duration-300"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View CV
+            </a>
+          </div>
+        </div>
+      </div>
       {/* Navigation */}
       <nav className="bg-white shadow-sm">
         <div className="max-w-6xl mx-auto px-4 py-4">
@@ -586,25 +602,25 @@ const Portfolio = () => {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex space-x-8">
-                <button 
-                    onClick={() => setActiveTab('about')}
-                    className={`${activeTab === 'about' ? 'text-blue-600' : 'text-gray-600'} hover:text-blue-500`}
-                >
-                    About Me
-                </button>
-              <button 
+              <button
+                onClick={() => setActiveTab('about')}
+                className={`${activeTab === 'about' ? 'text-blue-600' : 'text-gray-600'} hover:text-blue-500`}
+              >
+                About Me
+              </button>
+              <button
                 onClick={() => setActiveTab('projects')}
                 className={`${activeTab === 'projects' ? 'text-blue-600' : 'text-gray-600'} hover:text-blue-500`}
               >
                 Projects
               </button>
-              <button 
+              <button
                 onClick={() => setActiveTab('experience')}
                 className={`${activeTab === 'experience' ? 'text-blue-600' : 'text-gray-600'} hover:text-blue-500`}
               >
                 Experience
               </button>
-              <button 
+              <button
                 onClick={() => setActiveTab('education')}
                 className={`${activeTab === 'education' ? 'text-blue-600' : 'text-gray-600'} hover:text-blue-500`}
               >
@@ -615,25 +631,25 @@ const Portfolio = () => {
             {/* Social Links */}
             {/* Social Links */}
             <div className="hidden md:flex space-x-4">
-            <a href="https://github.com/kizwiz6" className="text-gray-600 hover:text-gray-900" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/kizwiz6" className="text-gray-600 hover:text-gray-900" target="_blank" rel="noopener noreferrer">
                 <Github size={20} />
-            </a>
-            <a href="https://www.linkedin.com/in/kizwiz/" className="text-gray-600 hover:text-gray-900" target="_blank" rel="noopener noreferrer">
+              </a>
+              <a href="https://www.linkedin.com/in/kizwiz/" className="text-gray-600 hover:text-gray-900" target="_blank" rel="noopener noreferrer">
                 <Linkedin size={20} />
-            </a>
-            <a href="mailto:kizwiz@hotmail.co.uk" className="text-gray-600 hover:text-gray-900">
+              </a>
+              <a href="mailto:kizwiz@hotmail.co.uk" className="text-gray-600 hover:text-gray-900">
                 <Mail size={20} />
-            </a>
-            <a href="https://www.facebook.com/kizwiz6" className="text-gray-600 hover:text-gray-900" target="_blank" rel="noopener noreferrer">
+              </a>
+              <a href="https://www.facebook.com/kizwiz6" className="text-gray-600 hover:text-gray-900" target="_blank" rel="noopener noreferrer">
                 <Facebook size={20} />
-            </a>
-            <a href="https://www.instagram.com/kizwiz6" className="text-gray-600 hover:text-gray-900" target="_blank" rel="noopener noreferrer">
+              </a>
+              <a href="https://www.instagram.com/kizwiz6" className="text-gray-600 hover:text-gray-900" target="_blank" rel="noopener noreferrer">
                 <Instagram size={20} />
-            </a>
+              </a>
             </div>
 
             {/* Mobile Menu Button */}
-            <button 
+            <button
               className="md:hidden"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
@@ -647,7 +663,7 @@ const Portfolio = () => {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {['about', 'projects', 'experience', 'education'].map((tab) => (
-                <button 
+                <button
                   key={tab}
                   onClick={() => {
                     setActiveTab(tab);
@@ -692,9 +708,9 @@ const Portfolio = () => {
 
                   {/* Thumbnail Image */}
                   {project.thumbnail && (
-                    <img 
-                      src={project.thumbnail} 
-                      alt={`${project.title} thumbnail`} 
+                    <img
+                      src={project.thumbnail}
+                      alt={`${project.title} thumbnail`}
                       className="mb-4 rounded" // Add any styling you want here
                     />
                   )}
@@ -711,14 +727,14 @@ const Portfolio = () => {
 
                   {/* Optional: YouTube Video Embed */}
                   {project.youtubeVideo && (
-                    <iframe 
-                      width="100%" 
-                      height="315" 
-                      src={project.youtubeVideo.replace("watch?v=", "embed/")} 
-                      title={`${project.title} video`} 
-                      frameBorder="0" 
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                      allowFullScreen 
+                    <iframe
+                      width="100%"
+                      height="315"
+                      src={project.youtubeVideo.replace("watch?v=", "embed/")}
+                      title={`${project.title} video`}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
                       className="mb-4"
                     ></iframe>
                   )}
@@ -769,54 +785,54 @@ const Portfolio = () => {
           </div>
         )}
 
-      {activeTab === 'experience' && (
-        <div>
-          <h1 className="text-3xl font-bold mb-8">Work Experience</h1>
-          <p className="text-gray-600 mb-4">
-            Below is a summary of the work I've completed at various companies, showcasing my contributions to significant projects, technologies utilised, and the skills I've developed throughout my career.
-          </p>
-          <div className="space-y-6">
-            {experiences.map((exp, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-md p-6">
-                <h3 className="text-xl font-semibold mb-2">
-                  <a href={exp.link} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-                    {exp.company}
-                  </a>
-                </h3>
-                {/* Displaying Role */}
-                <p className="text-md text-gray-500 mb-1">{exp.role}</p>
-                {/* Displaying Location */}
-                <p className="text-md text-gray-500 mb-1">{exp.location}</p>
+        {activeTab === 'experience' && (
+          <div>
+            <h1 className="text-3xl font-bold mb-8">Work Experience</h1>
+            <p className="text-gray-600 mb-4">
+              Below is a summary of the work I've completed at various companies, showcasing my contributions to significant projects, technologies utilised, and the skills I've developed throughout my career.
+            </p>
+            <div className="space-y-6">
+              {experiences.map((exp, index) => (
+                <div key={index} className="bg-white rounded-lg shadow-md p-6">
+                  <h3 className="text-xl font-semibold mb-2">
+                    <a href={exp.link} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                      {exp.company}
+                    </a>
+                  </h3>
+                  {/* Displaying Role */}
+                  <p className="text-md text-gray-500 mb-1">{exp.role}</p>
+                  {/* Displaying Location */}
+                  <p className="text-md text-gray-500 mb-1">{exp.location}</p>
 
-                <div className="flex items-center text-gray-600 mb-2">
-                  <Calendar size={16} className="mr-2" />
-                  <span>{exp.period}</span>
+                  <div className="flex items-center text-gray-600 mb-2">
+                    <Calendar size={16} className="mr-2" />
+                    <span>{exp.period}</span>
+                  </div>
+
+                  <ul className="list-disc list-inside text-gray-600 mb-4">
+                    {exp.description.map((desc, descIndex) => (
+                      <li key={descIndex}>{desc}</li>
+                    ))}
+                  </ul>
+
+                  <div className="flex flex-wrap gap-2">
+                    {exp.technologies.map((tech, techIndex) => (
+                      <span key={techIndex} className="bg-gray-100 text-gray-800 text-sm px-2 py-1 rounded">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  {/* Image Gallery Section */}
+                  {exp.images && exp.images.length > 0 && (
+                    <>
+                      <ImageGallery images={exp.images} />
+                    </>
+                  )}
                 </div>
-
-                <ul className="list-disc list-inside text-gray-600 mb-4">
-                  {exp.description.map((desc, descIndex) => (
-                    <li key={descIndex}>{desc}</li>
-                  ))}
-                </ul>
-
-                <div className="flex flex-wrap gap-2">
-                  {exp.technologies.map((tech, techIndex) => (
-                    <span key={techIndex} className="bg-gray-100 text-gray-800 text-sm px-2 py-1 rounded">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                {/* Image Gallery Section */}
-                {exp.images && exp.images.length > 0 && (
-                  <>
-                    <ImageGallery images={exp.images} />
-                  </>
-                )}
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      )}
+        )}
 
         {activeTab === 'education' && (
           <div>
@@ -826,33 +842,33 @@ const Portfolio = () => {
                 <div key={index} className="bg-white rounded-lg shadow-md p-6">
 
 
-                {/* Date, Institution, and Grade on Same Line */}
-                <div className="flex items-center mb-2">
-                  <span className="text-gray-600 flex-shrink-0">
-                    <Calendar size={16} className="mr-2" />
-                    {edu.period}
-                  </span>
+                  {/* Date, Institution, and Grade on Same Line */}
+                  <div className="flex items-center mb-2">
+                    <span className="text-gray-600 flex-shrink-0">
+                      <Calendar size={16} className="mr-2" />
+                      {edu.period}
+                    </span>
 
-                  {/* Wrap the institution in a div with flex-grow */}
-                  <h3 className="text-xl font-semibold flex-grow text-center">{edu.institution}</h3>
+                    {/* Wrap the institution in a div with flex-grow */}
+                    <h3 className="text-xl font-semibold flex-grow text-center">{edu.institution}</h3>
 
-                  {/* Adding "Grade: " before the grade */}
-                  <span className="font-medium text-gray-600 flex-shrink-0 ml-4">
-                    Grade: {edu.grade}
-                  </span>
-                </div>
+                    {/* Adding "Grade: " before the grade */}
+                    <span className="font-medium text-gray-600 flex-shrink-0 ml-4">
+                      Grade: {edu.grade}
+                    </span>
+                  </div>
 
-            {/* Description for each education entry */}
-            <p className="text-gray-600 mb-4">
-              {edu.institution === 'Coventry University' && 
-                "At Coventry University, I honed my skills in software development and project management through hands-on projects and collaborative teamwork. I specialised in agile methodologies and developed a strong foundation in both front-end and back-end technologies."}
+                  {/* Description for each education entry */}
+                  <p className="text-gray-600 mb-4">
+                    {edu.institution === 'Coventry University' &&
+                      "At Coventry University, I honed my skills in software development and project management through hands-on projects and collaborative teamwork. I specialised in agile methodologies and developed a strong foundation in both front-end and back-end technologies."}
 
-              {edu.institution === 'Bedford College' && 
-                "During my time at Bedford College, I focused on developing my understanding of web technologies and design principles. The curriculum emphasised practical skills and provided opportunities to work on real-world projects, preparing me for my future studies."}
+                    {edu.institution === 'Bedford College' &&
+                      "During my time at Bedford College, I focused on developing my understanding of web technologies and design principles. The curriculum emphasised practical skills and provided opportunities to work on real-world projects, preparing me for my future studies."}
 
-              {edu.institution === 'Longsands Academy' &&
-                "At Longsands Academy, I completed my GCSEs with a focus on subjects that laid the groundwork for my interest in computing and technology. The supportive learning environment helped cultivate my passion for problem-solving and critical thinking."}
-            </p>
+                    {edu.institution === 'Longsands Academy' &&
+                      "At Longsands Academy, I completed my GCSEs with a focus on subjects that laid the groundwork for my interest in computing and technology. The supportive learning environment helped cultivate my passion for problem-solving and critical thinking."}
+                  </p>
 
 
 
@@ -919,4 +935,5 @@ const Portfolio = () => {
   );
 };
 
+// Exporting the Portfolio (default export) component so it can be imported in other files easily.
 export default Portfolio;
