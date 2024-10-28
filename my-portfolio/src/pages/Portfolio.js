@@ -14,7 +14,7 @@ const Portfolio = () => {
       {/* Profile Picture */}
       <div className="mb-8 flex flex-col items-center">
         <img
-          src="https://previews.dropbox.com/p/thumb/ACZrt0rfSzoz1DEAIQ2gKMbFMSrsOpK-qVuizQH_b_uFK8HfAw2bKiTKUoTKuZpgA_ZWMNCLp4K93kCsP7Xsh1f3ssV4MVqPB5DOt_e_ZrEuk39hA-nNK7xaOnnxSmPsloJDg3MDnRAWrNoNcVjqxMIKTMqQn_hFKVaSh92cdXNSHEpdP9Orv0BF6SkCkHUmsVmyg73EpW41yojk5Uv9klEc6JMvoLwQee7yOossMPCbE2WBy7O2EJC3l18Qtg2yC3XQJBjhe0cVrHTEEHpFoFT3Ewz4eLrVXTzgCg2vLwBPZ--4Y-Orezi9qnL5oMb6SYiCg8bCQAl1lO5DWlLqADcE/p.png?is_prewarmed=true"
+          src="https://i.imgur.com/sN2gjsM.png"
           alt="Kieran Emery"
           className="w-100 h-100 object-cover mb-4"
         />
@@ -48,8 +48,8 @@ const Portfolio = () => {
   );
 
   const longsandsGalleryImages = [
-    "https://previews.dropbox.com/p/thumb/ACePQNChMcgu2pZGQ7AVetni_ArBEBtYxXoUc7Uqj4BpviyyllnmSkQyEgMdrgkSzMhWCpSQ1B4MEGwHvml2Y0Ijf0Ord3fFMaDR58sZnIXJ0r_NIj1faf7zUZI6YZwrJsc58OwypQLn8jEzjDM2KaJ0rnQ2R65NhIIGs7rTxlfqx6GXShCopTq_PVn43HU74tjFKYktnGTH3Z5c8YXyGKAHToamW_TWywOQ-t__9K8Khh5KetROJRVgcRqnGSjRNs5q7o21V7eyc0H9XDvolR_NwRYm-cGrwXIaoA0XJtW5O6hk-Uev42L9eDsKQ7q0sAh85sR4r_ThqTshXr_ckesJ/p.jpeg",
-    "https://previews.dropbox.com/p/thumb/ACeLYKeaJ5tyL706_AcULj1RwcDYtd2l5nPloNoh94Xoly8nrNnVm9bqVs7Nkxt-6yaZziOOJSgxVp4ZzX-2PbgQOCokqHXRHj9FgzL3938BApJwTnOID0FGhy5GXsjx3sYQS69a2BAwl2CiRuw-J4-QzMpr1fZDdDQ72d9II6lHJDdeSqEu2HbwqrYoSu9Fe82AsrFFvCM1vL5UCfKNtwUD7FktURxRvckitbXo8VQIXcgBWQiQShFfUNk-bfFtHFupSltsMVyVw-ZBP-XiNmkb_EJd0P09Ed88RiaiKe3uMaN1S--zxxhYPfWrp-sRxCIMwV6XvQ7bplDRSW05yMGX/p.jpeg"
+    "https://i.imgur.com/k4fKTuY.jpeg",
+    "https://i.imgur.com/xapPvSv.jpeg"
   ];
 
   const uniGalleryImages = [
@@ -67,7 +67,7 @@ const Portfolio = () => {
   ];
 
   const acticheckGalleryImages = [
-    "https://previews.dropbox.com/p/thumb/ACc-NNn0zDFihPMceXTvhBjtWFn3goOxXslf_MIIcKMWsUIFnuele5Ji0n0SjANFOmkaPchvOXsXtLeaLPhFgoO_MTLILBliqgG0oQBCqY0alak-Htpi9_Rdigqn-BavzD7jUBHOqJvgUVvkPjpfA0s54wBY9ZuaxvHS5snI5_i4kxoCkVFTe6YzHEETuIOh7KQomax5uOWY3vmYFa4XaoFAR77xsfRMvwWBmFVghm0sAtLbu5NGH3wCSjg1AJOh146NnI2uoI34aAcMmjiVRC2-BRtZeqlB6oxAYaXx6oQ3p9cCzWzXjxa4_j1vBjeTHyJF5NP0b11QrPUpt172Ay2E/p.jpeg"
+    "https://i.imgur.com/YNSP8ng.jpeg"
   ];
 
   const igo4GalleryImages = [
