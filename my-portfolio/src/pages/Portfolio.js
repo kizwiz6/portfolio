@@ -54,12 +54,14 @@ const Portfolio = () => {
 
   const uniGalleryImages = [
     "https://media.licdn.com/dms/image/v2/D4E2DAQEa32e-0PH3Nw/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1666372817964?e=1730462400&v=beta&t=WPXynECopM520cQWCGO5bnEg7nwyutigQQSI-P0hp5k",
+    "https://media.licdn.com/dms/image/v2/C4D2DAQGA4zTdFypuhg/profile-treasury-image-shrink_1280_1280/profile-treasury-image-shrink_1280_1280/0/1597905705071?e=1730462400&v=beta&t=4FhV6X3qBt0f9KY6oF_t_uSpC6Rw_-slmYiuSad-M4s",
     "https://media.licdn.com/dms/image/v2/D4E2DAQFX0RSUjw0Kww/profile-treasury-image-shrink_8192_8192/profile-treasury-image-shrink_8192_8192/0/1666372742159?e=1730462400&v=beta&t=xCnln51a8I9AbDzVQd3y9e-DdFKyIwxRH--G7ppmX5M",
+    "https://media.licdn.com/dms/image/v2/D4E2DAQEI2dNYSecjKQ/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1730131073318?e=1730736000&v=beta&t=vRoUjfZlNJU_BuFN4x6ABnSgzoHCR7g6DikmNUfOuWo",
+    "https://media.licdn.com/dms/image/v2/D4E2DAQGqaVDIhxrXeQ/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1730130806413?e=1730736000&v=beta&t=EIQCSokZzYZ7IZKY70T54SQqhKNAXZIFVRcMl8mqKfs",
     "https://media.licdn.com/dms/image/v2/D4E2DAQGfLnK2krzJag/profile-treasury-image-shrink_1280_1280/profile-treasury-image-shrink_1280_1280/0/1666372784420?e=1730462400&v=beta&t=p5AYiIE-ERNZe14kUYDuvOMrO1Gvu5NpN5KRll6TsXk",
     "https://media.licdn.com/dms/image/v2/C4E2DAQFJGnWJSZ-Hbw/profile-treasury-image-shrink_1920_1920/profile-treasury-image-shrink_1920_1920/0/1610469916776?e=1730462400&v=beta&t=-FcjCK2bYTCyJ4-GL2l4aEZBio1aqtjEu5M2xLi8v2g",
     "https://media.licdn.com/dms/image/v2/C4E2DAQFxEfOzCVuYSw/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1610469784869?e=1730462400&v=beta&t=XuiFkxW3Co1fHmByu9dRY9J0_4PA7li8BXQCvUgmLz0",
     "https://media.licdn.com/dms/image/v2/C4E2DAQF1emOqEQHRzA/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1610469754297?e=1730462400&v=beta&t=ju6y8lWQ6x-BMf8BhUNel63XHw3eIDZXZrpQN0eMd4A",
-    "https://media.licdn.com/dms/image/v2/C4D2DAQGA4zTdFypuhg/profile-treasury-image-shrink_1280_1280/profile-treasury-image-shrink_1280_1280/0/1597905705071?e=1730462400&v=beta&t=4FhV6X3qBt0f9KY6oF_t_uSpC6Rw_-slmYiuSad-M4s",
     "https://media.licdn.com/dms/image/v2/C4E2DAQGBmZIuX3RmJQ/profile-treasury-image-shrink_1920_1920/profile-treasury-image-shrink_1920_1920/0/1602223042627?e=1730462400&v=beta&t=GfMlVikhCx1L-gSkB4PwaSQMtGQRzI_31ua2Yr-neOc",
     "https://media.licdn.com/dms/image/v2/C4E2DAQGpUtEBzCFzRQ/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1597457175631?e=1730491200&v=beta&t=_Yj_WX5GLiA6e99vVqNIkYZVOfkaTLVFE-gK_3t8088"
   ];
@@ -186,7 +188,7 @@ const Portfolio = () => {
     },
     {
       title: "RESTful APIs and Band Payload Processing",
-      description: "I developed a robust .NET Web API application designed to demonstrate seamless payload transmission between applications. This API effectively logs incoming decoded payload messages, ensuring that all relevant data is captured for future analysis. The integrated decoder processes these messages efficiently, enabling smooth communication and data handling between various components of the system. In addition, I created two gRPC applications—a server and a client—that facilitate efficient data transmission between distinct applications. These prototypes have proven successful in logging essential data into an SQL table, showcasing the system's capability to handle complex data interactions. Through this experience, I gained valuable insights into the advantages of gRPC over traditional RESTful approaches, including improved performance, reduced latency, and more efficient data serialisation/",
+      description: "I developed a robust .NET Web API application designed to demonstrate seamless payload transmission between applications. This API effectively logs incoming decoded payload messages, ensuring that all relevant data is captured for future analysis. The integrated decoder processes these messages efficiently, enabling smooth communication and data handling between various components of the system. In addition, I created two gRPC applications—a server and a client—that facilitate efficient data transmission between distinct applications. These prototypes have proven successful in logging essential data into an SQL table, showcasing the system's capability to handle complex data interactions. Through this experience, I gained valuable insights into the advantages of gRPC over traditional RESTful approaches, including improved performance, reduced latency, and more efficient data serialisation.",
       category: "Work at Acticheck",
       period: "July 2024 - September 2024",
       tags: [".NET", "gRPC", "SQL", "REST API"],
@@ -588,8 +590,13 @@ const Portfolio = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white">
-        <div className="max-w-6xl mx-auto px-4 py-16 text-center">
+      <div
+        className="text-white bg-cover bg-center"
+        style={{
+          backgroundImage: `url('/Mollie-beach.jpg')`,
+        }}
+      >
+        <div className="max-w-6xl mx-auto px-4 py-16 text-center bg-black bg-opacity-50">
           <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in">
             Kieran Emery
           </h1>
