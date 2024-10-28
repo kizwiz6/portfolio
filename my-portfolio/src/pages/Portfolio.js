@@ -408,14 +408,14 @@ const Portfolio = () => {
         company: "Acticheck",
         link: "https://acticheck.com/",
         period: "June 2024 - October 2024",
-        role: "Software Developer",
+        role: "Software Engineer (Temporary)",
         location: "Fowlmere, Cambridge",
         description: [
           "Developed a secure .NET Core web app for user authentication, integrating .NET Core Identity, encrypted SQL Server credentials, and third-party services like Facebook login and SendGrid email. Implemented configurable logging and secure data transfer via DTOs for streamlined user management and robust security.",
           "Developed a .NET Web API for seamless payload transmission, logging decoded messages for analysis and ensuring smooth data handling. Tested the API using Postman. Created gRPC client-server prototypes for efficient data transmission, logging data into an SQL table using Entity Framework Core.",
           "Developed a .NET MAUI application showcasing cross-platform functionality and Bluetooth capabilities."
         ],
-        technologies: [".NET Core", "SQL Server", "Identity", "OAuth"]
+        technologies: [".NET Core", "C#", "Python", "SQL Server", "Entity Framework Core", "Identity", "OAuth", ".NET MAUI", "gRPC", "REST API", "Postman", "Visual Studio", "Git", "Github", "SendGrid"],
     },
     {
       company: "iGO4 Insurance",
@@ -436,7 +436,7 @@ const Portfolio = () => {
       "Led requirements gathering, analysis, and direct stakeholder communication, facilitating the construction of robust objects and reports for the Kingfisher data migration project.",
       "Deepened proficiency in SQL Server, enabling advanced data querying across multiple datasets and the creation of complex stored procedures."
       ],
-      technologies: ["Java", "C#", "Python", "AWS", "SQL", "REST API"],
+      technologies: ["Apache Velocity", "HTML", "CSS", "CDL's Strata", "Java", "AWS", "SQL", "Pentaho", "Drools", "VSTS", "Postman", "Adobe InDesign", "C#", "Python", "REST API", "Agile Methodology", "Git", "GitLab", "GitKraken", "Azure DevOps", "Visual Studio", "VS Code", "Node.js", "JSON", "Tableau", "Excel", "SSIS", "SSRS", "SQL Server", "Oracle SQL", "SoapUI", "Jira", "Confluence", "Microsoft Teams", "Slack", "Skype"],
       images: igo4GalleryImages,
     }
   ];
@@ -782,6 +782,8 @@ const Portfolio = () => {
                     {exp.company}
                   </a>
                 </h3>
+                {/* Displaying Role */}
+                <p className="text-md text-gray-500 mb-1">{exp.role}</p>
                 {/* Displaying Location */}
                 <p className="text-md text-gray-500 mb-1">{exp.location}</p>
 
