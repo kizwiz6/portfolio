@@ -593,7 +593,7 @@ const Portfolio = () => {
       <div
         className="text-white bg-cover bg-center"
         style={{
-          backgroundImage: `url('/Mollie-beach.jpg')`,
+          backgroundImage: `url('https://github.com/kizwiz6/portfolio/blob/master/my-portfolio/public/Mollie-bg.jpg?raw=true')`,
         }}
       >
         <div className="max-w-6xl mx-auto px-4 py-16 text-center bg-black bg-opacity-50">
