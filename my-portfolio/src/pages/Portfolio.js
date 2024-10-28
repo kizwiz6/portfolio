@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Github, Linkedin, Facebook, Instagram, Mail, Menu, X, Calendar } from 'lucide-react';
-import ModalImage from 'react-modal-image';
 
 const Portfolio = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
