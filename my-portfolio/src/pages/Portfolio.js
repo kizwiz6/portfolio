@@ -1,51 +1,91 @@
 import React, { useState } from 'react';
 import { Github, Linkedin, Facebook, Instagram, Mail, Menu, X, Calendar } from 'lucide-react';
+import { useSpring, animated, useTrail } from 'react-spring';
 import PropTypes from 'prop-types';
+
+// Enhanced Animated Component
+const AnimatedComponent = () => {
+  const props = useSpring({
+    to: { opacity: 1, transform: 'scale(1)', rotate: '0deg' },
+    from: { opacity: 0, transform: 'scale(0.5)', rotate: '20deg' },
+    config: { tension: 170, friction: 26 },
+  });
+
+  return (
+    <animated.div
+      style={{
+        ...props,
+        background: 'linear-gradient(135deg, #6e7ff3, #8c6fff)', // Gradient background
+        padding: '20px',
+        borderRadius: '15px',
+        textAlign: 'center',
+        color: 'white',
+        boxShadow: '0 4px 20px rgba(0,0,0,0.3)', // Shadow for depth
+      }}
+    >
+      <h2 className="text-3xl font-bold">Welcome to My Portfolio!</h2>
+      <p className="text-lg">I'm a software developer building innovative solutions with modern technologies.</p>
+    </animated.div>
+  );
+};
+
+// AboutMeContent Component with Animation
+const AboutMeContent = () => {
+  // Spring animations for each section
+  const headingAnimation = useSpring({ opacity: 1, from: { opacity: 0 }, delay: 200 });
+  const profilePicAnimation = useSpring({ transform: 'scale(1)', from: { transform: 'scale(0.8)' }, delay: 300 });
+
+  // Trail animation for content sections
+  const content = [
+    "I'm Kieran, a dedicated Software Developer based in Cambridgeshire, UK. With nearly seven years of commercial experience at companies like Acticheck and iGO4 Insurance, I have honed my skills in software development.",
+    "I am deeply passionate about leveraging technology to tackle complex real-world problems and drive innovation. My journey includes developing a tailor-made mobile application for my dissertation that encourages individual behavioural changes to combat climate change.",
+    "Welcome to my digital portfolio, showcasing some of my most cherished projects. Although confidentiality restricts me from revealing specifics of my iGO4 projects, I'm excited to share the essence of my work and the skills I've developed.",
+    "Thank you for visiting my portfolio! I look forward to connecting and sharing my passion for development. Feel free to reach out via email or through my contact form."
+  ];
+
+  const trail = useTrail(content.length, {
+    opacity: 1,
+    x: 0,
+    from: { opacity: 0, x: 20 },
+    delay: 400
+  });
+
+  return (
+    <div className="max-w-6xl mx-auto px-4">
+      {/* Animated Heading */}
+      <animated.h2 style={headingAnimation} className="text-4xl font-bold mb-6">
+        About Me
+      </animated.h2>
+
+      {/* Animated Profile Picture */}
+      <animated.div style={profilePicAnimation} className="mb-8 flex flex-col items-center">
+        <img
+          src="https://i.imgur.com/sN2gjsM.png"
+          alt="Kieran Emery"
+          className="w-100 h-100 object-cover mb-4 rounded-full shadow-lg"
+        />
+      </animated.div>
+
+      {/* Animated Content Blocks */}
+      {trail.map((style, index) => (
+        <animated.div key={index} style={style} className="mb-8">
+          <h2 className="text-2xl font-semibold mb-2">
+            {index === 0 && "My Story"}
+            {index === 1 && "My Passion"}
+            {index === 2 && "My Journey"}
+            {index === 3 && "Let's Connect!"}
+          </h2>
+          <p className="text-lg text-gray-600">{content[index]}</p>
+        </animated.div>
+      ))}
+    </div>
+  );
+};
 
 // Functional component for the Portfolio page
 const Portfolio = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('projects');
-
-  const aboutMeContent = (
-    <div className="max-w-6xl mx-auto px-4 ">
-      <h2 className="text-4xl font-bold mb-6">About Me</h2>
-
-      {/* Profile Picture */}
-      <div className="mb-8 flex flex-col items-center">
-        <img
-          src="https://i.imgur.com/sN2gjsM.png"
-          alt="Kieran Emery"
-          className="w-100 h-100 object-cover mb-4"
-        />
-
-        <p className="text-lg text-gray-600">
-          I'm Kieran, a dedicated Software Developer based in Cambridgeshire, UK. With nearly seven years of commercial experience at companies like Acticheck and iGO4 Insurance, I have honed my skills in software development. My educational background includes a Bachelor's degree in Computing from Coventry University and a BTEC Level 3 Extended Diploma in IT from Bedford College, which provides a solid foundation to complement my practical experience.
-        </p>
-      </div>
-
-      <div className="mb-8">
-        <h2 className="text-2xl font-semibold">My Passion</h2>
-        <p className="text-lg text-gray-600 mb-4">
-          I am deeply passionate about leveraging technology to tackle complex real-world problems and drive innovation. I believe software development has the power to create positive change. My journey includes developing a tailor-made mobile application for my dissertation that encourages individual behavioural changes to combat climate change. Additionally, I took the initiative to learn .NET MAUI in my spare time, which led to the creation of a British Sign Language app aimed at improving communication accessibility for the deaf and hard-of-hearing community. By integrating user feedback into the design process, I ensure that my projects remain effective and relevant. These initiatives epitomise my commitment to using technology to make a meaningful difference in people's lives.
-        </p>
-      </div>
-
-      <div className="mb-8">
-        <h2 className="text-2xl font-semibold">My Journey</h2>
-        <p className="text-lg text-gray-600 mb-4">
-          Welcome to my digital portfolio, showcasing some of my most cherished projects. Although confidentiality restricts me from revealing specifics of my iGO4 projects, I'm excited to share the essence of my work and the skills I've developed. This website offers an initial look at my capabilities; for a more in-depth understanding, I invite you to arrange a personal meeting where I can walk you through detailed demonstrations and discussions.
-        </p>
-      </div>
-
-      <div className="mb-8">
-        <h2 className="text-2xl font-semibold">Let's Connect!</h2>
-        <p className="text-lg text-gray-600 mb-4">
-          Thank you for visiting my portfolio! I look forward to connecting and sharing my passion for development. Feel free to reach out via <a href="mailto:kizwiz@hotmail.co.uk" className="text-blue-600 underline">email</a> or through my contact form.
-        </p>
-      </div>
-    </div>
-  );
 
   const longsandsGalleryImages = [
     "https://i.imgur.com/k4fKTuY.jpeg",
@@ -619,6 +659,7 @@ const Portfolio = () => {
           </div>
         </div>
       </div>
+
       {/* Navigation */}
       <nav className="bg-white shadow-sm">
         <div className="max-w-6xl mx-auto px-4 py-4">
@@ -653,7 +694,6 @@ const Portfolio = () => {
               </button>
             </div>
 
-            {/* Social Links */}
             {/* Social Links */}
             <div className="hidden md:flex space-x-4">
               <a href="https://github.com/kizwiz6" className="text-gray-600 hover:text-gray-900" target="_blank" rel="noopener noreferrer">
@@ -704,10 +744,12 @@ const Portfolio = () => {
         )}
       </nav>
 
+
+
       {/* Main Content */}
       <main className="max-w-6xl mx-auto px-4 py-8">
 
-        {activeTab === 'about' && aboutMeContent}
+        {activeTab === 'about' && <AboutMeContent />}
 
         {activeTab === 'projects' && (
           <div>
