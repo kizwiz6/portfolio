@@ -225,12 +225,14 @@ const Portfolio = () => {
 
       I worked on a lambda function that served as a primary data splitter and created individual queues for specific data areas with unique rulesets. I also independently contributed to the development of the Claims rules engine. The senior developers shared their expertise, guiding me on best practices for AWS services like Amazon Kinesis and Amazon SQS, ensuring an efficient and reliable implementation.
 
+      A key aspect of my role involved updating YAML configuration files for our CI/CD pipelines. I modified these files to define build and deployment processes, ensuring that our applications could be consistently integrated and delivered in an automated manner. This experience enhanced my understanding of CI/CD practices and how they facilitate seamless software development and deployment.
+
       In addition to AWS services, the senior developers taught me how to work with REST APIs using Postman. They helped me understand API request components, debug APIs, and use advanced features like collections, environment variables, and automated tests. This experience enhanced my API development and testing skills.
 
       Throughout the project, I developed my skills in C#, SQL, JSON, Node.js, and the AWS SDK, thanks to constructive feedback and encouragement from the senior developers. This mentorship allowed me to successfully carry out my role in the project and gain valuable experience in designing and implementing cloud-based data processing solutions using AWS services and various programming languages.`,
       category: "Work at iGO4",
       period: "March 2022 - October 2022",
-      tags: ["C#", "SQL", "JSON", "Node.js", "AWS", "Postman"],
+      tags: ["C#", "SQL", "JSON", "Node.js", "AWS", "Postman", "YAML", "Agile Methodology"],
     },
     {
       title: "CCM Project",
