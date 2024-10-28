@@ -64,6 +64,10 @@ const Portfolio = () => {
     "https://media.licdn.com/dms/image/v2/C4E2DAQGpUtEBzCFzRQ/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1597457175631?e=1730491200&v=beta&t=_Yj_WX5GLiA6e99vVqNIkYZVOfkaTLVFE-gK_3t8088"
   ];
 
+  const acticheckGalleryImages = [
+    "https://previews.dropbox.com/p/thumb/ACc-NNn0zDFihPMceXTvhBjtWFn3goOxXslf_MIIcKMWsUIFnuele5Ji0n0SjANFOmkaPchvOXsXtLeaLPhFgoO_MTLILBliqgG0oQBCqY0alak-Htpi9_Rdigqn-BavzD7jUBHOqJvgUVvkPjpfA0s54wBY9ZuaxvHS5snI5_i4kxoCkVFTe6YzHEETuIOh7KQomax5uOWY3vmYFa4XaoFAR77xsfRMvwWBmFVghm0sAtLbu5NGH3wCSjg1AJOh146NnI2uoI34aAcMmjiVRC2-BRtZeqlB6oxAYaXx6oQ3p9cCzWzXjxa4_j1vBjeTHyJF5NP0b11QrPUpt172Ay2E/p.jpeg"
+  ];
+
   const igo4GalleryImages = [
     "https://media.licdn.com/dms/image/v2/C4D2DAQGdxbGsMdrIaA/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1601349657830?e=1730491200&v=beta&t=94GCY5zYijd5XRypgz_LsKuDL8RgvMIyy4EGbKCnxBQ",
     "https://media.licdn.com/dms/image/v2/C4D2DAQHqDtJs3ohx7Q/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1602152821588?e=1730491200&v=beta&t=IB8pnkVXwHSnK7pNv1iZAN9RC4DK9BwuPbfe41vhc0w",
@@ -418,6 +422,7 @@ const Portfolio = () => {
       category: "Bedford College Project",
       description: `In the 'Developing Computer Games' module, we explored the world of computer gaming, examining its psychological effects on individuals and society while creating our unique game powered by VB.NET. While the module offered classic games to recreate, I chose to venture off the beaten path by developing my own game, a tribute to the timeless classic Tic-Tac-Toe (Noughts and Crosses). This project involved comprehensive documentation, including a user manual and a meticulous test plan, highlighting how a game's structure and design facilitate maintenance and future extension.`,
       tags: ["VB.NET", "Game Development"],
+      videoSource: "TicTacToe.mp4",
       grade: "Distinction",
     },
     {
@@ -427,6 +432,7 @@ const Portfolio = () => {
       category: "Bedford College Project",
       description: `The Spreadsheet Design module provided valuable insights into Excel's capabilities, equipping me with the skills to create high-quality spreadsheets for industry use. The challenge was to design a comprehensive membership spreadsheet tailored for a gym club, which included three distinct membership categories to manage varying subscription plans. Additionally, the club organized optional trips funded by members and held weekly gatherings in a community hall, which incurred expenses like rent, insurance, and electricity. The project included a video demonstration showcasing the spreadsheet's functionality and extensive documentation comparing automation methods, analysing data, and explaining how organisations can interpret data effectively.`,
       tags: ["Excel", "Spreadsheet Design"],
+      videoSource: "SpreadsheetDesign.mp4",
       grade: "Distinction",
     }
   ];
@@ -444,6 +450,7 @@ const Portfolio = () => {
         "Developed a .NET MAUI application showcasing cross-platform functionality and Bluetooth capabilities."
       ],
       technologies: [".NET Core", "C#", "Python", "SQL Server", "Entity Framework Core", "Identity", "OAuth", ".NET MAUI", "gRPC", "REST API", "Postman", "Visual Studio", "Git", "Github", "SendGrid"],
+      images: acticheckGalleryImages,
     },
     {
       company: "iGO4 Insurance",
@@ -942,6 +949,16 @@ const Portfolio = () => {
                       allowFullScreen
                       className="mb-4"
                     ></iframe>
+                  )}
+
+                  {/* Video Section */}
+                  {edu.videoSource && ( // Check for videoSource here
+                    <div className="video-container mb-4">
+                      <video controls className="w-full">
+                        <source src={`${process.env.PUBLIC_URL}/${edu.videoSource}`} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
                   )}
 
                   {/* Image Gallery Section for Coventry University only */}
