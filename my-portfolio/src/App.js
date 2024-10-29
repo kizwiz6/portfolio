@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HashRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import Portfolio from './pages/Portfolio';
 import About from './pages/About';
 import Projects from './pages/Projects';
@@ -19,7 +19,17 @@ function App() {
       <div className="App">
         <ScrollToTop />
         <Routes>
-          <Route path="/" element={<Navigate to="/about" />} />
+          <Route
+            path="/" 
+            element={
+              <About 
+                activeTab={activeTab} 
+                setActiveTab={setActiveTab} 
+                setIsMenuOpen={setIsMenuOpen} 
+                isMenuOpen={isMenuOpen} 
+              />
+            }
+          />
           <Route 
             path="/about" 
             element={
