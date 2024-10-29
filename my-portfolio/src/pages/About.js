@@ -3,6 +3,7 @@ import { useSpring, animated, useTrail } from 'react-spring';
 import { Link } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import Layout from '../components/Layout';
+import AnimatedComponent from '../components/AnimatedComponent';
 
 const About = () => {
     // Spring animations for heading and profile picture
@@ -58,9 +59,9 @@ const About = () => {
             <div className="max-w-6xl mx-auto px-4 py-8"> {/* Adjust padding if necessary */}
 
                 {/* Animated Heading */}
-                <animated.h2 style={headingAnimation} className="text-4xl font-bold mb-6">
-                    About Me
-                </animated.h2>
+                <AnimatedComponent style={{ marginBottom: '24px' }}>
+                    <h2 className="text-4xl font-bold">About Me</h2>
+                </AnimatedComponent>
 
                 {/* Animated Profile Picture */}
                 <animated.div style={profilePicAnimation} className="mb-8 flex flex-col items-center">

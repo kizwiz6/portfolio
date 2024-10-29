@@ -3,6 +3,7 @@ import ImageGallery from '../components/ImageGallery';
 import { Calendar } from 'lucide-react';
 import { experiences } from '../data/experiences';
 import Layout from '../components/Layout';
+import AnimatedComponent from '../components/AnimatedComponent';
 
 const Experience = () => {
   const [activeTab, setActiveTab] = useState('experience'); // Set the active tab to 'experience'
@@ -15,7 +16,9 @@ const Experience = () => {
       setIsMenuOpen={setIsMenuOpen}
       isMenuOpen={isMenuOpen}
     >
-      <h2 className="text-3xl font-bold mb-8">Work Experience</h2>
+      <AnimatedComponent style={{ marginBottom: '24px' }}>
+        <h2 className="text-4xl font-bold">Work Experience</h2>
+      </AnimatedComponent>
       <p className="text-gray-600 mb-6">
         Below is a summary of the work I've completed at various companies, showcasing my contributions to significant projects, technologies utilised, and the skills I've developed throughout my career.
       </p>

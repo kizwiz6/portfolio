@@ -4,11 +4,22 @@ import ImageGallery from '../components/ImageGallery';
 import {
   longsandsGalleryImages, uniGalleryImages, acticheckGalleryImages, igo4GalleryImages
 } from '../galleryImages';
+import AnimatedComponent from '../components/AnimatedComponent';
 
 const Education = ({ education }) => {
   return (
-    <div className="max-w-6xl mx-auto px-4 py-4"> {/* Adjusted padding to py-4 */}
-      <h2 className="text-3xl font-bold mb-6">Education</h2> {/* Adjusted margin bottom */}
+    <div> {/* Adjusted padding to py-4 */}
+      <AnimatedComponent style={{ marginBottom: '24px' }}>
+        <h2 className="text-4xl font-bold">Education</h2>
+      </AnimatedComponent>
+
+      {/* Brief introductory text about your education background */}
+      <p className="text-lg text-gray-700 mb-6">
+        My academic journey has provided a strong foundation in software development and computer science. 
+        From Longsands Academy to Bedford College, and ultimately to Coventry University, each institution has played a crucial role in shaping my skills and passion for technology. 
+        Below, you'll find details of my qualifications, showcasing my commitment to learning and growth in the field.
+      </p>
+
       {education.map((edu, index) => (
         <div key={index} className="bg-white shadow-md rounded-lg p-6 mb-6">
           <div className="flex items-center mb-2">
@@ -26,10 +37,10 @@ const Education = ({ education }) => {
           <p className="text-gray-600 mb-4">
             {edu.institution === 'Coventry University' &&
               "At Coventry University, I honed my skills in software development and project management through hands-on projects and collaborative teamwork. I specialised in agile methodologies and developed a strong foundation in both front-end and back-end technologies."}
-              
+
             {edu.institution === 'Bedford College' &&
               "During my time at Bedford College, I dedicated myself to an intensive course focused solely on Information Technology. This immersive experience allowed me to delve deeply into web technologies, design principles, and essential ICT skills. The curriculum emphasised practical, hands-on learning, providing numerous opportunities to engage in real-world projects. This focused approach not only honed my technical abilities but also fostered critical problem-solving skills and a strong understanding of the industry's best practices. As a result, I felt well-prepared to pursue further studies at the university level, equipped with the foundational knowledge needed for success in the field of computing."}
-              
+
             {edu.institution === 'Longsands Academy' &&
               "At Longsands Academy, I completed my GCSEs and A-Levels, which ultimately sparked my interest in computing and technology. The supportive learning environment, combined with a strong curriculum, laid a solid foundation for my academic journey. This experience inspired me to further my studies by enrolling in a dedicated Computing course at Bedford College."}
           </p>

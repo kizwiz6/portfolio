@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ProjectCard from '../components/ProjectCard';
 import HeroSection from '../components/HeroSection';
 import Navigation from '../components/Navigation';
+import AnimatedComponent from '../components/AnimatedComponent';
 
 // Functional component for the Projects page
 const Projects = () => {
@@ -314,7 +315,9 @@ const Projects = () => {
                 setIsMenuOpen={setIsMenuOpen}
                 isMenuOpen={isMenuOpen}
             />
-            <h2 className="text-3xl font-bold mb-8">Projects</h2>
+            <AnimatedComponent style={{ marginBottom: '24px' }}>
+                <h2 className="text-4xl font-bold">Projects</h2>
+            </AnimatedComponent>
             {projectsIntroContent && <div className="mb-4">{projectsIntroContent}</div>}
 
             {/* Grid container for two-column layout on medium and larger screens */}
