@@ -7,8 +7,8 @@ import {
 
 const Education = ({ education }) => {
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8">
-      <h2 className="text-3xl font-bold mb-8">Education</h2>
+    <div className="max-w-6xl mx-auto px-4 py-4"> {/* Adjusted padding to py-4 */}
+      <h2 className="text-3xl font-bold mb-6">Education</h2> {/* Adjusted margin bottom */}
       {education.map((edu, index) => (
         <div key={index} className="bg-white shadow-md rounded-lg p-6 mb-6">
           <div className="flex items-center mb-2">
