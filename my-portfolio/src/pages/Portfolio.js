@@ -5,8 +5,8 @@ import { Github, Linkedin, Facebook, Instagram, Mail, Menu, X } from 'lucide-rea
 import About from '../pages/About';
 import Projects from '../pages/Projects';
 import Experience from '../pages/Experience';
-import { education } from '../data/education';
-import Education from '../components/Education';
+import { educationData } from '../data/educationData'; // Corrected the import to use the named export
+import Education from '../pages/Education'; // Adjusted to import from pages instead of components
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
 // Functional component for the Portfolio page
@@ -24,7 +24,7 @@ const Portfolio = ({ activeTab, experiences }) => {
         {activeTabState === 'about' && <About />}
         {activeTabState === 'projects' && <Projects />}
         {activeTabState === 'experience' && <Experience experience={experiences} />}
-        {activeTabState === 'education' && <Education education={education} />}
+        {activeTabState === 'education' && <Education activeTab={activeTabState} setActiveTab={setActiveTab} setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen} />}
       </main>
     </div>
   );

@@ -1,7 +1,7 @@
 import { longsandsGalleryImages, uniGalleryImages } from "../galleryImages";
 
-// src/data/education.js
-export const education = [
+// src/data/educationData.js
+export const educationData = [
     {
       institution: "Coventry University",
       period: "2014 - 2017",
