@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
-import ImageGallery from '../components/ImageGallery';
+// src/pages/Experience.js
+
+import React, { useState, Suspense, lazy } from 'react';
 import { Calendar } from 'lucide-react';
 import { experiences } from '../data/experiences';
 import Layout from '../components/Layout';
 import AnimatedComponent from '../components/AnimatedComponent';
 
+// Lazy load the ImageGallery component
+const ImageGallery = lazy(() => import('../components/ImageGallery'));
+
 const Experience = () => {
-  const [activeTab, setActiveTab] = useState('experience'); // Set the active tab to 'experience'
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // State to control mobile menu open/close
+  const [activeTab, setActiveTab] = useState('experience');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <Layout
@@ -20,8 +24,9 @@ const Experience = () => {
         <h2 className="text-4xl font-bold">Work Experience</h2>
       </AnimatedComponent>
       <p className="text-gray-600 mb-6">
-        Below is a summary of the work I've completed at various companies, showcasing my contributions to significant projects, technologies utilised, and the skills I've developed throughout my career.
+        Below is a summary of the work I've completed at various companies, showcasing my contributions to significant projects, technologies utilized, and the skills I've developed throughout my career.
       </p>
+
       {experiences.length === 0 ? (
         <p className="text-gray-600">No experience listed.</p>
       ) : (
@@ -33,7 +38,12 @@ const Experience = () => {
                 {exp.period}
               </span>
               <h3 className="text-xl font-semibold flex-grow text-center">
-                <a href={exp.website} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={exp.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Visit ${exp.company} website`}
+                >
                   {exp.company}
                 </a>
               </h3>
@@ -49,7 +59,9 @@ const Experience = () => {
 
             {/* Image Gallery Section */}
             {exp.images && exp.images.length > 0 && (
-              <ImageGallery images={exp.images} title={exp.company} />
+              <Suspense fallback={<div>Loading images...</div>}>
+                <ImageGallery images={exp.images} title={exp.company} />
+              </Suspense>
             )}
           </div>
         ))
