@@ -3,9 +3,9 @@ import ProjectCard from '../components/ProjectCard';
 import AnimatedComponent from '../components/AnimatedComponent';
 import Layout from '../components/Layout';
 
+
 // Functional component for the Projects page
-const Projects = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false); // State to control mobile menu open/close
+const Projects = ({ activeTab, setActiveTab, setIsMenuOpen, isMenuOpen }) => {
 
     const projectsIntroContent = (
         <div>
@@ -305,7 +305,12 @@ const Projects = () => {
     ];
 
     return (
-        <Layout activeTab="projects" setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen}>
+        <Layout
+            activeTab="projects"
+            setActiveTab={setActiveTab}
+            setIsMenuOpen={setIsMenuOpen} // Pass this down
+            isMenuOpen={isMenuOpen} // Use the prop directly
+        >
             <AnimatedComponent style={{ marginBottom: '24px' }}>
                 <h2 className="text-4xl font-bold">Projects</h2>
             </AnimatedComponent>
