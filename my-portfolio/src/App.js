@@ -3,6 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Portfolio from './pages/Portfolio';
 import Projects from './pages/Projects';
+import Experience from './pages/Experience';
 import ScrollToTop from './components/ScrollToTop'; // Scroll to top on route change
 import { experiences } from './data/experiences'; // Import experience data
 import './App.css';
@@ -16,7 +17,7 @@ function App() {
           <Route path="/" element={<Portfolio experiences={experiences} />} />
           <Route path="/about" element={<Portfolio activeTab="about" experiences={experiences} />} />
           <Route path="/projects" element={<Projects />} />
-          <Route path="/experience" element={<Portfolio activeTab="experience" experiences={experiences} />} />
+          <Route path="/experience" element={<Experience />} />
           <Route path="/education" element={<Portfolio activeTab="education" experiences={experiences} />} />
         </Routes>
       </div>

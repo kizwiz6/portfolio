@@ -6,7 +6,7 @@ export const experiences = [
   {
     company: "Acticheck",
     link: "https://acticheck.com/",
-    period: "June 2024 - October 2024",
+    period: "June 2024 - Oct 2024",
     role: "Software Engineer (Temporary)",
     location: "Fowlmere, Cambridge",
     description: [

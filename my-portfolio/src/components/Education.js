@@ -7,10 +7,10 @@ import {
 
 const Education = ({ education }) => {
   return (
-    <div>
+    <div className="max-w-6xl mx-auto px-4 py-8">
       <h2 className="text-3xl font-bold mb-8">Education</h2>
       {education.map((edu, index) => (
-        <div key={index} className="mb-6">
+        <div key={index} className="bg-white shadow-md rounded-lg p-6 mb-6">
           <div className="flex items-center mb-2">
             <span className="text-gray-600 flex-shrink-0">
               <Calendar size={16} className="mr-2" />
