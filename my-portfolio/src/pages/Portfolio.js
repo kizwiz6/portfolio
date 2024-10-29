@@ -6,7 +6,7 @@ import AboutMe from '../components/AboutMe';
 import ImageGallery from '../components/ImageGallery';
 import ProjectList from '../components/ProjectList';
 import Projects from '../pages/Projects';
-import Experience from '../components/Experience';
+import Experience from '../pages/Experience';
 import { education } from '../data/education';
 import Education from '../components/Education';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom

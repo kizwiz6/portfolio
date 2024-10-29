@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ProjectCard from '../components/ProjectCard';
 import HeroSection from '../components/HeroSection';
+import Navigation from '../components/Navigation';
 
 // Functional component for the Projects page
 const Projects = () => {
+    const [activeTab, setActiveTab] = useState('projects'); // Set the active tab to 'projects'
+    const [isMenuOpen, setIsMenuOpen] = useState(false); // State to control mobile menu open/close
+
     const projectsIntroContent = (
         <div>
             <p className="text-gray-600 mb-4">
@@ -304,17 +308,23 @@ const Projects = () => {
     return (
         <div>
             <HeroSection />
-          <h2 className="text-3xl font-bold mb-8">Projects</h2>
-          {projectsIntroContent && <div className="mb-4">{projectsIntroContent}</div>}
+            <Navigation
+                activeTab={activeTab}
+                setActiveTab={setActiveTab}
+                setIsMenuOpen={setIsMenuOpen}
+                isMenuOpen={isMenuOpen}
+            />
+            <h2 className="text-3xl font-bold mb-8">Projects</h2>
+            {projectsIntroContent && <div className="mb-4">{projectsIntroContent}</div>}
 
-          {/* Grid container for two-column layout on medium and larger screens */}
-          <div className="grid md:grid-cols-2 gap-6">
-            {projects.map((project, index) => (
-              <ProjectCard key={index} project={project} />
-            ))}
-          </div>
+            {/* Grid container for two-column layout on medium and larger screens */}
+            <div className="grid md:grid-cols-2 gap-6">
+                {projects.map((project, index) => (
+                    <ProjectCard key={index} project={project} />
+                ))}
+            </div>
         </div>
-      );
+    );
 };
 
 export default Projects;
