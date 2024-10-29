@@ -9,10 +9,10 @@ const Experience = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false); // State to control mobile menu open/close
 
   return (
-    <Layout 
-      activeTab={activeTab} 
-      setActiveTab={setActiveTab} 
-      setIsMenuOpen={setIsMenuOpen} 
+    <Layout
+      activeTab={activeTab}
+      setActiveTab={setActiveTab}
+      setIsMenuOpen={setIsMenuOpen}
       isMenuOpen={isMenuOpen}
     >
       <h2 className="text-3xl font-bold mb-8">Work Experience</h2>

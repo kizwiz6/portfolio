@@ -5,7 +5,7 @@ import { acticheckGalleryImages, igo4GalleryImages } from '../galleryImages';
 export const experiences = [
   {
     company: "Acticheck",
-    link: "https://acticheck.com/",
+    website: "https://acticheck.com/",
     period: "June 2024 - Oct 2024",
     role: "Software Engineer (Temporary)",
     location: "Fowlmere, Cambridge",
@@ -19,7 +19,7 @@ export const experiences = [
   },
   {
     company: "iGO4 Insurance",
-    link: "https://www.igo4.com/",
+    website: "https://www.igo4.com/",
     period: "Jan 2018 - Dec 2023",
     role: "Software Developer",
     location: "Werrington, Peterborough",
