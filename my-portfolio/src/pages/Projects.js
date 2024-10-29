@@ -5,7 +5,6 @@ import Layout from '../components/Layout';
 
 // Functional component for the Projects page
 const Projects = () => {
-    const [activeTab, setActiveTab] = useState('projects'); // Set the active tab to 'projects'
     const [isMenuOpen, setIsMenuOpen] = useState(false); // State to control mobile menu open/close
 
     const projectsIntroContent = (
@@ -306,13 +305,12 @@ const Projects = () => {
     ];
 
     return (
-        <Layout activeTab={activeTab} setActiveTab={setActiveTab} setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen}>
+        <Layout activeTab="projects" setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen}>
             <AnimatedComponent style={{ marginBottom: '24px' }}>
                 <h2 className="text-4xl font-bold">Projects</h2>
             </AnimatedComponent>
             {projectsIntroContent && <div className="mb-4">{projectsIntroContent}</div>}
 
-            {/* Grid container for two-column layout on medium and larger screens */}
             <div className="grid md:grid-cols-2 gap-6">
                 {projects.map((project, index) => (
                     <ProjectCard key={index} project={project} />
