@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import ProjectCard from '../components/ProjectCard';
-import HeroSection from '../components/HeroSection';
-import Navigation from '../components/Navigation';
 import AnimatedComponent from '../components/AnimatedComponent';
+import Layout from '../components/Layout';
 
 // Functional component for the Projects page
 const Projects = () => {
@@ -307,14 +306,7 @@ const Projects = () => {
     ];
 
     return (
-        <div>
-            <HeroSection />
-            <Navigation
-                activeTab={activeTab}
-                setActiveTab={setActiveTab}
-                setIsMenuOpen={setIsMenuOpen}
-                isMenuOpen={isMenuOpen}
-            />
+        <Layout activeTab={activeTab} setActiveTab={setActiveTab} setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen}>
             <AnimatedComponent style={{ marginBottom: '24px' }}>
                 <h2 className="text-4xl font-bold">Projects</h2>
             </AnimatedComponent>
@@ -326,7 +318,7 @@ const Projects = () => {
                     <ProjectCard key={index} project={project} />
                 ))}
             </div>
-        </div>
+        </Layout>
     );
 };
 

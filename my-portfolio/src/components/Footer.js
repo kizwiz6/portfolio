@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import SocialMediaLinks from './SocialMediaLinks';
+import SocialMediaLinks from './SocialMediaLinks.js';
 
 const Footer = () => {
   return (

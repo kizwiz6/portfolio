@@ -1,11 +1,10 @@
 import React from 'react';
 import { useSpring, animated, useTrail } from 'react-spring';
 import { Link } from 'react-router-dom';
-import Navigation from '../components/Navigation';
 import Layout from '../components/Layout';
 import AnimatedComponent from '../components/AnimatedComponent';
 
-const About = () => {
+const About = ({ activeTab, setActiveTab, setIsMenuOpen, isMenuOpen }) => {
     // Spring animations for heading and profile picture
     const headingAnimation = useSpring({ opacity: 1, from: { opacity: 0 }, delay: 200 });
     const profilePicAnimation = useSpring({ transform: 'scale(1)', from: { transform: 'scale(0.8)' }, delay: 300 });
@@ -55,7 +54,7 @@ const About = () => {
     });
 
     return (
-        <Layout>
+        <Layout activeTab={activeTab} setActiveTab={setActiveTab} setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen}>
             <div className="max-w-6xl mx-auto px-4 py-8"> {/* Adjust padding if necessary */}
 
                 {/* Animated Heading */}
