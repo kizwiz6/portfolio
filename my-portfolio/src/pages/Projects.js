@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ProjectCard from '../components/ProjectCard';
 import AnimatedComponent from '../components/AnimatedComponent';
 import Layout from '../components/Layout';
