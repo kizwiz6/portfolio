@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 const ImageGallery = ({ images, title }) => {
   const [lightbox, setLightbox] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0); // To track the current image index
+  const [isLoading, setIsLoading] = useState(true); // Track image loading state
 
   const closeLightbox = () => {
     setLightbox(null);
@@ -17,9 +18,7 @@ const ImageGallery = ({ images, title }) => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
     } else if (event.key === 'ArrowLeft') {
       // Move to the previous image
-      setCurrentImageIndex((prevIndex) => 
-        (prevIndex - 1 + images.length) % images.length
-      );
+      setCurrentImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
     } else if (event.key === 'Escape') {
       // Close the lightbox
       closeLightbox();
@@ -34,7 +33,7 @@ const ImageGallery = ({ images, title }) => {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [lightbox, images.length]);
+  }, [lightbox]);
 
   // Update the lightbox to show the current image
   useEffect(() => {
@@ -51,13 +50,16 @@ const ImageGallery = ({ images, title }) => {
           <div key={image} className="cursor-pointer">
             <img
               src={image}
-              alt={`${title} image`}
+              alt={`${title} image ${index + 1}`} // Dynamic alt text
               className="rounded-lg shadow-md w-full h-40 object-cover"
               onClick={() => {
                 setLightbox(image);
                 setCurrentImageIndex(index); // Set the current index when opening the lightbox
               }}
+              onLoad={() => setIsLoading(false)} // Set loading state to false when image loads
+              onError={() => setIsLoading(false)} // Ensure loading state is reset on error
             />
+            {isLoading && <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-75"><span>Loading...</span></div>}
           </div>
         ))}
       </div>
@@ -69,19 +71,22 @@ const ImageGallery = ({ images, title }) => {
         >
           <button
             onClick={closeLightbox}
+            aria-label="Close lightbox"
             className="absolute top-4 right-4 text-white text-2xl font-bold"
           >
             &times;
           </button>
           <img
             src={lightbox}
-            alt="Enlarged view"
+            alt={`Enlarged view of ${title}`} // Dynamic alt text
             className="rounded-lg shadow-lg max-w-full max-h-full"
           />
-          <div className="absolute top-1/2 left-4 transform -translate-y-1/2 text-white text-2xl cursor-pointer" onClick={() => setCurrentImageIndex((currentImageIndex - 1 + images.length) % images.length)}>
+          <div className="absolute top-1/2 left-4 transform -translate-y-1/2 text-white text-2xl cursor-pointer" 
+               onClick={() => setCurrentImageIndex((currentImageIndex - 1 + images.length) % images.length)}>
             &#9664; {/* Left Arrow */}
           </div>
-          <div className="absolute top-1/2 right-4 transform -translate-y-1/2 text-white text-2xl cursor-pointer" onClick={() => setCurrentImageIndex((currentImageIndex + 1) % images.length)}>
+          <div className="absolute top-1/2 right-4 transform -translate-y-1/2 text-white text-2xl cursor-pointer" 
+               onClick={() => setCurrentImageIndex((currentImageIndex + 1) % images.length)}>
             &#9654; {/* Right Arrow */}
           </div>
         </div>
