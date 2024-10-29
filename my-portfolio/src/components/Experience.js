@@ -4,6 +4,7 @@ import ImageGallery from '../components/ImageGallery';
 import {
   longsandsGalleryImages, uniGalleryImages, acticheckGalleryImages, igo4GalleryImages
 } from '../galleryImages';
+import { experiences } from '../data/experiences'; // Import the experiences data
 
 const Experience = ({ experience = [] }) => {
     return (

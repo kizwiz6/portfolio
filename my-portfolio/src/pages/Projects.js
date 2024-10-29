@@ -1,5 +1,6 @@
 import React from 'react';
 import ProjectCard from '../components/ProjectCard';
+import HeroSection from '../components/HeroSection';
 
 // Functional component for the Projects page
 const Projects = () => {
@@ -233,7 +234,7 @@ const Projects = () => {
         },
         {
             title: "Developing the Modern Web: Fitness King",
-            description: `The web has evolved over the last two decades from a collection of pages containing simple static content to delivering a huge range of web applications with advanced interfaces and capabilities. These require developers with a complex range of skills and the ability to work to clearly defined web standards. This module helped lay the foundations of these skills and gave me the knowledge required to develop interactive, dynamic websites that perform useful functions. For the assignment, we were tasked with creating our own, unique dynamic website using Cloud 9 as the IDE. For my own website, I wanted to create a fitness guide to make use of the different JavaScript functionalities in order to incorporate multimedia interactivity, so that the website will not only be informative but also offer a unique experience for the user. Furthermore, I wanted to design the website for a pervasive interface. This meant creating a simple but controlled design that would have the suitable ergonomics for multiple displays. Other desired features included easy drop-down menu display, navigational buttons, interactive visual infographics, a database showcasing inspirational fitness ‘legends’, and finally feature an active comment form for the visitors to express their opinions on the website. The module then culminated with a reflective report.`,
+            description: `The web has evolved over the last two decades from a collection of pages containing simple static content to delivering a huge range of web applications with advanced interfaces and capabilities. These require developers with a complex range of skills and the ability to work to clearly defined web standards. This module helped lay the foundations of these skills and gave me the knowledge required to develop interactive, dynamic websites that perform useful functions. For the assignment, we were tasked with creating our own, unique dynamic website using Cloud 9 as the IDE. For my own website, I wanted to create a fitness guide to make use of the different JavaScript functionalities in order to incorporate multimedia interactivity, so that the website will not only be informative but also offer a unique experience for the user. Furthermore, I wanted to design the website for a pervasive interface. This meant creating a simple but controlled design that would have the suitable ergonomics for multiple displays. Other desired features included easy drop-down menu display, navigational buttons, interactive visual infographics, a database showcasing inspirational fitness 'legends', and finally feature an active comment form for the visitors to express their opinions on the website. The module then culminated with a reflective report.`,
             category: "Coventry University Project",
             period: "May 2016",
             grade: "2:1",
@@ -302,6 +303,7 @@ const Projects = () => {
 
     return (
         <div>
+            <HeroSection />
           <h2 className="text-3xl font-bold mb-8">Projects</h2>
           {projectsIntroContent && <div className="mb-4">{projectsIntroContent}</div>}
 
