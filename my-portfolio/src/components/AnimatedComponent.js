@@ -3,7 +3,7 @@ import React from 'react';
 import { useSpring, animated } from 'react-spring';
 
 const AnimatedComponent = ({
-    children,
+    children,  // This will now include the AnimatedText
     style = {},
     animationConfig = {
       opacity: 1,
@@ -26,7 +26,7 @@ const AnimatedComponent = ({
 
   return (
     <animated.div style={{ ...animationProps, ...style }}>
-      {children}
+      {children}  {/* This can now include any child components like AnimatedText */}
     </animated.div>
   );
 };

@@ -5,22 +5,22 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import HeroSection from './components/HeroSection';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
-import AppRoutes from './components/AppRoutes'; // Import the new AppRoutes component
+import AppRoutes from './components/AppRoutes';
 import './App.css';
 
 function App() {
-    const [isMenuOpen, setIsMenuOpen] = useState(false); // State for mobile menu
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return (
         <Router>
             <ScrollToTop />
             <div className="min-h-screen">
                 <HeroSection />
-                <AppRoutes 
-                    isMenuOpen={isMenuOpen} 
-                    setIsMenuOpen={setIsMenuOpen} 
+                <AppRoutes
+                    isMenuOpen={isMenuOpen}
+                    setIsMenuOpen={setIsMenuOpen}
                 />
-                <Footer /> {/* Footer is rendered once here */}
+                <Footer />
             </div>
         </Router>
     );

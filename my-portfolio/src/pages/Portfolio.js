@@ -2,6 +2,8 @@
 
 import React, { useState, Suspense, lazy } from 'react';
 import Layout from '../components/Layout';
+import AnimatedComponent from '../components/AnimatedComponent';
+import AnimatedText from '../components/AnimatedText'; // Import the AnimatedText component
 
 // Lazy load components for performance optimization
 const About = lazy(() => import('./About'));
@@ -32,7 +34,10 @@ const Portfolio = () => {
       {/* Main Content */}
       <main className="max-w-6xl mx-auto px-4 py-8">
         <Suspense fallback={<div>Loading...</div>}>
-          {sections[activeTab] || <NotFound />} {/* Render corresponding section or NotFound */}
+          <AnimatedComponent>
+            <AnimatedText text={`Welcome to My Portfolio!`} /> {/* Animated text inside AnimatedComponent */}
+            {sections[activeTab] || <NotFound />} {/* Render corresponding section or NotFound */}
+          </AnimatedComponent>
         </Suspense>
       </main>
     </Layout>
