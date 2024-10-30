@@ -3,13 +3,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-import SocialMediaLinks from './SocialMediaLinks';
+import SocialMediaLinks from './SocialMediaLinks'; // Ensure this is imported
 
 const Navigation = ({ activeTab, setIsMenuOpen, isMenuOpen }) => {
     const navigate = useNavigate();
 
     const handleNavigation = (tab, path) => {
-        navigate(path); // Navigate to the desired path
+        navigate(`/portfolio${path}`);
         setIsMenuOpen(false); // Close mobile menu if open
     };
 
@@ -19,32 +19,39 @@ const Navigation = ({ activeTab, setIsMenuOpen, isMenuOpen }) => {
                 <div className="flex justify-between items-center">
                     <div className="text-xl font-bold">Portfolio</div>
 
-                    {/* Navigation Links */}
-                    <div className="hidden md:flex space-x-8">
-                        <button
-                            onClick={() => handleNavigation('about', '/about')}
-                            className={`${activeTab === 'about' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-600'} hover:text-blue-500`}
-                        >
-                            About
-                        </button>
-                        <button
-                            onClick={() => handleNavigation('projects', '/projects')}
-                            className={`${activeTab === 'projects' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-600'} hover:text-blue-500`}
-                        >
-                            Projects
-                        </button>
-                        <button
-                            onClick={() => handleNavigation('education', '/education')}
-                            className={`${activeTab === 'education' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-600'} hover:text-blue-500`}
-                        >
-                            Education
-                        </button>
-                        <button
-                            onClick={() => handleNavigation('experience', '/experience')}
-                            className={`${activeTab === 'experience' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-600'} hover:text-blue-500`}
-                        >
-                            Experience
-                        </button>
+                    {/* Navigation Links and Social Media Links in the same line */}
+                    <div className="flex items-center space-x-8">
+                        <div className="hidden md:flex space-x-8">
+                            <button
+                                onClick={() => handleNavigation('about', '/about')}
+                                className={`${activeTab === 'about' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-600'} hover:text-blue-500`}
+                            >
+                                About
+                            </button>
+                            <button
+                                onClick={() => handleNavigation('projects', '/projects')}
+                                className={`${activeTab === 'projects' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-600'} hover:text-blue-500`}
+                            >
+                                Projects
+                            </button>
+                            <button
+                                onClick={() => handleNavigation('education', '/education')}
+                                className={`${activeTab === 'education' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-600'} hover:text-blue-500`}
+                            >
+                                Education
+                            </button>
+                            <button
+                                onClick={() => handleNavigation('experience', '/experience')}
+                                className={`${activeTab === 'experience' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-600'} hover:text-blue-500`}
+                            >
+                                Experience
+                            </button>
+                        </div>
+
+                        {/* Social Media Links */}
+                        <div className="hidden md:flex space-x-4">
+                            <SocialMediaLinks />
+                        </div>
                     </div>
 
                     {/* Mobile Menu Toggle */}
@@ -61,31 +68,11 @@ const Navigation = ({ activeTab, setIsMenuOpen, isMenuOpen }) => {
             {/* Mobile Navigation Links */}
             {isMenuOpen && (
                 <div className="md:hidden" role="menu">
-                    <div className="px-4 pt-4 pb-3 bg-gray-100">
-                        <button
-                            onClick={() => handleNavigation('about', '/about')}
-                            className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-200"
-                        >
-                            About
-                        </button>
-                        <button
-                            onClick={() => handleNavigation('projects', '/projects')}
-                            className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-200"
-                        >
-                            Projects
-                        </button>
-                        <button
-                            onClick={() => handleNavigation('education', '/education')}
-                            className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-200"
-                        >
-                            Education
-                        </button>
-                        <button
-                            onClick={() => handleNavigation('experience', '/experience')}
-                            className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-200"
-                        >
-                            Experience
-                        </button>
+                    <div className="px-2 pt-2 pb-3 space-y-1">
+                        <button onClick={() => handleNavigation('about', '/about')}>About</button>
+                        <button onClick={() => handleNavigation('projects', '/projects')}>Projects</button>
+                        <button onClick={() => handleNavigation('education', '/education')}>Education</button>
+                        <button onClick={() => handleNavigation('experience', '/experience')}>Experience</button>
                     </div>
                 </div>
             )}
