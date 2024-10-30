@@ -6,13 +6,13 @@ import About from '../pages/About';
 import Projects from '../pages/Projects';
 import Experience from '../pages/Experience';
 import Education from '../pages/Education';
-import Portfolio from '../pages/Portfolio'; // Import your Portfolio component
+import Portfolio from '../pages/Portfolio';
 import Layout from './Layout';
 import Navigation from './Navigation';
 
 const AppRoutes = ({ isMenuOpen, setIsMenuOpen }) => {
     const [activeTab, setActiveTab] = useState('about');
-    const location = useLocation(); // Now correctly defined
+    const location = useLocation();
 
     // Update activeTab based on the current path
     useEffect(() => {
@@ -21,14 +21,14 @@ const AppRoutes = ({ isMenuOpen, setIsMenuOpen }) => {
             '/projects': 'projects',
             '/experience': 'experience',
             '/education': 'education',
-            '/portfolio': 'portfolio', // Add this line to include Portfolio
+            '/portfolio': 'portfolio',
         };
         setActiveTab(pathToTabMap[location.pathname] || 'about');
     }, [location.pathname]);
 
     return (
         <>
-            <Navigation 
+            <Navigation
                 activeTab={activeTab}
                 setActiveTab={setActiveTab}
                 isMenuOpen={isMenuOpen}

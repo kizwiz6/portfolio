@@ -61,11 +61,31 @@ const Navigation = ({ activeTab, setIsMenuOpen, isMenuOpen }) => {
             {/* Mobile Navigation Links */}
             {isMenuOpen && (
                 <div className="md:hidden" role="menu">
-                    <div className="px-2 pt-2 pb-3 space-y-1">
-                        <button onClick={() => handleNavigation('about', '/about')}>About</button>
-                        <button onClick={() => handleNavigation('projects', '/projects')}>Projects</button>
-                        <button onClick={() => handleNavigation('education', '/education')}>Education</button>
-                        <button onClick={() => handleNavigation('experience', '/experience')}>Experience</button>
+                    <div className="px-4 pt-4 pb-3 bg-gray-100">
+                        <button
+                            onClick={() => handleNavigation('about', '/about')}
+                            className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-200"
+                        >
+                            About
+                        </button>
+                        <button
+                            onClick={() => handleNavigation('projects', '/projects')}
+                            className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-200"
+                        >
+                            Projects
+                        </button>
+                        <button
+                            onClick={() => handleNavigation('education', '/education')}
+                            className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-200"
+                        >
+                            Education
+                        </button>
+                        <button
+                            onClick={() => handleNavigation('experience', '/experience')}
+                            className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-200"
+                        >
+                            Experience
+                        </button>
                     </div>
                 </div>
             )}
