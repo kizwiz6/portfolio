@@ -39,7 +39,7 @@ const About = ({ activeTab, setActiveTab, setIsMenuOpen, isMenuOpen }) => {
             title: "Let's Connect!",
             text: (
                 <span>
-                    Thank you for visiting my portfolio! I look forward to connecting and sharing my passion for development. Feel free to reach out via email or through my contact form.
+                    Thank you for visiting my portfolio! I look forward to connecting and sharing my passion for development. Feel free to reach out via email or through my social media links.
                 </span>
             )
         }
