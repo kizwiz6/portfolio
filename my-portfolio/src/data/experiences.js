@@ -7,7 +7,7 @@ export const experiences = [
     company: "Acticheck",
     website: "https://acticheck.com/",
     period: "June 2024 - Oct 2024",
-    role: "Software Engineer (Temporary)",
+    role: "Software Engineer",
     location: "Fowlmere, Cambridge",
     description: [
       "Developed a secure .NET Core web app for user authentication, integrating .NET Core Identity, encrypted SQL Server credentials, and third-party services like Facebook login and SendGrid email. Implemented configurable logging and secure data transfer via DTOs for streamlined user management and robust security.",
