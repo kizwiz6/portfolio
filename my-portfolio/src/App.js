@@ -1,84 +1,43 @@
+// src/App.js
+
 import React, { useState } from 'react';
-import { HashRouter as Router, Route, Routes } from 'react-router-dom';
-import Portfolio from './pages/Portfolio';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import About from './pages/About';
 import Projects from './pages/Projects';
 import Experience from './pages/Experience';
 import Education from './pages/Education';
-import NotFound from './pages/NotFound';
-import ScrollToTop from './components/ScrollToTop';
+import Layout from './components/Layout';
+import HeroSection from './components/HeroSection';
+import Navigation from './components/Navigation';
+import Footer from './components/Footer';
 import './App.css';
 
 function App() {
-  // State management for active tab and menu
-  const [activeTab, setActiveTab] = useState('about'); // Default tab
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [activeTab, setActiveTab] = useState('about');
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  return (
-    <Router basename="/portfolio">
-      <div className="App">
-        <ScrollToTop />
-        <Routes>
-          <Route
-            path="/" 
-            element={
-              <About 
-                activeTab={activeTab} 
-                setActiveTab={setActiveTab} 
-                setIsMenuOpen={setIsMenuOpen} 
-                isMenuOpen={isMenuOpen} 
-              />
-            }
-          />
-          <Route 
-            path="/about" 
-            element={
-              <About 
-                activeTab={activeTab} 
-                setActiveTab={setActiveTab} 
-                setIsMenuOpen={setIsMenuOpen} 
-                isMenuOpen={isMenuOpen} 
-              />
-            } 
-          />
-          <Route 
-            path="/projects" 
-            element={
-              <Projects 
-                activeTab={activeTab} 
-                setActiveTab={setActiveTab} 
-                setIsMenuOpen={setIsMenuOpen} 
-                isMenuOpen={isMenuOpen} 
-              />
-            } 
-          />
-          <Route 
-            path="/experience" 
-            element={
-              <Experience 
-                activeTab={activeTab} 
-                setActiveTab={setActiveTab} 
-                setIsMenuOpen={setIsMenuOpen} 
-                isMenuOpen={isMenuOpen} 
-              />
-            } 
-          />
-          <Route
-            path="/education"
-            element={
-              <Education
-                activeTab={activeTab}
-                setActiveTab={setActiveTab}
-                setIsMenuOpen={setIsMenuOpen}
-                isMenuOpen={isMenuOpen}
-              />
-            }
-          />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </div>
-    </Router>
-  );
+    return (
+        <Router>
+            <div className="min-h-screen">
+                <HeroSection />
+                <Navigation 
+                    activeTab={activeTab}
+                    setActiveTab={setActiveTab}
+                    isMenuOpen={isMenuOpen}
+                    setIsMenuOpen={setIsMenuOpen}
+                />
+                <Layout>
+                    <Routes>
+                        <Route path="/about" element={<About />} />
+                        <Route path="/projects" element={<Projects />} />
+                        <Route path="/experience" element={<Experience />} />
+                        <Route path="/education" element={<Education />} />
+                    </Routes>
+                </Layout>
+                <Footer /> {/* Moved Footer here so it's rendered once */}
+            </div>
+        </Router>
+    );
 }
 
 export default App;
