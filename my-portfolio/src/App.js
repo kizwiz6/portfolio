@@ -10,6 +10,7 @@ import Layout from './components/Layout';
 import HeroSection from './components/HeroSection';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 import './App.css';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
 
     return (
         <Router>
+          <ScrollToTop /> 
             <div className="min-h-screen">
                 <HeroSection />
                 <Navigation 
