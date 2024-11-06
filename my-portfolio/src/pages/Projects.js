@@ -29,6 +29,15 @@ const Projects = ({ activeTab, setActiveTab, setIsMenuOpen, isMenuOpen }) => {
     */
     const projects = [
         {
+            title: "VeganHub - Vegan Recipes Website",
+            description: "Currently developing a website to discover and share delicious plant-based/vegan recipes. I'm hoping to have something live by Veganuary (January), so watch this space to find out more details soon!",
+            category: "Personal Project",
+            period: "November 2024",
+            thumbnail: "https://i.imgur.com/83pm4Nk.png",
+            tags: ["React", "JavaScript", "Node.js", "CSS", "HTML", "Tailwind CSS", "Git", "GitHub", "npm", "Responsive Design"],
+            status: "In Progress"
+        },
+        {
             title: "Sip N Sign (British Sign Language App)",
             description: "Developed a mobile application for learning sign language using C# and .NET MAUI. Designed a user-friendly interface featuring multimedia resources, including videos and images, to enhance immersion. Employed the MVVM architecture to maintain clean code, improving the application's maintainability and scalability.",
             category: "Personal Project",
