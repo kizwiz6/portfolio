@@ -56,7 +56,7 @@ const Projects = ({ activeTab, setActiveTab, setIsMenuOpen, isMenuOpen }) => {
             category: "Personal Project",
             period: "October 2024",
             tags: ["React", "JavaScript", "Node.js", "CSS", "HTML", "Tailwind CSS", "Git", "GitHub", "npm", "Responsive Design"],
-            thumbnail: "https://previews.dropbox.com/p/thumb/ACdPs3mTiSjA_5RcICipxKybz0xfTtEMXYMoCMMqgF55yAdDfCjSyI6e6iuim3TKIi4CbU5m3OiSgAKDfGye4RDD1k6oWh2xw03lK0rLGKWg4lA0_xh4PfPL8g1KUyYGgNLaxuhGZ4TsEhwedFRGW3VjPoe6ZDkTPQXGnJM7tCMmzGutlAVPv8Y0hoF0IT9hf-mMHzFSS65O0nF0PuRMGPXyrPNu2MSOiu9nGker7NlGhPFp56iS8iOj92Vr5ZizhoJ_1nqwGjF5LwcoWOgT6mswVW0W3acCC7c9Jzhbgt-xfW3RG76Ks5m2Q5fme6t-dhf5gszXkJWv2rZDk4aaV6dR/p.png",
+            thumbnail: "https://i.imgur.com/uuXcw6v.png",
             status: "In Progress",
             link: "https://github.com/kizwiz6/portfolio"
         },
