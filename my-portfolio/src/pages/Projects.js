@@ -33,7 +33,7 @@ const Projects = ({ activeTab, setActiveTab, setIsMenuOpen, isMenuOpen }) => {
             description: "Currently developing a website to discover and share delicious plant-based/vegan recipes. I'm hoping to have something live by Veganuary (January), so watch this space to find out more details soon!",
             category: "Personal Project",
             period: "November 2024",
-            thumbnail: "https://i.imgur.com/83pm4Nk.png",
+            videoSource: "VeganRecipes.mp4",
             tags: ["React", "JavaScript", "Node.js", "CSS", "HTML", "Tailwind CSS", "Git", "GitHub", "npm", "Responsive Design"],
             status: "In Progress"
         },
