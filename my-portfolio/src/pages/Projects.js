@@ -42,7 +42,7 @@ const Projects = ({ activeTab, setActiveTab, setIsMenuOpen, isMenuOpen }) => {
             description: "MOT History Checker is a web application developed for local use, designed to provide real-time access to MOT history and vehicle details for UK vehicles through the DVSA MOT History API. Although not in production, this project allows users to check the MOT status of a vehicle by its registration number, displaying key details such as the vehicle's make and model, color, MOT expiry date, and last recorded mileage. The application also features real-time validation, responsive design, loading states, and robust error handling for an optimal user experience.",
             category: "Personal Project",
             period: "November 2024",
-            tags: ["Blazor WebAssembly", "Tailwind CSS", "bUnit", "ASP.NET Core API", "Tailwind CSS", "xUnit", "Moq", "Git", "GitHub", "DVSA MOT History API integration"],
+            tags: ["C#", "Blazor WebAssembly", "Tailwind CSS", "bUnit", "ASP.NET Core API", "Tailwind CSS", "xUnit", "Moq", "Git", "GitHub", "DVSA MOT History API integration"],
             thumbnail: "https://i.imgur.com/JajKza4.png",
             link: "https://github.com/kizwiz6/MotChecker"
         },
