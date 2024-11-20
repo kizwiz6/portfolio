@@ -38,6 +38,15 @@ const Projects = ({ activeTab, setActiveTab, setIsMenuOpen, isMenuOpen }) => {
             status: "In Progress"
         },
         {
+            title: "MOT History Checker",
+            description: "MOT History Checker is a web application developed for local use, designed to provide real-time access to MOT history and vehicle details for UK vehicles through the DVSA MOT History API. Although not in production, this project allows users to check the MOT status of a vehicle by its registration number, displaying key details such as the vehicle's make and model, color, MOT expiry date, and last recorded mileage. The application also features real-time validation, responsive design, loading states, and robust error handling for an optimal user experience.",
+            category: "Personal Project",
+            period: "November 2024",
+            tags: ["Blazor WebAssembly", "Tailwind CSS", "bUnit", "ASP.NET Core API", "Tailwind CSS", "xUnit", "Moq", "Git", "GitHub", "DVSA MOT History API integration"],
+            thumbnail: "https://i.imgur.com/JajKza4.png",
+            link: "https://github.com/kizwiz6/MotChecker"
+        },
+        {
             title: "Sip N Sign (British Sign Language App)",
             description: "Developed a mobile application for learning sign language using C# and .NET MAUI. Designed a user-friendly interface featuring multimedia resources, including videos and images, to enhance immersion. Employed the MVVM architecture to maintain clean code, improving the application's maintainability and scalability.",
             category: "Personal Project",
@@ -57,7 +66,6 @@ const Projects = ({ activeTab, setActiveTab, setIsMenuOpen, isMenuOpen }) => {
             period: "October 2024",
             tags: ["React", "JavaScript", "Node.js", "CSS", "HTML", "Tailwind CSS", "Git", "GitHub", "npm", "Responsive Design"],
             thumbnail: "https://i.imgur.com/uuXcw6v.png",
-            status: "In Progress",
             link: "https://github.com/kizwiz6/portfolio"
         },
         {
