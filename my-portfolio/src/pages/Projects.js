@@ -29,6 +29,24 @@ const Projects = () => {
     */
     const projects = [
         {
+            title: "VeganHub - Vegan Recipes Website",
+            description: "I'm currently developing a web application dedicated to sharing and discovering vegan recipes, featuring a modern, responsive design with smooth animations and intuitive user interactions. The app is built with React and TypeScript, using Vite for fast builds and development, and React Router for seamless client-side navigation. Styling is powered by Tailwind CSS, with Framer Motion bringing animations to life. For form handling, I'm using React Hook Form combined with Zod for robust validation, and Axios for efficient API communication. I'm aiming to launch by Veganuary (January)—stay tuned for updates soon!",
+            category: "Personal Project",
+            period: "November 2024",
+            videoSource: "VeganRecipes.mp4",
+            tags: ["TypeScript", "React", "C#", "Vite", "React Router", "Tailwind CSS", "Framer Motion", "Zod", "Axios", "Git", "GitHub", "npm", "Responsive Design"],
+            status: "In Progress"
+        },
+        {
+            title: "MOT History Checker",
+            description: "MOT History Checker is a web application developed for local use, designed to provide real-time access to MOT history and vehicle details for UK vehicles through the DVSA MOT History API. Although not in production, this project allows users to check the MOT status of a vehicle by its registration number, displaying key details such as the vehicle's make and model, color, MOT expiry date, and last recorded mileage. The application also features real-time validation, responsive design, loading states, and robust error handling for an optimal user experience.",
+            category: "Personal Project",
+            period: "November 2024",
+            tags: ["C#", "HTML", "CSS", "JavaScript", "Blazor WebAssembly", "Tailwind CSS", "bUnit", "ASP.NET Core API", "Tailwind CSS", "xUnit", "Moq", "Git", "GitHub", "DVSA MOT History API integration"],
+            thumbnail: "https://i.imgur.com/JajKza4.png",
+            link: "https://github.com/kizwiz6/MotChecker"
+        },
+        {
             title: "Sip N Sign (British Sign Language App)",
             description: "Developed a mobile application for learning sign language using C# and .NET MAUI. Designed a user-friendly interface featuring multimedia resources, including videos and images, to enhance immersion. Employed the MVVM architecture to maintain clean code, improving the application's maintainability and scalability.",
             category: "Personal Project",
