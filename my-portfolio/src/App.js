@@ -6,6 +6,7 @@ import HeroSection from './components/HeroSection';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import AppRoutes from './components/AppRoutes';
+import { preloadRoute } from './config/routes';
 import './App.css';
 
 function App() {

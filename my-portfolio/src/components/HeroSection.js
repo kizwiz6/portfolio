@@ -1,42 +1,55 @@
-// src/components/HeroSection.js
-
 import React from 'react';
+import OptimizedImage from './OptimizedImage';
 
 const HeroSection = () => (
-  <div
-    className="text-white bg-cover bg-center"
-    style={{
-      backgroundImage: `url('https://github.com/kizwiz6/portfolio/blob/master/my-portfolio/public/Mollie-bg.jpg?raw=true')`,
-    }}
-    role="banner"
-  >
-    <div className="max-w-6xl mx-auto px-4 py-16 text-center bg-black bg-opacity-50 rounded-lg">
-      <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in">
-        Kieran Emery
-      </h1>
-      <p className="text-xl md:text-2xl text-blue-100 mb-8">
-        British software developer building innovative solutions with modern technologies
-      </p>
-      <div className="flex justify-center space-x-4">
-        <a
-          href="mailto:kizwiz@hotmail.co.uk"
-          className="bg-white text-blue-800 px-6 py-2 rounded-full hover:bg-blue-50 transition duration-300"
-          aria-label="Contact Kieran Emery" // Added aria-label for better accessibility
-        >
-          Contact Me
-        </a>
-        <a
-          href="https://www.dropbox.com/scl/fi/lhobteip40zlhp6r25fpe/KieranEmery_CV_2024.pdf?rlkey=t18j3jpmfsco2py96wn32nyp8&st=3nhxivnx&dl=0"
-          className="border border-white text-white px-6 py-2 rounded-full hover:bg-white hover:text-blue-800 transition duration-300"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="View Kieran Emery's CV" // Added aria-label for better accessibility
-        >
-          View CV
-        </a>
+  <div className="relative text-white" role="banner">
+    <div className="relative h-[350px] overflow-hidden">
+      {/* Background Image - Added object-position */}
+      <OptimizedImage
+        src="https://github.com/kizwiz6/portfolio/blob/master/my-portfolio/public/Mollie-bg.jpg?raw=true"
+        alt="Portfolio background"
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{ objectPosition: 'center 35%' }}
+        width={1920}
+      />
+      
+      {/* Content Overlay */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="max-w-6xl w-full mx-auto px-4">
+          <div className="text-center bg-black bg-opacity-50 rounded-lg p-6">
+            <h1 className="text-4xl md:text-5xl font-bold mb-3 animate-fade-in">
+              Kieran Emery
+            </h1>
+            
+            <p className="text-lg md:text-xl text-blue-100 mb-6">
+              British software developer building innovative solutions with modern technologies
+            </p>
+            
+            {/* Call to Action Buttons */}
+            <div className="flex justify-center space-x-4">
+              <a
+                href="mailto:kizwiz@hotmail.co.uk"
+                className="bg-white text-blue-800 px-5 py-2 rounded-full hover:bg-blue-50 transition duration-300"
+                aria-label="Contact Kieran Emery"
+              >
+                Contact Me
+              </a>
+              
+              <a
+                href="https://www.dropbox.com/scl/fi/lhobteip40zlhp6r25fpe/KieranEmery_CV_2024.pdf?rlkey=t18j3jpmfsco2py96wn32nyp8&st=3nhxivnx&dl=0"
+                className="border border-white text-white px-5 py-2 rounded-full hover:bg-white hover:text-blue-800 transition duration-300"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="View Kieran Emery's CV"
+              >
+                View CV
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 );
 
-export default HeroSection;
+export default React.memo(HeroSection);

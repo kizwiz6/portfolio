@@ -1,9 +1,8 @@
-// src/components/AppRoutes.js
-import React, { useState, useEffect, lazy, Suspense } from 'react';
+import React, { useState, useEffect, lazy } from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Navigation from './Navigation';
 import Layout from './Layout';
-import LoadingSpinner from './LoadingSpinner';
+import SuspenseBoundary from './SuspenseBoundary';
 
 // Lazy load pages
 const About = lazy(() => import('../pages/About'));
@@ -12,12 +11,13 @@ const Experience = lazy(() => import('../pages/Experience'));
 const Education = lazy(() => import('../pages/Education'));
 const NotFound = lazy(() => import('../pages/NotFound'));
 
-// Route configuration
+const BASE_PATH = '/portfolio';
+
 const ROUTES = [
-  { path: '/portfolio/about', component: About, tab: 'about' },
-  { path: '/portfolio/projects', component: Projects, tab: 'projects' },
-  { path: '/portfolio/experience', component: Experience, tab: 'experience' },
-  { path: '/portfolio/education', component: Education, tab: 'education' },
+  { path: `${BASE_PATH}/about`, component: About, tab: 'about' },
+  { path: `${BASE_PATH}/projects`, component: Projects, tab: 'projects' },
+  { path: `${BASE_PATH}/experience`, component: Experience, tab: 'experience' },
+  { path: `${BASE_PATH}/education`, component: Education, tab: 'education' },
 ];
 
 const AppRoutes = ({ isMenuOpen, setIsMenuOpen }) => {
@@ -40,10 +40,10 @@ const AppRoutes = ({ isMenuOpen, setIsMenuOpen }) => {
         setIsMenuOpen={setIsMenuOpen}
       />
       <Layout>
-        <Suspense fallback={<LoadingSpinner />}>
+        <SuspenseBoundary>
           <Routes>
-            <Route path="/" element={<Navigate to="/portfolio/about" />} />
-            <Route path="/portfolio" element={<Navigate to="/portfolio/about" />} />
+            <Route path="/" element={<Navigate to={`${BASE_PATH}/about`} />} />
+            <Route path={BASE_PATH} element={<Navigate to={`${BASE_PATH}/about`} />} />
             
             {ROUTES.map(({ path, component: Component }) => (
               <Route 
@@ -53,9 +53,9 @@ const AppRoutes = ({ isMenuOpen, setIsMenuOpen }) => {
               />
             ))}
             
-            <Route path="/portfolio/*" element={<NotFound />} />
+            <Route path={`${BASE_PATH}/*`} element={<NotFound />} />
           </Routes>
-        </Suspense>
+        </SuspenseBoundary>
       </Layout>
     </>
   );

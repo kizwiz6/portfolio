@@ -1,43 +1,62 @@
-// components/ImageGallery.js
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
+import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import OptimizedImage from './OptimizedImage';
+import LoadingSpinner from './LoadingSpinner';
+import SuspenseBoundary from './SuspenseBoundary';
 
 const ImageGallery = ({ images, title }) => {
   const [lightbox, setLightbox] = useState(null);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0); // To track the current image index
-  const [isLoading, setIsLoading] = useState(true); // Track image loading state
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const closeLightbox = () => {
+  const closeLightbox = useCallback(() => {
     setLightbox(null);
-    setCurrentImageIndex(0); // Reset the index when closing
-  };
+    setCurrentImageIndex(0);
+  }, []);
 
-  const handleKeyDown = (event) => {
-    if (event.key === 'ArrowRight') {
-      // Move to the next image
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    } else if (event.key === 'ArrowLeft') {
-      // Move to the previous image
-      setCurrentImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
-    } else if (event.key === 'Escape') {
-      // Close the lightbox
-      closeLightbox();
+  const goToNextImage = useCallback((e) => {
+    e.stopPropagation();
+    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+  }, [images.length]);
+
+  const goToPrevImage = useCallback((e) => {
+    e.stopPropagation();
+    setCurrentImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+  }, [images.length]);
+
+  const handleKeyDown = useCallback((event) => {
+    if (lightbox) {
+      switch (event.key) {
+        case 'ArrowRight':
+          goToNextImage(event);
+          break;
+        case 'ArrowLeft':
+          goToPrevImage(event);
+          break;
+        case 'Escape':
+          closeLightbox();
+          break;
+        default:
+          break;
+      }
     }
-  };
+  }, [lightbox, goToNextImage, goToPrevImage, closeLightbox]);
 
   useEffect(() => {
-    // Add keydown event listener when lightbox is open
     if (lightbox) {
       document.addEventListener('keydown', handleKeyDown);
+      // Prevent scrolling when lightbox is open
+      document.body.style.overflow = 'hidden';
     }
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'unset';
     };
-  }, [lightbox]);
+  }, [lightbox, handleKeyDown]);
 
-  // Update the lightbox to show the current image
+  // Update the lightbox image when currentImageIndex changes
   useEffect(() => {
-    if (lightbox && currentImageIndex !== null) {
+    if (lightbox) {
       setLightbox(images[currentImageIndex]);
     }
   }, [currentImageIndex, images, lightbox]);
@@ -46,48 +65,67 @@ const ImageGallery = ({ images, title }) => {
     <div>
       <h4 className="font-medium mb-2">{title} Gallery:</h4>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {images.map((image, index) => (
-          <div key={image} className="cursor-pointer">
-            <img
-              src={image}
-              alt={`${title} image ${index + 1}`} // Dynamic alt text
-              className="rounded-lg shadow-md w-full h-40 object-cover"
-              onClick={() => {
-                setLightbox(image);
-                setCurrentImageIndex(index); // Set the current index when opening the lightbox
-              }}
-              onLoad={() => setIsLoading(false)} // Set loading state to false when image loads
-              onError={() => setIsLoading(false)} // Ensure loading state is reset on error
-            />
-            {isLoading && <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-75"><span>Loading...</span></div>}
-          </div>
-        ))}
+        <SuspenseBoundary fallback={<LoadingSpinner size="medium" />}>
+          {images.map((image, index) => (
+            <div key={image} className="aspect-w-16 aspect-h-9 cursor-pointer">
+              <OptimizedImage
+                src={image}
+                alt={`${title} image ${index + 1}`}
+                className="rounded-lg shadow-md w-full h-full object-cover hover:opacity-90 transition-opacity duration-200"
+                onClick={() => {
+                  setLightbox(image);
+                  setCurrentImageIndex(index);
+                }}
+              />
+            </div>
+          ))}
+        </SuspenseBoundary>
       </div>
 
+      {/* Lightbox */}
       {lightbox && (
         <div
-          className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-75 z-50"
+          className="fixed inset-0 bg-black bg-opacity-90 z-50 flex justify-center items-center"
           onClick={closeLightbox}
         >
+          {/* Close button */}
           <button
             onClick={closeLightbox}
+            className="absolute top-4 right-4 text-white p-2 hover:bg-white/10 rounded-full transition-colors"
             aria-label="Close lightbox"
-            className="absolute top-4 right-4 text-white text-2xl font-bold"
           >
-            &times;
+            <X size={24} />
           </button>
-          <img
-            src={lightbox}
-            alt={`Enlarged view of ${title}`} // Dynamic alt text
-            className="rounded-lg shadow-lg max-w-full max-h-full"
-          />
-          <div className="absolute top-1/2 left-4 transform -translate-y-1/2 text-white text-2xl cursor-pointer" 
-               onClick={() => setCurrentImageIndex((currentImageIndex - 1 + images.length) % images.length)}>
-            &#9664; {/* Left Arrow */}
-          </div>
-          <div className="absolute top-1/2 right-4 transform -translate-y-1/2 text-white text-2xl cursor-pointer" 
-               onClick={() => setCurrentImageIndex((currentImageIndex + 1) % images.length)}>
-            &#9654; {/* Right Arrow */}
+
+          {/* Navigation arrows */}
+          <button
+            onClick={goToPrevImage}
+            className="absolute left-4 text-white p-2 hover:bg-white/10 rounded-full transition-colors"
+            aria-label="Previous image"
+          >
+            <ChevronLeft size={24} />
+          </button>
+
+          <button
+            onClick={goToNextImage}
+            className="absolute right-4 text-white p-2 hover:bg-white/10 rounded-full transition-colors"
+            aria-label="Next image"
+          >
+            <ChevronRight size={24} />
+          </button>
+
+          {/* Main lightbox image */}
+          <div className="relative max-w-[90vw] max-h-[90vh]" onClick={(e) => e.stopPropagation()}>
+            <OptimizedImage
+              src={lightbox}
+              alt={`${title} (enlarged view)`}
+              className="rounded-lg shadow-xl max-w-full max-h-[90vh] object-contain"
+            />
+            
+            {/* Image counter */}
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
+              {currentImageIndex + 1} / {images.length}
+            </div>
           </div>
         </div>
       )}
@@ -100,4 +138,4 @@ ImageGallery.propTypes = {
   title: PropTypes.string.isRequired,
 };
 
-export default ImageGallery;
+export default React.memo(ImageGallery);
