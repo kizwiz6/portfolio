@@ -1,17 +1,17 @@
 // src/components/Navigation.js
-
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import SocialMediaLinks from './SocialMediaLinks';
 
-const Navigation = ({ activeTab, setIsMenuOpen, isMenuOpen }) => {
+const Navigation = ({ activeTab, setActiveTab, setIsMenuOpen, isMenuOpen }) => {
     const navigate = useNavigate();
 
-    const handleNavigation = (path) => {
-        navigate(path); // Navigate to the provided path
-        setIsMenuOpen(false); // Close mobile menu if open
-    };
+    const handleNavigation = useCallback((path, tab) => {
+        navigate(path);
+        setActiveTab(tab);
+        setIsMenuOpen(false);
+    }, [navigate, setActiveTab, setIsMenuOpen]);
 
     return (
         <nav className="bg-white shadow-sm mb-0" role="navigation" aria-label="Main Navigation">
@@ -23,25 +23,25 @@ const Navigation = ({ activeTab, setIsMenuOpen, isMenuOpen }) => {
                     <div className="flex items-center space-x-8">
                         <div className="hidden md:flex space-x-8">
                             <button
-                                onClick={() => handleNavigation('/portfolio/about')} // Use the correct path
+                                onClick={() => handleNavigation('/about', 'about')}
                                 className={`${activeTab === 'about' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-600'} hover:text-blue-500`}
                             >
                                 About
                             </button>
                             <button
-                                onClick={() => handleNavigation('/portfolio/projects')} // Use the correct path
+                                onClick={() => handleNavigation('/projects', 'projects')}
                                 className={`${activeTab === 'projects' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-600'} hover:text-blue-500`}
                             >
                                 Projects
                             </button>
                             <button
-                                onClick={() => handleNavigation('/portfolio/education')} // Use the correct path
+                                onClick={() => handleNavigation('/education', 'education')}
                                 className={`${activeTab === 'education' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-600'} hover:text-blue-500`}
                             >
                                 Education
                             </button>
                             <button
-                                onClick={() => handleNavigation('/portfolio/experience')} // Use the correct path
+                                onClick={() => handleNavigation('/experience', 'experience')}
                                 className={`${activeTab === 'experience' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-600'} hover:text-blue-500`}
                             >
                                 Experience
@@ -70,25 +70,25 @@ const Navigation = ({ activeTab, setIsMenuOpen, isMenuOpen }) => {
                 <div className="md:hidden bg-white shadow-md rounded-lg transition-all duration-300 ease-in-out" role="menu">
                     <div className="px-4 py-2">
                         <button
-                            onClick={() => handleNavigation('/portfolio/about')} // Use the correct path
+                            onClick={() => handleNavigation('/about', 'about')}
                             className="block text-left w-full text-gray-600 hover:bg-blue-100 hover:text-blue-500 rounded-lg py-2 transition duration-200"
                         >
                             About
                         </button>
                         <button
-                            onClick={() => handleNavigation('/portfolio/projects')} // Use the correct path
+                            onClick={() => handleNavigation('/projects', 'projects')}
                             className="block text-left w-full text-gray-600 hover:bg-blue-100 hover:text-blue-500 rounded-lg py-2 transition duration-200"
                         >
                             Projects
                         </button>
                         <button
-                            onClick={() => handleNavigation('/portfolio/education')} // Use the correct path
+                            onClick={() => handleNavigation('/education', 'education')}
                             className="block text-left w-full text-gray-600 hover:bg-blue-100 hover:text-blue-500 rounded-lg py-2 transition duration-200"
                         >
                             Education
                         </button>
                         <button
-                            onClick={() => handleNavigation('/portfolio/experience')} // Use the correct path
+                            onClick={() => handleNavigation('/experience', 'experience')}
                             className="block text-left w-full text-gray-600 hover:bg-blue-100 hover:text-blue-500 rounded-lg py-2 transition duration-200"
                         >
                             Experience

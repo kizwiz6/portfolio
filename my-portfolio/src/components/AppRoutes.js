@@ -1,3 +1,4 @@
+// src/components/AppRoutes.js
 import React, { useState, useEffect, lazy } from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Navigation from './Navigation';
@@ -11,21 +12,20 @@ const Experience = lazy(() => import('../pages/Experience'));
 const Education = lazy(() => import('../pages/Education'));
 const NotFound = lazy(() => import('../pages/NotFound'));
 
-const BASE_PATH = '/portfolio';
-
-const ROUTES = [
-  { path: `${BASE_PATH}/about`, component: About, tab: 'about' },
-  { path: `${BASE_PATH}/projects`, component: Projects, tab: 'projects' },
-  { path: `${BASE_PATH}/experience`, component: Experience, tab: 'experience' },
-  { path: `${BASE_PATH}/education`, component: Education, tab: 'education' },
-];
-
 const AppRoutes = ({ isMenuOpen, setIsMenuOpen }) => {
   const [activeTab, setActiveTab] = useState('about');
   const location = useLocation();
 
+  const routes = [
+    { path: '/about', component: About, tab: 'about' },
+    { path: '/projects', component: Projects, tab: 'projects' },
+    { path: '/experience', component: Experience, tab: 'experience' },
+    { path: '/education', component: Education, tab: 'education' },
+  ];
+
   useEffect(() => {
-    const currentRoute = ROUTES.find(route => route.path === location.pathname);
+    const pathname = location.pathname;
+    const currentRoute = routes.find(route => pathname.includes(route.path));
     if (currentRoute) {
       setActiveTab(currentRoute.tab);
     }
@@ -39,21 +39,39 @@ const AppRoutes = ({ isMenuOpen, setIsMenuOpen }) => {
         isMenuOpen={isMenuOpen}
         setIsMenuOpen={setIsMenuOpen}
       />
-      <Layout>
+      <Layout
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+        isMenuOpen={isMenuOpen}
+        setIsMenuOpen={setIsMenuOpen}
+      >
         <SuspenseBoundary>
           <Routes>
-            <Route path="/" element={<Navigate to={`${BASE_PATH}/about`} />} />
-            <Route path={BASE_PATH} element={<Navigate to={`${BASE_PATH}/about`} />} />
+            <Route path="/" element={<Navigate to="/about" replace />} />
             
-            {ROUTES.map(({ path, component: Component }) => (
+            {routes.map(({ path, component: Component }) => (
               <Route 
                 key={path}
                 path={path}
-                element={<Component />}
+                element={
+                  <Component 
+                    activeTab={activeTab}
+                    setActiveTab={setActiveTab}
+                    isMenuOpen={isMenuOpen}
+                    setIsMenuOpen={setIsMenuOpen}
+                  />
+                }
               />
             ))}
             
-            <Route path={`${BASE_PATH}/*`} element={<NotFound />} />
+            <Route 
+              path="*" 
+              element={
+                <div className="min-h-screen">
+                  <NotFound />
+                </div>
+              } 
+            />
           </Routes>
         </SuspenseBoundary>
       </Layout>

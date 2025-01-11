@@ -328,7 +328,7 @@ const Projects = ({ activeTab, setActiveTab, setIsMenuOpen, isMenuOpen }) => {
             setIsMenuOpen={setIsMenuOpen} // Pass this down
             isMenuOpen={isMenuOpen} // Use the prop directly
         >
-            <AnimatedComponent style={{ marginBottom: '24px' }}>
+            <AnimatedComponent style={{ marginBottom: '16px' }}>
                 <h2 className="text-4xl font-bold">Projects</h2>
             </AnimatedComponent>
             {projectsIntroContent && <div className="mb-4">{projectsIntroContent}</div>}
