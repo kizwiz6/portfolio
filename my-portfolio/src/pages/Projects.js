@@ -29,6 +29,24 @@ const Projects = ({ activeTab, setActiveTab, setIsMenuOpen, isMenuOpen }) => {
     */
     const projects = [
         {
+            title: "Sip N Sign (British Sign Language App)",
+            description: "Developed a mobile application for learning sign language using C# and .NET MAUI. Designed a user-friendly interface featuring multimedia resources, including videos and images, to enhance immersion. Employed the MVVM architecture to maintain clean code, improving the application's maintainability and scalability.",
+            category: "Personal Project",
+            period: "October 2024",
+            tags: [".NET MAUI", "C#", "MVVM", "XAML", "SQLite", "British Sign Language"],
+            status: "Release Feb 2025",
+            videoSource: "SipNSignVideo.mp4",
+        },
+        {
+            title: "Plantheads",
+            description: "A platform designed to foster respectful discussions and debates on topics surrounding ethical veganism. It also serves as a valuable resource hub, connecting individuals with informative websites and tools to explore vegan ethics and lifestyle. Users must authenticate to leave comments, ensuring accountability and constructive dialogue. The platform leverages ASP.NET Identity for secure user authentication and SQL Server for robust management of the user database.",
+            category: "Personal Project",
+            period: "December 2024",
+            videoSource: "Plantheads.mp4",
+            tags: ["TypeScript", "Blazor", "C#", "Tailwind CSS", "Responsive Design", "SQL"],
+            status: "In Progress"
+        },
+        {
             title: "VeganHub - Vegan Recipes Website",
             description: "I'm currently developing a web application dedicated to sharing and discovering vegan recipes, featuring a modern, responsive design with smooth animations and intuitive user interactions. The app is built with React and TypeScript, using Vite for fast builds and development, and React Router for seamless client-side navigation. Styling is powered by Tailwind CSS, with Framer Motion bringing animations to life. For form handling, I'm using React Hook Form combined with Zod for robust validation, and Axios for efficient API communication. I'm aiming to launch by Veganuary (January)—stay tuned for updates soon!",
             category: "Personal Project",
@@ -47,13 +65,12 @@ const Projects = ({ activeTab, setActiveTab, setIsMenuOpen, isMenuOpen }) => {
             link: "https://github.com/kizwiz6/MotChecker"
         },
         {
-            title: "Sip N Sign (British Sign Language App)",
-            description: "Developed a mobile application for learning sign language using C# and .NET MAUI. Designed a user-friendly interface featuring multimedia resources, including videos and images, to enhance immersion. Employed the MVVM architecture to maintain clean code, improving the application's maintainability and scalability.",
+            title: "Sip N Sign (British Sign Language Website)",
+            description: "Developing a blazor website for learning sign language. Designed a user-friendly interface featuring multimedia resources, including videos and images, to enhance immersion. Employed the MVVM architecture to maintain clean code, improving the application's maintainability and scalability.",
             category: "Personal Project",
-            period: "October 2024",
-            tags: [".NET MAUI", "C#", "MVVM", "XAML", "SQLite", "British Sign Language"],
-            status: "In Progress",
-            videoSource: "SipNSignVideo.mp4",
+            period: "December 2024",
+            tags: ["Blazor", ".NET", "C#", "MVVM", "Razor", "British Sign Language"],
+            status: "In Progress"
         },
         {
             title: "My Portfolio Website",
@@ -65,8 +82,9 @@ const Projects = ({ activeTab, setActiveTab, setIsMenuOpen, isMenuOpen }) => {
             category: "Personal Project",
             period: "October 2024",
             tags: ["React", "JavaScript", "Node.js", "CSS", "HTML", "Tailwind CSS", "Git", "GitHub", "npm", "Responsive Design"],
-            thumbnail: "https://i.imgur.com/uuXcw6v.png",
-            link: "https://github.com/kizwiz6/portfolio"
+            thumbnail: "https://i.imgur.com/manEFYp.png",
+            link: "https://github.com/kizwiz6/portfolio",
+            status: "Update Coming Feb 2025"
         },
         {
             title: "Acticheck User Authentication System",
