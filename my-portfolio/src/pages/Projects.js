@@ -39,7 +39,14 @@ const Projects = ({ activeTab, setActiveTab, setIsMenuOpen, isMenuOpen }) => {
         },
         {
             title: "St.Neots Chess Club Website Update",
-            description: "I'm building a modern, TypeScript-powered website for St.Neots Chess Club, a local chess club in St.Neots, Cambridgeshire, UK. The goal is to create a fast, interactive, and visually appealing platform where members can find club info, upcoming events, and even analyse games. Feel free to visit on Monday evenings to play me in a friendly chess game!",
+            description: (
+                <span>
+                  I'm building a modern, TypeScript-powered website for{" "}
+                  <a href="https://www.stneotschessclub.org.uk/" target="_blank" rel="noopener noreferrer">
+                    St.Neots Chess Club
+                  </a>, a local chess club in my hometown of St.Neots, Cambridgeshire, UK. The goal is to create a fast, interactive, and visually appealing platform where members can find club info and learn about any upcoming events.
+                </span>
+              ),
             category: "Personal Project",
             period: "February 2025",
             tags: ["TypeScript", "React", "Tailwind CSS", "Nodejs"],
