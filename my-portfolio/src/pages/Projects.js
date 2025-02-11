@@ -51,7 +51,7 @@ const Projects = ({ activeTab, setActiveTab, setIsMenuOpen, isMenuOpen }) => {
             period: "February 2025",
             tags: ["TypeScript", "React", "Tailwind CSS", "Nodejs"],
             status: "Ongoing",
-            thumbnail: "https://i.imgur.com/IPKGkMi.png",
+            thumbnail: "https://imgur.com/9G5kJEl.png",
         },
         {
             title: "Plantheads",
