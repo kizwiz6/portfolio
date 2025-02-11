@@ -38,6 +38,15 @@ const Projects = ({ activeTab, setActiveTab, setIsMenuOpen, isMenuOpen }) => {
             videoSource: "SipNSignVideo.mp4",
         },
         {
+            title: "St.Neots Chess Club Website Update",
+            description: "I'm building a modern, TypeScript-powered website for St.Neots Chess Club, a local chess club in St.Neots, Cambridgeshire, UK. The goal is to create a fast, interactive, and visually appealing platform where members can find club info, upcoming events, and even analyse games. Feel free to visit on Monday evenings to play me in a friendly chess game!",
+            category: "Personal Project",
+            period: "February 2025",
+            tags: ["TypeScript", "React", "Tailwind CSS", "Nodejs"],
+            status: "Ongoing",
+            thumbnail: "https://i.imgur.com/IPKGkMi.png",
+        },
+        {
             title: "Plantheads",
             description: "A platform designed to foster respectful discussions and debates on topics surrounding ethical veganism. It also serves as a valuable resource hub, connecting individuals with informative websites and tools to explore vegan ethics and lifestyle. Users must authenticate to leave comments, ensuring accountability and constructive dialogue. The platform leverages ASP.NET Identity for secure user authentication and SQL Server for robust management of the user database.",
             category: "Personal Project",
@@ -76,7 +85,7 @@ const Projects = ({ activeTab, setActiveTab, setIsMenuOpen, isMenuOpen }) => {
             title: "My Portfolio Website",
             description: (
                 <>
-                    This portfolio website serves as a comprehensive showcase of my journey and accomplishments as a software developer. Built using React, the site highlights my diverse projects, technical skills, and professional experiences. With a strong emphasis on user experience, I implemented a responsive design that adapts seamlessly across various devices, ensuring accessibility for all users. The site incorporates smooth animations and transitions, enhancing visual appeal and engagement. Additionally, I focused on creating a user-friendly navigation system, allowing visitors to effortlessly explore my work and discover my passion for coding. Each project is presented with detailed descriptions, technologies used, and the challenges I overcame during development, providing insights into my problem-solving abilities. As I continue to refine and enhance the website, my goal is to not only display my skills but also to connect with potential collaborators and employers who share my enthusiasm for technology and innovation.
+                    This portfolio website serves as a comprehensive showcase of my journey and accomplishments as a software developer. Built using React, the site highlights my diverse projects, technical skills, and professional experiences. With a strong emphasis on user experience, I implemented a responsive design that adapts seamlessly across various devices, ensuring accessibility for all users. The site incorporates smooth animations and transitions, enhancing visual appeal and engagement. Additionally, I focused on creating a user-friendly navigation system, allowing visitors to effortlessly explore my work and discover my passion for coding. Each project is presented with detailed descriptions, technologies used, and the challenges I overcame during development, providing insights into my problem-solving abilities. As I continue to refine and enhance the website, my goal is to not only display my skills but also to connect with potential collaborators and employers who share my enthusiasm for technology and innovation. The upcoming update of the portfolio website will include HashRouter for GitHub pages deployment, lazy loading and code splitting for optimal performance, React Spring for smooth page transitions and animations, and more benefits!
                 </>
             ),
             category: "Personal Project",
