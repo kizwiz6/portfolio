@@ -30,11 +30,11 @@ const Projects = ({ activeTab, setActiveTab, setIsMenuOpen, isMenuOpen }) => {
     const projects = [
         {
             title: "Sip N Sign (British Sign Language App)",
-            description: "Developed a mobile application for learning sign language using C# and .NET MAUI. Designed a user-friendly interface featuring multimedia resources, including videos and images, to enhance immersion. Employed the MVVM architecture to maintain clean code, improving the application's maintainability and scalability.",
+            description: "Developed SipNSign, an innovative mobile application that gamifies British Sign Language learning by combining educational content with social interaction. Built using C# and .NET MAUI, the app features an immersive interface with high-quality video demonstrations and interactive game modes. Implemented extensive customisation options including multiple themes and accessibility features. Architected using MVVM pattern with dependency injection for clean, maintainable code. Integrated local storage for offline functionality and progress tracking, with features including achievement systems, progress monitoring, and in-app purchases for additional content packs.",
             category: "Personal Project",
             period: "October 2024",
-            tags: [".NET MAUI", "C#", "MVVM", "XAML", "SQLite", "British Sign Language"],
-            status: "Release Feb 2025",
+            tags: [".NET MAUI", "C#", "MVVM", "XAML", "SQLite", "British Sign Language", "Mobile Development", "Cross-Platform Development"],
+            status: "Release March 2025",
             videoSource: "SipNSignVideo.mp4",
         },
         {
@@ -44,13 +44,13 @@ const Projects = ({ activeTab, setActiveTab, setIsMenuOpen, isMenuOpen }) => {
                   I'm building a modern, TypeScript-powered website for{" "}
                   <a href="https://www.stneotschessclub.org.uk/" target="_blank" rel="noopener noreferrer">
                     St.Neots Chess Club
-                  </a>, a local chess club in my hometown of St.Neots, Cambridgeshire, UK. The goal is to create a fast, interactive, and visually appealing platform where members can find club info and learn about any upcoming events.
+                  </a>, a local chess club in my hometown of St.Neots, Cambridgeshire, UK. The goal is to create a fast, interactive, and visually appealing platform where members can find club info and learn about any upcoming events. The website features a distinctive chess-themed design with interactive elements, including an animated background pattern and a curated rotation of inspirational quotes from chess grandmasters. Built with modern web technologies, the platform delivers a seamless user experience through server-side rendering and optimised performance. Key technical implementations include Next.js 14 for robust server-side capabilities, TypeScript for type-safe development, and Tailwind CSS for responsive design. The integration of Framer Motion enables smooth animations, while the Google Maps API provides interactive location services. State management is handled efficiently through React Hooks, ensuring a responsive and maintainable codebase.
                 </span>
               ),
             category: "Personal Project",
             period: "February 2025",
-            tags: ["TypeScript", "React", "Tailwind CSS", "Nodejs"],
-            status: "Ongoing",
+            tags: ["TypeScript", "Next.js 14", "React", "JavaScript", "Tailwind CSS", "HTML5", "CSS3", "Framer Motion", "Google Maps API", "Jest"],
+            status: "Release March 2025",
             thumbnail: "https://imgur.com/9G5kJEl.png",
         },
         {
@@ -69,7 +69,7 @@ const Projects = ({ activeTab, setActiveTab, setIsMenuOpen, isMenuOpen }) => {
             period: "November 2024",
             videoSource: "VeganRecipes.mp4",
             tags: ["TypeScript", "React", "C#", "Vite", "React Router", "Tailwind CSS", "Framer Motion", "Zod", "Axios", "Git", "GitHub", "npm", "Responsive Design"],
-            status: "In Progress"
+            status: "On hold"
         },
         {
             title: "MOT History Checker",
@@ -78,6 +78,7 @@ const Projects = ({ activeTab, setActiveTab, setIsMenuOpen, isMenuOpen }) => {
             period: "November 2024",
             tags: ["C#", "HTML", "CSS", "JavaScript", "Blazor WebAssembly", "Tailwind CSS", "bUnit", "ASP.NET Core API", "Tailwind CSS", "xUnit", "Moq", "Git", "GitHub", "DVSA MOT History API integration"],
             thumbnail: "https://i.imgur.com/JajKza4.png",
+            status: "Completed",
             link: "https://github.com/kizwiz6/MotChecker"
         },
         {
