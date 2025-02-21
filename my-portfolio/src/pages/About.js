@@ -20,15 +20,15 @@ const About = ({ activeTab, setActiveTab, setIsMenuOpen, isMenuOpen }) => {
             text: (
                 <span>
                     On the{' '}
-                    <Link to="/portfolio/projects" className='text-blue-600 hover:underline focus:outline-none'>
+                    <Link to="/projects" className='text-blue-600 hover:underline focus:outline-none'>
                         Projects
                     </Link>{' '}
                     page, you'll find some of my most cherished projects, showcasing my approach to solving real-world challenges with innovative solutions. Although confidentiality restricts me from revealing specifics of my commercial projects, I'm excited to share the essence of my work and the skills I've developed. Additionally, my{' '}
-                    <Link to="/portfolio/experience" className='text-blue-600 hover:underline focus:outline-none'>
+                    <Link to="/experience" className='text-blue-600 hover:underline focus:outline-none'>
                         Experience
                     </Link>{' '}
                     page provides a detailed overview of my professional journey, including the roles I've held and the skills I've acquired along the way. For insights into my academic background, please visit my{' '}
-                    <Link to="/portfolio/education" className='text-blue-600 hover:underline focus:outline-none'>
+                    <Link to="/education" className='text-blue-600 hover:underline focus:outline-none'>
                         Education
                     </Link>{' '}
                     page, where I discuss the foundational knowledge and qualifications that support my career in software development.

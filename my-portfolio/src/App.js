@@ -1,7 +1,5 @@
-// src/App.js
-
 import React, { useState } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { HashRouter as Router } from 'react-router-dom';
 import HeroSection from './components/HeroSection';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';

@@ -63,7 +63,7 @@ const Projects = ({ activeTab, setActiveTab, setIsMenuOpen, isMenuOpen }) => {
             status: "In Progress"
         },
         {
-            title: "VeganHub - Vegan Recipes Website",
+            title: "VegWiz - Vegan Recipes Website",
             description: "I'm currently developing a web application dedicated to sharing and discovering vegan recipes, featuring a modern, responsive design with smooth animations and intuitive user interactions. The app is built with React and TypeScript, using Vite for fast builds and development, and React Router for seamless client-side navigation. Styling is powered by Tailwind CSS, with Framer Motion bringing animations to life. For form handling, I'm using React Hook Form combined with Zod for robust validation, and Axios for efficient API communication. I'm aiming to launch by Veganuary (January)—stay tuned for updates soon!",
             category: "Personal Project",
             period: "November 2024",

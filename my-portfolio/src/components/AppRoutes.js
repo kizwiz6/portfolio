@@ -14,11 +14,12 @@ const NotFound = lazy(() => import('../pages/NotFound'));
 
 // Route configuration
 const ROUTES = [
-  { path: '/portfolio/about', component: About, tab: 'about' },
-  { path: '/portfolio/projects', component: Projects, tab: 'projects' },
-  { path: '/portfolio/experience', component: Experience, tab: 'experience' },
-  { path: '/portfolio/education', component: Education, tab: 'education' },
+  { path: '/about', component: About, tab: 'about' },
+  { path: '/projects', component: Projects, tab: 'projects' },
+  { path: '/experience', component: Experience, tab: 'experience' },
+  { path: '/education', component: Education, tab: 'education' },
 ];
+
 
 const AppRoutes = ({ isMenuOpen, setIsMenuOpen }) => {
   const [activeTab, setActiveTab] = useState('about');
@@ -33,7 +34,7 @@ const AppRoutes = ({ isMenuOpen, setIsMenuOpen }) => {
 
   return (
     <>
-      <Navigation 
+      <Navigation
         activeTab={activeTab}
         setActiveTab={setActiveTab}
         isMenuOpen={isMenuOpen}
@@ -42,18 +43,17 @@ const AppRoutes = ({ isMenuOpen, setIsMenuOpen }) => {
       <Layout>
         <Suspense fallback={<LoadingSpinner />}>
           <Routes>
-            <Route path="/" element={<Navigate to="/portfolio/about" />} />
-            <Route path="/portfolio" element={<Navigate to="/portfolio/about" />} />
-            
+            <Route path="/" element={<Navigate to="/about" />} />
+
             {ROUTES.map(({ path, component: Component }) => (
-              <Route 
+              <Route
                 key={path}
                 path={path}
                 element={<Component />}
               />
             ))}
-            
-            <Route path="/portfolio/*" element={<NotFound />} />
+
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
       </Layout>
