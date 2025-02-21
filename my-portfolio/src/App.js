@@ -1,27 +1,33 @@
-import React, { useState } from 'react';
+// App.js
+import React, { Suspense, lazy, useState } from 'react';
 import { HashRouter as Router } from 'react-router-dom';
-import HeroSection from './components/HeroSection';
-import Footer from './components/Footer';
+import LoadingSpinner from './components/LoadingSpinner';
 import ScrollToTop from './components/ScrollToTop';
-import AppRoutes from './components/AppRoutes';
 import './App.css';
 
-function App() {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+// Lazy load components
+const HeroSection = lazy(() => import('./components/HeroSection'));
+const Footer = lazy(() => import('./components/Footer'));
+const AppRoutes = lazy(() => import('./components/AppRoutes'));
 
-    return (
-        <Router>
-            <ScrollToTop />
-            <div className="min-h-screen">
-                <HeroSection />
-                <AppRoutes
-                    isMenuOpen={isMenuOpen}
-                    setIsMenuOpen={setIsMenuOpen}
-                />
-                <Footer />
-            </div>
-        </Router>
-    );
+function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  return (
+    <Router>
+      <ScrollToTop />
+      <Suspense fallback={<LoadingSpinner />}>
+        <div className="min-h-screen">
+          <HeroSection />
+          <AppRoutes
+            isMenuOpen={isMenuOpen}
+            setIsMenuOpen={setIsMenuOpen}
+          />
+          <Footer />
+        </div>
+      </Suspense>
+    </Router>
+  );
 }
 
 export default App;

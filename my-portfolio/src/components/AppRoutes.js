@@ -5,12 +5,19 @@ import Navigation from './Navigation';
 import Layout from './Layout';
 import LoadingSpinner from './LoadingSpinner';
 
-// Lazy load pages
-const About = lazy(() => import('../pages/About'));
-const Projects = lazy(() => import('../pages/Projects'));
-const Experience = lazy(() => import('../pages/Experience'));
-const Education = lazy(() => import('../pages/Education'));
-const NotFound = lazy(() => import('../pages/NotFound'));
+// Lazy loading helper
+const lazyWithPreload = (factory) => {
+  const Component = lazy(factory);
+  Component.preload = factory;
+  return Component;
+};
+
+// Lazy load pages with preload capability
+const About = lazyWithPreload(() => import('../pages/About'));
+const Projects = lazyWithPreload(() => import('../pages/Projects'));
+const Experience = lazyWithPreload(() => import('../pages/Experience'));
+const Education = lazyWithPreload(() => import('../pages/Education'));
+const NotFound = lazyWithPreload(() => import('../pages/NotFound'));
 
 // Route configuration
 const ROUTES = [
@@ -19,7 +26,6 @@ const ROUTES = [
   { path: '/experience', component: Experience, tab: 'experience' },
   { path: '/education', component: Education, tab: 'education' },
 ];
-
 
 const AppRoutes = ({ isMenuOpen, setIsMenuOpen }) => {
   const [activeTab, setActiveTab] = useState('about');
@@ -32,6 +38,14 @@ const AppRoutes = ({ isMenuOpen, setIsMenuOpen }) => {
     }
   }, [location.pathname]);
 
+  // Preload handler for navigation
+  const handleNavHover = (path) => {
+    const route = ROUTES.find(r => r.path === path);
+    if (route && route.component.preload) {
+      route.component.preload();
+    }
+  };
+
   return (
     <>
       <Navigation
@@ -39,6 +53,7 @@ const AppRoutes = ({ isMenuOpen, setIsMenuOpen }) => {
         setActiveTab={setActiveTab}
         isMenuOpen={isMenuOpen}
         setIsMenuOpen={setIsMenuOpen}
+        onNavHover={handleNavHover}
       />
       <Layout>
         <Suspense fallback={<LoadingSpinner />}>
@@ -49,7 +64,14 @@ const AppRoutes = ({ isMenuOpen, setIsMenuOpen }) => {
               <Route
                 key={path}
                 path={path}
-                element={<Component />}
+                element={
+                  <Component
+                    activeTab={activeTab}
+                    setActiveTab={setActiveTab}
+                    isMenuOpen={isMenuOpen}
+                    setIsMenuOpen={setIsMenuOpen}
+                  />
+                }
               />
             ))}
 
