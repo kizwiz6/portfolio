@@ -93,15 +93,14 @@ const Projects = ({ activeTab, setActiveTab, setIsMenuOpen, isMenuOpen }) => {
             title: "My Portfolio Website",
             description: (
                 <>
-                    This portfolio website serves as a comprehensive showcase of my journey and accomplishments as a software developer. Built using React, the site highlights my diverse projects, technical skills, and professional experiences. With a strong emphasis on user experience, I implemented a responsive design that adapts seamlessly across various devices, ensuring accessibility for all users. The site incorporates smooth animations and transitions, enhancing visual appeal and engagement. Additionally, I focused on creating a user-friendly navigation system, allowing visitors to effortlessly explore my work and discover my passion for coding. Each project is presented with detailed descriptions, technologies used, and the challenges I overcame during development, providing insights into my problem-solving abilities. As I continue to refine and enhance the website, my goal is to not only display my skills but also to connect with potential collaborators and employers who share my enthusiasm for technology and innovation. The upcoming update of the portfolio website will include HashRouter for GitHub pages deployment, lazy loading and code splitting for optimal performance, React Spring for smooth page transitions and animations, and more benefits!
+                    This portfolio website serves as a comprehensive showcase of my journey and accomplishments as a software developer. Built using React, the site highlights my diverse projects, technical skills, and professional experiences. With a strong emphasis on user experience, I implemented a responsive design that adapts seamlessly across various devices, ensuring accessibility for all users. The site incorporates smooth animations and transitions, enhancing visual appeal and engagement. Additionally, I focused on creating a user-friendly navigation system, allowing visitors to effortlessly explore my work and discover my passion for coding. Each project is presented with detailed descriptions, technologies used, and the challenges I overcame during development, providing insights into my problem-solving abilities. As I continue to refine and enhance the website, my goal is to not only display my skills but also to connect with potential collaborators and employers who share my enthusiasm for technology and innovation.
                 </>
             ),
             category: "Personal Project",
             period: "October 2024",
             tags: ["React", "JavaScript", "Node.js", "CSS", "HTML", "Tailwind CSS", "Git", "GitHub", "npm", "Responsive Design"],
             thumbnail: "https://i.imgur.com/manEFYp.png",
-            link: "https://github.com/kizwiz6/portfolio",
-            status: "Update Coming Feb 2025"
+            link: "https://github.com/kizwiz6/portfolio"
         },
         {
             title: "Acticheck User Authentication System",
