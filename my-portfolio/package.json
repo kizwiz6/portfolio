@@ -11,7 +11,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-modal-image": "^2.6.0",
-    "react-router-dom": "^6.20.1",
+    "react-router-dom": "^7.18.4",
     "react-scripts": "5.0.1",
     "react-spring": "^9.7.3",
     "react-intersection-observer": "^9.5.3",
