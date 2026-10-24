@@ -42,7 +42,11 @@ const About = () => {
                     </div>
 
                     <figure className="about-photo">
-                        <div className="about-monogram" aria-hidden="true">KE</div>
+                        <img
+                            className="about-portrait"
+                            src={`${process.env.PUBLIC_URL}/profile.jpeg`}
+                            alt="Kieran Emery outdoors"
+                        />
                         <figcaption><span>Full-stack developer</span><strong>Cambridgeshire, UK</strong></figcaption>
                     </figure>
                 </div>
