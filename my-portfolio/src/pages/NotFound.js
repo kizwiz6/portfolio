@@ -1,22 +1,18 @@
 // src/pages/NotFound.js
 
 import React from 'react';
+import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Layout from '../components/Layout';
 
-const NotFound = ({ activeTab, setActiveTab, setIsMenuOpen, isMenuOpen }) => {
+const NotFound = () => {
     return (
-        <Layout activeTab={activeTab} setActiveTab={setActiveTab} setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen}>
-            <div className="flex flex-col items-center justify-center min-h-screen px-4 py-8">
-                <h1 className="text-6xl font-bold text-gray-800">404</h1>
-                <h2 className="text-2xl font-semibold text-gray-600 mb-4">Page Not Found</h2>
-                <p className="text-lg text-gray-500 mb-8">
-                    Sorry, the page you are looking for does not exist.
-                    It might have been removed, or the URL could be incorrect.
-                </p>
-                <Link to="/" className="text-blue-600 hover:underline">
-                    Go back to Home
-                </Link>
+        <Layout>
+            <div className="not-found-page">
+                <p className="eyebrow">404 / Wrong turn</p>
+                <h2>This page wandered off.</h2>
+                <p className="page-lede">That address does not lead to a portfolio page. Head back and choose another route.</p>
+                <Link to="/about" className="project-action"><ArrowLeft size={16} aria-hidden="true" /> Back to the portfolio</Link>
             </div>
         </Layout>
     );

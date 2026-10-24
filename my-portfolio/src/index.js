@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css'; // Your global CSS
+import './styles/portfolio.css';
 import App from './App'; // Your main App component
 import reportWebVitals from './reportWebVitals';
 

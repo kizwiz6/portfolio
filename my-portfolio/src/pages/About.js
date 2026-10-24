@@ -1,83 +1,51 @@
 import React from 'react';
-import { useSpring, animated, useTrail } from 'react-spring';
 import { Link } from 'react-router-dom';
 import Layout from '../components/Layout';
 
-const About = ({ activeTab, setActiveTab, setIsMenuOpen, isMenuOpen }) => {
-    // Spring animations for heading and profile picture
-    const headingAnimation = useSpring({ opacity: 1, from: { opacity: 0 }, delay: 200 });
-    const profilePicAnimation = useSpring({ transform: 'scale(1)', from: { transform: 'scale(0.8)' }, delay: 300 });
-
-    // Content sections for the trail animation
-    const content = [
-        {
-            title: "My Story",
-            text: "I'm Kieran, a dedicated Software Developer based in Cambridgeshire, UK. With nearly seven years of commercial experience at companies like Acticheck and iGO4 Insurance, I have honed my skills in software development."
-        },
-        {
-            title: "Welcome to My Portfolio!",
-            text: (
-                <span>
-                    On the{' '}
-                    <Link to="/projects" className='text-blue-600 hover:underline focus:outline-none'>
-                        Projects
-                    </Link>{' '}
-                    page, you'll find some of my most cherished projects, showcasing my approach to solving real-world challenges with innovative solutions. Although confidentiality restricts me from revealing specifics of my commercial projects, I'm excited to share the essence of my work and the skills I've developed. Additionally, my{' '}
-                    <Link to="/experience" className='text-blue-600 hover:underline focus:outline-none'>
-                        Experience
-                    </Link>{' '}
-                    page provides a detailed overview of my professional journey, including the roles I've held and the skills I've acquired along the way. For insights into my academic background, please visit my{' '}
-                    <Link to="/education" className='text-blue-600 hover:underline focus:outline-none'>
-                        Education
-                    </Link>{' '}
-                    page, where I discuss the foundational knowledge and qualifications that support my career in software development.
-                </span>
-            )
-        },
-        {
-            title: "Let's Connect!",
-            text: (
-                <span>
-                    Thank you for visiting my portfolio! I look forward to connecting and sharing my passion for development. Feel free to reach out via email or through my social media links.
-                </span>
-            )
-        }
-    ];
-
-    // Trail animation for content sections
-    const trail = useTrail(content.length, {
-        opacity: 1,
-        transform: 'translateY(0)',
-        from: { opacity: 0, transform: 'translateY(-20px)' },
-        delay: 400
-    });
-
+const About = () => {
     return (
-        <Layout activeTab={activeTab} setActiveTab={setActiveTab} setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen}>
-            <div className="max-w-6xl mx-auto px-4 py-8">
-                {/* Use headingAnimation directly with animated.h2 */}
-                <animated.h2 style={headingAnimation} className="text-4xl font-bold mb-6">
-                    About Me
-                </animated.h2>
+        <Layout>
+            <div className="about-page">
+                <header className="page-heading">
+                    <p className="eyebrow">About / 01</p>
+                    <h2>Software that solves a useful problem.</h2>
+                    <p className="page-lede">
+                        I’m Kieran, a full-stack developer in Cambridgeshire. I enjoy taking a feature from an open question through implementation, testing, and release.
+                    </p>
+                </header>
 
-                {/* Animated Profile Picture */}
-                <animated.div style={profilePicAnimation} className="mb-8 flex flex-col items-center">
-                    <img
-                        src="https://i.imgur.com/sN2gjsM.png"
-                        alt="Kieran Emery"
-                        className="w-100 h-100 object-cover mb-4 rounded-full shadow-lg"
-                    />
-                </animated.div>
+                <div className="about-layout">
+                    <div className="about-copy">
+                        <section className="about-section">
+                            <h3>My story</h3>
+                            <p>
+                                Since 2018, I’ve worked across insurance and automotive software, building APIs, data workflows, and customer-facing applications. I’m currently developing a multi-tenant automotive SaaS platform at Return on Investment Ltd.
+                            </p>
+                        </section>
+                        <section className="about-section">
+                            <h3>How I work</h3>
+                            <p>
+                                I like owning a problem end to end: understanding the requirements, working through the backend and frontend changes, and getting a tested, production-ready pull request over the line. I’m especially happy digging into performance and hard-to-reproduce bugs.
+                            </p>
+                        </section>
+                        <section className="about-section">
+                            <h3>Explore the portfolio</h3>
+                            <p>
+                                Browse <Link to="/projects">selected projects</Link>, follow my <Link to="/experience">career timeline</Link>, or see the <Link to="/education">study and coursework</Link> that started it all.
+                            </p>
+                        </section>
+                        <div className="about-facts" aria-label="Profile highlights">
+                            <div className="about-fact"><strong>2018—now</strong><span>Building software</span></div>
+                            <div className="about-fact"><strong>C# + React</strong><span>Across the stack</span></div>
+                            <div className="about-fact"><strong>Feature to prod</strong><span>End-to-end ownership</span></div>
+                        </div>
+                    </div>
 
-                {/* Animated Content Blocks */}
-                {trail.map((style, index) => (
-                    <animated.div key={index} style={style} className="mb-8">
-                        <h2 className="text-2xl font-semibold mb-2">
-                            {content[index].title}
-                        </h2>
-                        <p className="text-lg text-gray-600">{content[index].text}</p>
-                    </animated.div>
-                ))}
+                    <figure className="about-photo">
+                        <div className="about-monogram" aria-hidden="true">KE</div>
+                        <figcaption><span>Full-stack developer</span><strong>Cambridgeshire, UK</strong></figcaption>
+                    </figure>
+                </div>
             </div>
         </Layout>
     );

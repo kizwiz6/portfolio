@@ -1,8 +1,7 @@
 // src/components/AppRoutes.js
-import React, { useState, useEffect, lazy, Suspense } from 'react';
-import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import React, { lazy, Suspense } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Navigation from './Navigation';
-import Layout from './Layout';
 import LoadingSpinner from './LoadingSpinner';
 
 // Lazy loading helper
@@ -21,23 +20,13 @@ const NotFound = lazyWithPreload(() => import('../pages/NotFound'));
 
 // Route configuration
 const ROUTES = [
-  { path: '/about', component: About, tab: 'about' },
-  { path: '/projects', component: Projects, tab: 'projects' },
-  { path: '/experience', component: Experience, tab: 'experience' },
-  { path: '/education', component: Education, tab: 'education' },
+  { path: '/about', component: About },
+  { path: '/projects', component: Projects },
+  { path: '/experience', component: Experience },
+  { path: '/education', component: Education },
 ];
 
 const AppRoutes = ({ isMenuOpen, setIsMenuOpen }) => {
-  const [activeTab, setActiveTab] = useState('about');
-  const location = useLocation();
-
-  useEffect(() => {
-    const currentRoute = ROUTES.find(route => route.path === location.pathname);
-    if (currentRoute) {
-      setActiveTab(currentRoute.tab);
-    }
-  }, [location.pathname]);
-
   // Preload handler for navigation
   const handleNavHover = (path) => {
     const route = ROUTES.find(r => r.path === path);
@@ -49,13 +38,11 @@ const AppRoutes = ({ isMenuOpen, setIsMenuOpen }) => {
   return (
     <>
       <Navigation
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
         isMenuOpen={isMenuOpen}
         setIsMenuOpen={setIsMenuOpen}
         onNavHover={handleNavHover}
       />
-      <Layout>
+      <main id="main-content" className="site-main">
         <Suspense fallback={<LoadingSpinner />}>
           <Routes>
             <Route path="/" element={<Navigate to="/about" />} />
@@ -64,21 +51,14 @@ const AppRoutes = ({ isMenuOpen, setIsMenuOpen }) => {
               <Route
                 key={path}
                 path={path}
-                element={
-                  <Component
-                    activeTab={activeTab}
-                    setActiveTab={setActiveTab}
-                    isMenuOpen={isMenuOpen}
-                    setIsMenuOpen={setIsMenuOpen}
-                  />
-                }
+                element={<Component />}
               />
             ))}
 
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
-      </Layout>
+      </main>
     </>
   );
 };

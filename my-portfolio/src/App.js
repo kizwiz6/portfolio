@@ -16,16 +16,16 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
-      <Suspense fallback={<LoadingSpinner />}>
-        <div className="min-h-screen">
-          <HeroSection />
+      <div className="app-shell">
+        <HeroSection />
+        <Suspense fallback={<LoadingSpinner />}>
           <AppRoutes
             isMenuOpen={isMenuOpen}
             setIsMenuOpen={setIsMenuOpen}
           />
-          <Footer />
-        </div>
-      </Suspense>
+        </Suspense>
+        <Footer />
+      </div>
     </Router>
   );
 }

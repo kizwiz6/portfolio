@@ -4,6 +4,18 @@ import { acticheckGalleryImages, igo4GalleryImages } from '../galleryImages';
 
 export const experiences = [
   {
+    company: "Return on Investment Ltd",
+    period: "Feb 2025 - Present",
+    role: "Full Stack Software Developer",
+    location: "Remote",
+    description: [
+      "Build and ship features across a multi-tenant automotive SaaS platform, working across C# backend services, SQL data, and React/TypeScript frontends.",
+      "Own work end to end, from clarifying requirements and implementing changes across the stack to testing and preparing production-ready pull requests.",
+      "Investigate performance issues and bugs, tracing problems across application layers to deliver reliable fixes."
+    ],
+    technologies: ["C#", "SQL", "React", "TypeScript", "Multi-tenant SaaS", "Performance analysis"]
+  },
+  {
     company: "Acticheck",
     website: "https://acticheck.com/",
     period: "June 2024 - Oct 2024",

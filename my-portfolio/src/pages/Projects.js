@@ -1,22 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ProjectCard from '../components/ProjectCard';
-import AnimatedComponent from '../components/AnimatedComponent';
 import Layout from '../components/Layout';
 
 
 // Functional component for the Projects page
-const Projects = ({ activeTab, setActiveTab, setIsMenuOpen, isMenuOpen }) => {
-
-    const projectsIntroContent = (
-        <div>
-            <p className="text-gray-600 mb-4">
-                Throughout my career, I have had the opportunity to work on a diverse range of projects that reflect my skills and passion for technology. This projects page showcases a selection of key projects from my professional experiences.
-            </p>
-            <p className="text-gray-600 mb-4">
-                Here, you can find a selection of my key projects, showcasing the solutions implemented and the technologies used.
-            </p>
-        </div>
-    );
+const Projects = () => {
+    const [activeFilter, setActiveFilter] = useState('All');
 
     /**
      * Project details.
@@ -51,7 +40,7 @@ const Projects = ({ activeTab, setActiveTab, setIsMenuOpen, isMenuOpen }) => {
             period: "February 2025",
             tags: ["TypeScript", "Next.js 14", "React", "JavaScript", "Tailwind CSS", "HTML5", "CSS3", "Framer Motion", "Google Maps API", "Jest"],
             status: "Release March 2025",
-            thumbnail: "https://imgur.com/9G5kJEl.png",
+            thumbnail: "https://i.imgur.com/9G5kJEl.png",
         },
         {
             title: "Plantheads",
@@ -355,22 +344,44 @@ const Projects = ({ activeTab, setActiveTab, setIsMenuOpen, isMenuOpen }) => {
         }
     ];
 
-    return (
-        <Layout
-            activeTab="projects"
-            setActiveTab={setActiveTab}
-            setIsMenuOpen={setIsMenuOpen} // Pass this down
-            isMenuOpen={isMenuOpen} // Use the prop directly
-        >
-            <AnimatedComponent style={{ marginBottom: '24px' }}>
-                <h2 className="text-4xl font-bold">Projects</h2>
-            </AnimatedComponent>
-            {projectsIntroContent && <div className="mb-4">{projectsIntroContent}</div>}
+    const filters = ['All', 'Personal', 'Professional', 'Study'];
+    const filteredProjects = projects.filter((project) => {
+        const category = project.category || '';
+        if (activeFilter === 'All') return true;
+        if (activeFilter === 'Personal') return category.includes('Personal');
+        if (activeFilter === 'Professional') return category.startsWith('Work');
+        return Boolean(project.university) || /university|college/i.test(category);
+    });
 
-            <div className="grid md:grid-cols-2 gap-6">
-                {projects.map((project, index) => (
-                    <ProjectCard key={index} project={project} />
-                ))}
+    return (
+        <Layout>
+            <div className="projects-page">
+                <header className="page-heading">
+                    <p className="eyebrow">Selected work / 02</p>
+                    <h2>Projects with a purpose.</h2>
+                    <p className="page-lede">
+                        A mix of personal builds, academic work, and selected examples from my professional experience.
+                    </p>
+                </header>
+
+                <div className="project-filters" role="group" aria-label="Filter projects by category">
+                    {filters.map((filter) => (
+                        <button
+                            className={`filter-button${activeFilter === filter ? ' is-active' : ''}`}
+                            type="button"
+                            aria-pressed={activeFilter === filter}
+                            key={filter}
+                            onClick={() => setActiveFilter(filter)}
+                        >
+                            {filter}
+                        </button>
+                    ))}
+                    <span className="projects-count" aria-live="polite">{filteredProjects.length} projects</span>
+                </div>
+
+                <div className="projects-grid">
+                    {filteredProjects.map((project) => <ProjectCard key={project.title} project={project} />)}
+                </div>
             </div>
         </Layout>
     );

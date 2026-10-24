@@ -1,57 +1,46 @@
 // src/components/HeroSection.js
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { ArrowDownRight, ArrowUpRight, Mail } from 'lucide-react';
 
-const HERO_IMAGE_URL = 'https://github.com/kizwiz6/portfolio/blob/master/my-portfolio/public/Mollie-bg.jpg?raw=true';
+const HERO_IMAGE_URL = `${process.env.PUBLIC_URL}/Mollie-bg.jpg`;
 
 const HeroSection = () => {
-  const [imageLoaded, setImageLoaded] = useState(false);
-
-  useEffect(() => {
-    // Preload the image
-    const img = new Image();
-    img.src = HERO_IMAGE_URL;
-    img.onload = () => setImageLoaded(true);
-  }, []);
-
   return (
-    <div
-      className={`
-        text-white bg-cover bg-center h-[500px] relative transition-opacity duration-300
-        ${imageLoaded ? 'opacity-100' : 'opacity-0'}
-      `}
-      style={{
-        backgroundImage: `url(${HERO_IMAGE_URL})`,
-        // Add a base background color that matches your image's overall tone
-        backgroundColor: '#4a5568' // This will show while the image loads
-      }}
-    >
-      <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center px-4">
-        <div className="max-w-6xl w-full text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in">
-            Kieran Emery
-          </h1>
-          <p className="text-xl md:text-2xl text-blue-100 mb-8">
-            British software developer building innovative solutions with modern technologies
-          </p>
-          <div className="flex justify-center space-x-4">
-            <button
-              onClick={() => window.location.href = 'mailto:kizwiz@hotmail.co.uk'}
-              className="bg-white text-blue-800 px-6 py-2 rounded-full hover:bg-blue-50 transition duration-300"
-            >
-              Contact Me
-            </button>
-            <a
-              href="https://www.dropbox.com/scl/fi/lhobteip40zlhp6r25fpe/KieranEmery_CV_2024.pdf?rlkey=t18j3jpmfsco2py96wn32nyp8&st=3nhxivnx&dl=0"
-              className="border border-white text-white px-6 py-2 rounded-full hover:bg-white hover:text-blue-800 transition duration-300"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View CV
-            </a>
+    <header className="site-hero">
+      <img className="hero-image" src={HERO_IMAGE_URL} alt="" aria-hidden="true" />
+      <div className="hero-shade" aria-hidden="true" />
+      <div className="hero-content">
+        <div className="hero-topline">
+          <span>Portfolio / {new Date().getFullYear()}</span>
+          <span>Cambridgeshire, UK</span>
+        </div>
+        <div className="hero-main">
+          <div>
+            <p className="hero-kicker">Full-stack software developer</p>
+            <h1>Kieran Emery<span>.</span></h1>
+            <p className="hero-summary">I build useful products across the stack, from the first requirement to the production release.</p>
+            <div className="hero-actions">
+              <a className="hero-button hero-button-primary" href="mailto:kizwiz@hotmail.co.uk">
+                <Mail size={17} aria-hidden="true" /> Get in touch
+              </a>
+              <a
+                className="hero-button hero-button-outline"
+                href="https://www.dropbox.com/scl/fi/lhobteip40zlhp6r25fpe/KieranEmery_CV_2024.pdf?rlkey=t18j3jpmfsco2py96wn32nyp8&st=3nhxivnx&dl=0"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View CV <ArrowUpRight size={17} aria-hidden="true" />
+              </a>
+            </div>
+          </div>
+          <div className="hero-aside" aria-hidden="true">
+            <span>Product-minded</span>
+            <span>Performance curious</span>
+            <ArrowDownRight size={34} strokeWidth={1.25} />
           </div>
         </div>
       </div>
-    </div>
+    </header>
   );
 };
 

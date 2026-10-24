@@ -23,7 +23,7 @@
 
   /* Specific styles for headings */
   h1 {
-    @apply font-bold text-white; /* White color for h1 */
+    @apply font-bold text-gray-900;
   }
   
   h2, h3 {
@@ -32,7 +32,7 @@
 
   /* Link styles */
   a {
-    @apply text-blue-600 hover:text-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-400; /* Link styles with focus ring */
+    @apply text-gray-800 hover:text-teal-700 focus:outline-none focus:ring-2 focus:ring-orange-500;
   }
 
   /* Adding a default margin for all elements to ensure consistent spacing */
@@ -42,7 +42,7 @@
 
   /* Adding styles for paragraphs */
   p {
-    @apply mb-4 text-base leading-relaxed; /* Margin and line height for better readability */
+    @apply text-base leading-relaxed;
   }
 }
 

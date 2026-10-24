@@ -1,73 +1,69 @@
 // src/pages/Experience.js
 
-import React, { useState, Suspense, lazy } from 'react';
-import { Calendar } from 'lucide-react';
+import React, { Suspense, lazy } from 'react';
+import { ArrowUpRight, Briefcase, CalendarDays, MapPin } from 'lucide-react';
 import { experiences } from '../data/experiences';
 import Layout from '../components/Layout';
-import AnimatedComponent from '../components/AnimatedComponent';
 
-// Lazy load the ImageGallery component
 const ImageGallery = lazy(() => import('../components/ImageGallery'));
 
-const Experience = () => {
-  const [activeTab, setActiveTab] = useState('experience');
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+const Experience = () => (
+  <Layout>
+    <div className="experience-page">
+      <header className="page-heading">
+        <p className="eyebrow">Career / 01</p>
+        <h2>Work experience</h2>
+        <p className="page-lede">
+          A timeline of the teams, products, and problems I have worked on.
+        </p>
+      </header>
 
-  return (
-    <Layout
-      activeTab={activeTab}
-      setActiveTab={setActiveTab}
-      setIsMenuOpen={setIsMenuOpen}
-      isMenuOpen={isMenuOpen}
-    >
-      <AnimatedComponent style={{ marginBottom: '24px' }}>
-        <h2 className="text-4xl font-bold">Work Experience</h2>
-      </AnimatedComponent>
-      <p className="text-gray-600 mb-6">
-        Below is a summary of the work I've completed at various companies, showcasing my contributions to significant projects, technologies utilized, and the skills I've developed throughout my career.
-      </p>
+      <ol className="experience-timeline">
+        {experiences.map((experience, index) => (
+          <li className={`experience-item${index === 0 ? ' is-current' : ''}`} key={experience.company}>
+            <div className="timeline-index" aria-hidden="true">{String(index + 1).padStart(2, '0')}</div>
+            <article className="experience-card">
+              <div className="experience-meta">
+                <span><CalendarDays size={15} aria-hidden="true" />{experience.period}</span>
+                {experience.location && <span><MapPin size={15} aria-hidden="true" />{experience.location}</span>}
+                {index === 0 && <span className="current-badge"><span />Current role</span>}
+              </div>
 
-      {experiences.length === 0 ? (
-        <p className="text-gray-600">No experience listed.</p>
-      ) : (
-        experiences.map((exp, index) => (
-          <div key={index} className="bg-white shadow-md rounded-lg p-6 mb-6">
-            <div className="flex items-center mb-2">
-              <span className="text-gray-600 flex-shrink-0">
-                <Calendar size={16} className="mr-2" />
-                {exp.period}
-              </span>
-              <h3 className="text-xl font-semibold flex-grow text-center">
-                <a
-                  href={exp.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Visit ${exp.company} website`}
-                >
-                  {exp.company}
-                </a>
-              </h3>
-              <span className="font-medium text-gray-600 flex-shrink-0 ml-4">
-                {exp.role}
-              </span>
-            </div>
-            <ul className="list-disc list-inside text-gray-600 mb-4">
-              {exp.description.map((point, pointIndex) => (
-                <li key={pointIndex}>{point}</li>
-              ))}
-            </ul>
+              <div className="experience-title-row">
+                <div>
+                  <h3>{experience.role}</h3>
+                  {experience.website ? (
+                    <a className="company-link" href={experience.website} target="_blank" rel="noopener noreferrer">
+                      {experience.company}<ArrowUpRight size={15} aria-hidden="true" />
+                    </a>
+                  ) : (
+                    <p className="company-name">{experience.company}</p>
+                  )}
+                </div>
+                <Briefcase className="experience-icon" size={24} aria-hidden="true" />
+              </div>
 
-            {/* Image Gallery Section */}
-            {exp.images && exp.images.length > 0 && (
-              <Suspense fallback={<div>Loading images...</div>}>
-                <ImageGallery images={exp.images} title={exp.company} />
-              </Suspense>
-            )}
-          </div>
-        ))
-      )}
-    </Layout>
-  );
-};
+              <ul className="experience-points">
+                {experience.description.map((point) => <li key={point}>{point}</li>)}
+              </ul>
+
+              {experience.technologies?.length > 0 && (
+                <div className="tag-list" aria-label="Technologies">
+                  {experience.technologies.map((technology) => <span className="tag" key={technology}>{technology}</span>)}
+                </div>
+              )}
+
+              {experience.images?.length > 0 && (
+                <Suspense fallback={<p className="loading-note">Loading gallery…</p>}>
+                  <ImageGallery images={experience.images} title={experience.company} />
+                </Suspense>
+              )}
+            </article>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </Layout>
+);
 
 export default Experience;
