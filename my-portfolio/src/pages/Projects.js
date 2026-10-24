@@ -6,6 +6,7 @@ import Layout from '../components/Layout';
 // Functional component for the Projects page
 const Projects = () => {
     const [activeFilter, setActiveFilter] = useState('All');
+    const [activeView, setActiveView] = useState('selected');
 
     /**
      * Project details.
@@ -18,13 +19,49 @@ const Projects = () => {
     */
     const projects = [
         {
-            title: "Sip N Sign (British Sign Language App)",
-            description: "Developed SipNSign, an innovative mobile application that gamifies British Sign Language learning by combining educational content with social interaction. Built using C# and .NET MAUI, the app features an immersive interface with high-quality video demonstrations and interactive game modes. Implemented extensive customisation options including multiple themes and accessibility features. Architected using MVVM pattern with dependency injection for clean, maintainable code. Integrated local storage for offline functionality and progress tracking, with features including achievement systems, progress monitoring, and in-app purchases for additional content packs.",
+            title: "SignWiz (Mobile App)",
+            description: (
+                <div className="project-rich-copy">
+                    <section>
+                        <h4>What it is</h4>
+                        <p>SignWiz is a game-based app for learning British Sign Language (BSL). Instead of long lessons, it teaches through short, interactive challenges.</p>
+                    </section>
+                    <section>
+                        <h4>Main game modes</h4>
+                        <ul>
+                            <li><strong>Guess Mode</strong> - watch a sign video and pick the correct meaning.</li>
+                            <li><strong>Perform Mode</strong> - see a word, sign it yourself, then reveal the video answer.</li>
+                            <li><strong>Fingerspelling</strong> - practice the manual alphabet with a translator and timed game.</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h4>Extra app features</h4>
+                        <ul>
+                            <li>Story-style learning path (Story Mode / campaign).</li>
+                            <li>Multiplayer features and friend play.</li>
+                            <li>Player profiles, stats, and achievement tracking.</li>
+                            <li>Friends list, friend requests, and invites.</li>
+                            <li>Spellbook-style unlocks, themes, and playful effects.</li>
+                            <li>Progress saving between sessions.</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h4>How it is built</h4>
+                        <ul>
+                            <li>Built with .NET 10 and .NET MAUI, with project settings for Android, iOS, Mac Catalyst, and Windows.</li>
+                            <li>Shared models and business logic live in a shared project.</li>
+                            <li>A backend API supports accounts, sync, and online play.</li>
+                            <li>Real-time multiplayer uses SignalR.</li>
+                        </ul>
+                    </section>
+                </div>
+            ),
+            summary: "Short, interactive BSL challenges with Guess, Perform, Fingerspelling, campaign progression, and online social play.",
+            descriptionDisclosure: true,
             category: "Personal Project",
-            period: "October 2024",
             tags: [".NET MAUI", "C#", "MVVM", "XAML", "SQLite", "British Sign Language", "Mobile Development", "Cross-Platform Development"],
-            status: "Release March 2025",
-            videoSource: "SipNSignVideo.mp4",
+            status: "Release 2027",
+            featured: true,
         },
         {
             title: "St.Neots Chess Club Website Update",
@@ -41,6 +78,7 @@ const Projects = () => {
             tags: ["TypeScript", "Next.js 14", "React", "JavaScript", "Tailwind CSS", "HTML5", "CSS3", "Framer Motion", "Google Maps API", "Jest"],
             status: "Release March 2025",
             thumbnail: "https://i.imgur.com/9G5kJEl.png",
+            archived: true,
         },
         {
             title: "Plantheads",
@@ -49,7 +87,8 @@ const Projects = () => {
             period: "December 2024",
             videoSource: "Plantheads.mp4",
             tags: ["TypeScript", "Blazor", "C#", "Tailwind CSS", "Responsive Design", "SQL"],
-            status: "In Progress"
+            status: "In Progress",
+            archived: true
         },
         {
             title: "VegWiz - Vegan Recipes Website",
@@ -58,7 +97,8 @@ const Projects = () => {
             period: "November 2024",
             videoSource: "VeganRecipes.mp4",
             tags: ["TypeScript", "React", "C#", "Vite", "React Router", "Tailwind CSS", "Framer Motion", "Zod", "Axios", "Git", "GitHub", "npm", "Responsive Design"],
-            status: "On hold"
+            status: "On hold",
+            archived: true
         },
         {
             title: "MOT History Checker",
@@ -68,15 +108,50 @@ const Projects = () => {
             tags: ["C#", "HTML", "CSS", "JavaScript", "Blazor WebAssembly", "Tailwind CSS", "bUnit", "ASP.NET Core API", "Tailwind CSS", "xUnit", "Moq", "Git", "GitHub", "DVSA MOT History API integration"],
             thumbnail: "https://i.imgur.com/JajKza4.png",
             status: "Completed",
-            link: "https://github.com/kizwiz6/MotChecker"
+            link: "https://github.com/kizwiz6/MotChecker",
+            archived: true
         },
         {
-            title: "Sip N Sign (British Sign Language Website)",
-            description: "Developing a blazor website for learning sign language. Designed a user-friendly interface featuring multimedia resources, including videos and images, to enhance immersion. Employed the MVVM architecture to maintain clean code, improving the application's maintainability and scalability.",
+            title: "SignWiz Website (signwiz.uk)",
+            description: (
+                <div className="project-rich-copy">
+                    <section>
+                        <h4>What it is</h4>
+                        <p>The website version of SignWiz lets people play in-browser with no download. It is designed to be quick to start and free to use.</p>
+                    </section>
+                    <section>
+                        <h4>Web gameplay</h4>
+                        <ul>
+                            <li>Same core learning modes: Guess, Perform, and Fingerspelling.</li>
+                            <li>Online room-based multiplayer for friends, with room codes and invites.</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h4>Web account and social features</h4>
+                        <ul>
+                            <li>Optional account system with profiles and friends.</li>
+                            <li>Achievement display and synced progress support for signed-in users.</li>
+                            <li>Support/contact page and privacy pages.</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h4>How the website is built</h4>
+                        <ul>
+                            <li>Front end: Blazor WebAssembly on .NET 10.</li>
+                            <li>Backend: ASP.NET Core server with authentication/account and sync endpoints, plus a SignalR multiplayer hub.</li>
+                            <li>Data layer uses Entity Framework Core and supports SQL Server/Azure SQL.</li>
+                            <li>GitHub Actions CI/CD deploys signwiz-web and signwiz-server to Azure App Service, with routing through signwiz.uk and api.signwiz.uk.</li>
+                        </ul>
+                    </section>
+                </div>
+            ),
+            summary: "Play SignWiz in-browser with no download: BSL learning modes, online rooms, optional accounts, and synced progress.",
+            descriptionDisclosure: true,
             category: "Personal Project",
-            period: "December 2024",
             tags: ["Blazor", ".NET", "C#", "MVVM", "Razor", "British Sign Language"],
-            status: "In Progress"
+            status: "2027",
+            featured: true,
+            link: "https://signwiz.uk"
         },
         {
             title: "My Portfolio Website",
@@ -345,7 +420,12 @@ const Projects = () => {
     ];
 
     const filters = ['All', 'Personal', 'Professional', 'Study'];
-    const filteredProjects = projects.filter((project) => {
+    const selectedProjects = projects
+        .filter((project) => !project.archived)
+        .sort((first, second) => Number(Boolean(second.featured)) - Number(Boolean(first.featured)));
+    const archivedProjects = projects.filter((project) => project.archived);
+    const visibleProjects = activeView === 'archive' ? archivedProjects : selectedProjects;
+    const filteredProjects = visibleProjects.filter((project) => {
         const category = project.category || '';
         if (activeFilter === 'All') return true;
         if (activeFilter === 'Personal') return category.includes('Personal');
@@ -358,11 +438,32 @@ const Projects = () => {
             <div className="projects-page">
                 <header className="page-heading">
                     <p className="eyebrow">Selected work / 02</p>
-                    <h2>Projects with a purpose.</h2>
+                    <h2>{activeView === 'archive' ? 'From the archive.' : 'Projects with a purpose.'}</h2>
                     <p className="page-lede">
-                        A mix of personal builds, academic work, and selected examples from my professional experience.
+                        {activeView === 'archive'
+                            ? 'Earlier experiments and projects, kept here for reference.'
+                            : 'A mix of personal builds, academic work, and selected examples from my professional experience.'}
                     </p>
                 </header>
+
+                <div className="project-view-switch" role="group" aria-label="Choose project collection">
+                    <button
+                        className={`view-button${activeView === 'selected' ? ' is-active' : ''}`}
+                        type="button"
+                        aria-pressed={activeView === 'selected'}
+                        onClick={() => { setActiveView('selected'); setActiveFilter('All'); }}
+                    >
+                        Selected <span>{selectedProjects.length}</span>
+                    </button>
+                    <button
+                        className={`view-button${activeView === 'archive' ? ' is-active' : ''}`}
+                        type="button"
+                        aria-pressed={activeView === 'archive'}
+                        onClick={() => { setActiveView('archive'); setActiveFilter('All'); }}
+                    >
+                        Archive <span>{archivedProjects.length}</span>
+                    </button>
+                </div>
 
                 <div className="project-filters" role="group" aria-label="Filter projects by category">
                     {filters.map((filter) => (

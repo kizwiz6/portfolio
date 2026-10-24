@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUpRight, CalendarDays } from 'lucide-react';
+import { ArrowUpRight, CalendarDays, Star } from 'lucide-react';
 
 const ProjectCard = ({ project }) => {
     const hasLongDescription = typeof project.description === 'string' && project.description.length > 420;
@@ -8,10 +8,13 @@ const ProjectCard = ({ project }) => {
         : project.description;
 
     return (
-        <article className="project-card">
+        <article className={`project-card${project.featured ? ' is-featured' : ''}`}>
             <div className="project-card-topline">
                 <span className="project-category">{project.category || project.university || 'Selected work'}</span>
-                {project.status && <span className="project-status">{project.status}</span>}
+                <div className="project-markers">
+                    {project.featured && <span className="project-featured"><Star size={13} fill="currentColor" aria-hidden="true" /> Featured</span>}
+                    {project.status && <span className="project-status">{project.status}</span>}
+                </div>
             </div>
             <h3>{project.title}</h3>
             {project.period && <p className="project-period"><CalendarDays size={14} aria-hidden="true" /> {project.period}</p>}
@@ -36,7 +39,16 @@ const ProjectCard = ({ project }) => {
                 />
             )}
 
-            {project.description && <div className="project-description">{descriptionPreview}</div>}
+            {project.summary && <p className="project-description">{project.summary}</p>}
+            {project.description && !project.descriptionDisclosure && !project.summary && (
+                <div className="project-description">{descriptionPreview}</div>
+            )}
+            {project.descriptionDisclosure && (
+                <details className="project-details">
+                    <summary>View project details</summary>
+                    <div className="project-rich-content">{project.description}</div>
+                </details>
+            )}
             {hasLongDescription && (
                 <details className="project-details">
                     <summary>Read full description</summary>

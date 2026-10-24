@@ -122,6 +122,9 @@ button:focus-visible, a:focus-visible, summary:focus-visible { outline: 3px soli
 .project-card { display: flex; height: 100%; flex-direction: column; padding: 23px; border: 1px solid var(--line); background: #fff; transition: border-color .2s ease, transform .2s ease; animation: enter .55s ease both; }
 .project-card:hover { transform: translateY(-3px); border-color: #a7b6ac; }
 .project-card-topline { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+.project-card.is-featured { border-top: 3px solid var(--coral); }
+.project-markers { display: flex; flex-wrap: wrap; align-items: center; justify-content: end; gap: 6px; }
+.project-featured { display: inline-flex; align-items: center; gap: 5px; padding: 5px 7px; background: var(--deep); color: var(--lime); font: 500 9px 'DM Mono', monospace; text-transform: uppercase; }
 .project-category, .project-status { color: var(--teal); font: 500 10px 'DM Mono', monospace; text-transform: uppercase; }
 .project-status { padding: 5px 8px; background: #edf3c9; color: #495718; text-transform: none; }
 .project-card h3 { margin-bottom: 10px; color: var(--ink); font-size: 22px; line-height: 1.2; }
@@ -132,11 +135,23 @@ button:focus-visible, a:focus-visible, summary:focus-visible { outline: 3px soli
 .project-details { margin-top: 12px; }
 .project-details summary { width: fit-content; color: var(--teal); cursor: pointer; font-size: 12px; font-weight: 700; }
 .project-details .project-description { margin-top: 10px; }
+.project-rich-content { display: grid; gap: 15px; margin-top: 15px; color: #52605d; font-size: 12px; line-height: 1.7; }
+.project-rich-copy { display: grid; gap: 15px; }
+.project-rich-copy section { display: grid; gap: 5px; }
+.project-rich-content h4, .project-rich-copy h4 { color: var(--ink); font-size: 14px; }
+.project-rich-content p, .project-rich-copy p { margin: 0; }
+.project-rich-content ul, .project-rich-copy ul { display: grid; gap: 4px; margin: 0; padding-left: 17px; }
+.project-rich-content li::marker, .project-rich-copy li::marker { color: var(--coral); }
 .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 17px; }
 .project-tags .tag { font-size: 9px; }
 .project-actions { margin-top: auto; padding-top: 19px; }
 .project-action { display: inline-flex; align-items: center; gap: 6px; color: var(--coral); font-size: 12px; font-weight: 800; }
 .project-filters { display: flex; flex-wrap: wrap; gap: 7px; margin: 0 0 25px; }
+.project-view-switch { display: inline-flex; gap: 3px; margin: 0 0 21px; padding: 4px; border: 1px solid var(--line); background: #e8ebe6; }
+.view-button { display: inline-flex; min-height: 36px; align-items: center; gap: 10px; padding: 0 12px; border: 0; background: transparent; color: var(--muted); cursor: pointer; font-size: 11px; font-weight: 700; }
+.view-button span { display: grid; min-width: 20px; height: 20px; place-items: center; background: rgba(23,35,35,.08); font: 10px 'DM Mono', monospace; }
+.view-button.is-active { background: var(--deep); color: #fff; }
+.view-button.is-active span { background: rgba(255,255,255,.16); color: var(--lime); }
 .filter-button { min-height: 36px; padding: 0 13px; border: 1px solid var(--line); background: transparent; color: var(--muted); cursor: pointer; font-size: 11px; font-weight: 700; }
 .filter-button.is-active, .filter-button:hover { border-color: var(--deep); background: var(--deep); color: #fff; }
 .projects-count { margin-left: auto; align-self: center; color: var(--muted); font: 11px 'DM Mono', monospace; }
