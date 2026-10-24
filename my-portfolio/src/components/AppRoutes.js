@@ -31,7 +31,8 @@ const AppRoutes = ({ isMenuOpen, setIsMenuOpen }) => {
   const handleNavHover = (path) => {
     const route = ROUTES.find(r => r.path === path);
     if (route && route.component.preload) {
-      route.component.preload();
+      // Preload is best-effort; a failed prefetch must not raise an overlay.
+      Promise.resolve(route.component.preload()).catch(() => {});
     }
   };
 
