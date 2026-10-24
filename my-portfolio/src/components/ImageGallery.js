@@ -12,28 +12,27 @@ const ImageGallery = ({ images, title }) => {
     setCurrentImageIndex(0); // Reset the index when closing
   };
 
-  const handleKeyDown = (event) => {
-    if (event.key === 'ArrowRight') {
-      // Move to the next image
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    } else if (event.key === 'ArrowLeft') {
-      // Move to the previous image
-      setCurrentImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
-    } else if (event.key === 'Escape') {
-      // Close the lightbox
-      closeLightbox();
-    }
-  };
-
   useEffect(() => {
-    // Add keydown event listener when lightbox is open
-    if (lightbox) {
-      document.addEventListener('keydown', handleKeyDown);
+    if (!lightbox) {
+      return undefined;
     }
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'ArrowRight') {
+        setCurrentImageIndex((previousIndex) => (previousIndex + 1) % images.length);
+      } else if (event.key === 'ArrowLeft') {
+        setCurrentImageIndex((previousIndex) => (previousIndex - 1 + images.length) % images.length);
+      } else if (event.key === 'Escape') {
+        setLightbox(null);
+        setCurrentImageIndex(0);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [lightbox]);
+  }, [images.length, lightbox]);
 
   // Update the lightbox to show the current image
   useEffect(() => {
@@ -50,7 +49,7 @@ const ImageGallery = ({ images, title }) => {
           <div key={image} className="cursor-pointer">
             <img
               src={image}
-              alt={`${title} image ${index + 1}`} // Dynamic alt text
+              alt={`${title}, gallery item ${index + 1}`}
               className="rounded-lg shadow-md w-full h-40 object-cover"
               onClick={() => {
                 setLightbox(image);
